@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content=" ">
+    <title>Document</title>
+    <style type="text/css">
+        *{margin: 0;padding: 0;}
+        a{text-decoration: none;}
+        ul,li{list-style: none;}
+        body{font-size: 14px;font-family: "微软雅黑";}
+        .box{width: 400px;margin: 150px auto}
+        select{padding: 0 10px;height: 30px;margin-left: 5px;}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <select id="prov">
+            <option value="0">--省--</option>
+        </select>
+        <select id="city">
+            <option value="0">--市--</option>
+        </select>
+        <select id="county">
+            <option value="0">--县--</option>
+        </select>
+    </div>
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/areaData.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            //select option索引 selectedIndex
+            var $prov = $("#prov");
+            var $city = $("#city");
+            var $county = $("#county");
+            var index = 0;
+
+            //添加省数据
+            var sheng = areaData.sheng;
+            for(var i=0;i<sheng.length;i++){
+                //创建option标签 放入数据
+                var $option = $('<option value='+(i+1)+'>'+sheng[i]+'</option>');
+                //追加到select后边
+                $prov.append($option);
+            };
+
+            //添加市数据 onclick不可以 onchange
+            $prov.change(function(){
+                //拿到对应省份的索引值
+                index = this.selectedIndex - 1;
+                //console.log(index);
+                var shi = areaData.shi['a_'+index];
+                if(index > 0){
+                    $city.html("<option value='0'>--市--</option>");
+                    for(var i=0;i<shi.length;i++){
+                        var $option = $("<option value="+(i+1)+">"+shi[i]+"</option>");
+                        $city.append($option);
+                    }
+                }
+            });
+
+            //县数据
+            $city.change(function(){
+                //拿到对应省份的索引值
+                var index1 = this.selectedIndex - 1;
+                //console.log(index);
+                var xian = areaData.xian['a_'+index+"_"+index1];
+                var mark = typeof xian;//undefined
+                if(index > 0 && mark != 'undefined'){
+                    $county.html("<option value='0'>--县--</option>");
+                    for(var i=0;i<xian.length;i++){
+                        var $option = $("<option value="+(i+1)+">"+xian[i]+"</option>");
+                        $county.append($option);
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

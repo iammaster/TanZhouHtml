@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面编码集(中文编码<gbk,gb2312>,国际编码<utf-8>)-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="keywords" content="关键词,关键词">
+		<meta name="description" content="">
+		<title> html </title>
+        <style type="text/css">
+			*{padding:0px;margin:0px;}
+		</style>
+	</head>
+<body>
+	<button>点我哦</button>
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script>
+		/*
+			jQuery为开发插件提供了两个方法
+			$.extend();
+			$.fn.extend();
+		*/
+
+		//$.extend(obj);
+		//为jQuery类添加类方法，可以理解为静态方法
+		$.extend({
+			min:function(a,b){
+				return a>b?b:a;
+			},
+			max:function(a,b){
+				return a>b?a:b;
+			}
+		});
+
+		//$("button").min();
+
+	//	alert($.min(1,3));
+	
+		//对象混入
+		var json1 = {name:"Jery",age:15};
+		var json2 = {name:"keke",age:30,address:"长沙"}; 
+		var json3 = {name:"Arry",tel:13791855110};
+		var json = $.extend(json1,json2,json3);
+	//	console.log(JSON.stringify(json)+"====="+JSON.stringify(json1));
+
+
+
+	//$.fn.extend(obj); 对jQuery.prototype的扩展，为jQuery类添加成员函数，jQuery类的实例可以使用这个成员函数
+	
+	$.fn.extend({
+		Alert:function(){
+			$(this).on('click',function(){
+				alert("你好哦");
+			});
+		//	return $(this);
+		},
+		nihao:function(){
+			console.log("你是猪");
+		}
+	});
+	
+	//$("button").Alert().nihao();
+	//$("button").nihao();
+	//$.Alert();
+	//$.prototype.nihao();
+
+
+	/*
+		总结：
+
+		$.extend() 的调用并不会把方法扩展到对象的实例上，引用他的方法也需要通过jQuery类来实现。如$.init();而$.fn.extend()的调用把方法扩展到对象的prototype上，所以实例化一个jQuery对象的时候，它就具有了这些方法！
+	*/
+	</script>
+</body>
+
+</html>

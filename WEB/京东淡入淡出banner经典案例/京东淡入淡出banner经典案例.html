@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面编码集(中文编码<gbk,gb2312>,国际编码<utf-8>)-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="keywords" content="关键词,关键词">
+		<meta name="description" content="">
+		<title> html </title>
+        <style type="text/css">
+			*{padding:0px;margin:0px;}
+			body{background:gray;}
+			ul li{list-style:none;}
+			/*banner start*/
+			#banner{width:730px;height:454px;box-shadow:0 0 2em pink;margin:50px auto;position:relative;}
+			#banner .pic ul li{position:absolute;display:none;}
+
+			#banner .tab{width:132px;height:22px;position:absolute;bottom:10px;left:50%;margin-left:-66px;}
+			#banner .tab ul li{width:18px;height:18px;background:#666;border-radius:50%;margin:2px;text-align:center;line-height:18px;float:left;color:#e5e5e5;font-weight:bold;cursor:pointer;}
+			
+			#banner .tab ul li.on{background:#b61b1f;}
+
+			#banner .btn div{width:28px;height:62px;background:rgba(0,0,0,0.3);text-align:center;line-height:62px;position:absolute;top:50%;margin-top:-31px;font-size:26px;color:#fff;cursor:pointer;display:none;}
+			#leftBtn{left:10px;}
+			#rightBtn{right:10px;}
+			/*banner end*/
+		</style>
+	</head>
+<body>
+	<!--banner start-->
+	<div id="banner">
+		<div class="pic">
+			<ul>
+				<li style="display:block;"><img src="img/1.jpg"/></li>
+				<li><img src="img/2.jpg"/></li>
+				<li><img src="img/3.jpg"/></li>
+				<li><img src="img/4.jpg"/></li>
+				<li><img src="img/5.jpg"/></li>
+				<li><img src="img/6.jpg"/></li>
+			</ul>	
+		</div>
+		<div class="tab">
+			<ul>
+				<li class="on">1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li>
+			</ul>
+		</div>
+		<div class="btn">
+			<div id="leftBtn">&lt;</div>
+			<div id="rightBtn">&gt;</div>
+		</div>
+	</div>
+	<!--banner end-->
+
+	<!--引入js官方类库jQuery-->
+	<script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var $banner = $("#banner");
+			var $tabLi = $("#banner .tab ul li");
+			var $picLi = $("#banner .pic ul li");
+			var $btnDiv = $("#banner .btn div");
+			var index = 0;
+			var timer = null;
+			var nowTime = 0;
+			$banner.hover(function(){
+				$btnDiv.show();
+				clearInterval(timer);
+			},function(){
+				$btnDiv.hide();
+				auto();
+			});
+
+			$btnDiv.click(function(){
+				if(new Date() - nowTime > 800){
+					nowTime = new Date();
+					var i = $(this).index();
+					if(i){
+						index++;
+						index %= $tabLi.length;//0-5 
+					}else{
+						index--;
+						if(index<0) index = $tabLi.length-1;
+					}
+					fn();
+				};
+			}).mousedown(function(){
+				return false;
+			});
+			$tabLi.hover(function(){
+				index = $(this).index();
+				fn();
+			});
+			function fn(){
+				$tabLi.eq(index).addClass("on").siblings().removeClass("on");
+				$picLi.eq(index).stop(true).fadeIn("slow").siblings().stop(true).fadeOut("slow");
+			};
+			
+			function auto(){
+				timer = setInterval(function(){
+					index++;
+					index %= $tabLi.length;
+					$tabLi.eq(index).addClass("on").siblings().removeClass("on");
+					$picLi.eq(index).stop(true).fadeIn("slow").siblings().stop(true).fadeOut("slow");
+				},1500);
+			};
+			auto();
+		});
+	</script>
+</body>
+
+</html>

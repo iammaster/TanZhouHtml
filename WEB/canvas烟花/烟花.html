@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+ <head>
+<!-- 声明当前页面编码:中文编码(gbk) 国际编码 utf-8 -->
+ <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<!--  声明当前页面三要素   -->
+   <title>  </title>
+    <meta name="keyword" content="关键字">
+    <meta name="description" content="J201607012,">
+	 <style>
+  *{margin:0px ;padding:0px;}
+  body{font-size:12px;font-family:"微软雅黑";}
+ </style>
+ </head>
+ <body>
+ <script src="js/jquery-3.0.0.min.js"></script>
+<canvas id="canvas" style="background:#111" width="1361" height="405"></canvas>
+    <script type="text/javascript">
+	
+			var canvas =document.getElementById("canvas");
+			var context = canvas.getContext("2d");
+			canvas.width=window.innerWidth;
+			canvas.height=window.innerHeight;
+			var canvasHeight = canvas.height;//为了固定小球的位置
+			var canvasWidth = canvas.width;//为了固定小球的位置
+			var ballNum = 500;
+			var balls=[];
+			var ballRadious=5;
+			var addHeight=20;
+			var addwidth=2;
+
+			//创建单位小球对象
+			function Ball(){
+			Ball.prototype.x=0;
+			Ball.prototype.y=0;
+			Ball.prototype.radius=5;
+			Ball.prototype.color="red";
+			Ball.prototype.draw=function(context){
+				context.beginPath();
+				context.fillStyle= this.color;	
+				context.arc(this.x,this.y,this.radius,0,Math.PI*2);
+				context.fill();
+				}
+			}
+			function run1(xWidth,yHeight){
+				for(var i = 0 ; i<ballNum ; i ++){
+					var ball = new Ball();
+					ball.xWidth=xWidth;//初始化初始化
+					ball.yHeight=yHeight;//方便初始化
+					ball.x=canvasHeight;
+					ball.y=yHeight;
+					ball.stepy=Math.random()*-60;
+					ball.stepx=Math.random()*10-1;
+					ball.radius=Math.random()*ballRadious.toFixed(0)+1;
+					ball.color="rgba("+Math.floor(Math.random()*226)+","+Math.floor(Math.random()*226)+","+Math.floor(Math.random()*226)+",1)";
+					ball.draw(context);
+					balls.push(ball);
+				}
+			}
+			run1(canvasWidth/4,canvasHeight);//左边烟花
+			run1(canvasWidth/2,canvasHeight);//中间烟花
+			run1(canvasWidth/1.33,canvasHeight);//右边烟花
+			
+			function level(ball){
+				ball.stepy+=0.4;//用速度控制方向
+				ball.x += ball.stepx;
+				ball.y += ball.stepy;
+				//边界判断  消失了再来
+				if(ball.y-ball.radius > canvasHeight ||
+					ball.y+ball.radius<0 || 
+					ball.x-ball.radius > canvasWidth ||
+					ball.x+ball.radius<0
+				){
+					//从新初始化
+					ball.x =ball.xWidth;
+					ball.y = ball.yHeight;
+					ball.stepy = Math.random()*-10-10; 
+					ball.stepx = Math.random()*2-1; 
+				}
+
+				ball.draw(context);
+			}
+
+			setInterval(function(){
+				//从新清除画布
+				context.clearRect(0,0,canvasWidth,canvasHeight);
+				for(var i in balls){
+					level(balls[i]);
+				}
+			},30)
+			
+		
+	</script>
+ </body>
+</html>

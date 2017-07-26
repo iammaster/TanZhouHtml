@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+    <head>
+		<!--声明当前页面的编码集:charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+		<meta charset="UTF-8">
+		<meta name="Keywords" content="关键词,关键字">
+		<meta name="Description" content="">
+		<title>HTML模版</title>
+		<style type="text/css">
+			*{margin:0;padding:0;}
+			body{overflow:hidden;background:#000;}
+			#conent{width:100px;height:100px;position:absolute;top:200px;left:47%;
+			transform-style:preserve-3d;animation:play 3s linear infinite;
+			}
+
+			#conent .d{
+				width:100px;height:100px;background: -webkit-linear-gradient(top, #28343b 0%,#828c95 16%,#828c95 87%,#28343b 100%);font-size:50px;line-height:100px;text-align:center;font-family:"微软雅黑";position:absolute;background:url("1.gif");}
+
+			.d1{animation:runA 3s linear infinite;top:100px;}
+			.d11{opacity:0;animation:runA 3s 1s linear infinite;}
+			.d111{opacity:0;animation:runA 3s 2s linear infinite;}
+			.d2{animation:runB 3s linear infinite;top:0px;}
+			.d22{opacity:0;animation:runB 3s 1s linear infinite;}
+			.d222{opacity:0;animation:runB 3s 2s linear infinite;}
+			.d3{animation:runC 3s linear infinite;left:-50px;top:50px;}
+			.d33{opacity:0;animation:runC 3s 1s linear infinite;}
+			.d333{opacity:0;animation:runC 3s 2s linear infinite;}
+			.d4{animation:runD 3s linear infinite;left:50px;top:50px;}
+			.d44{opacity:0;animation:runD 3s 1s linear infinite;}
+			.d444{opacity:0;animation:runD 3s 2s linear infinite;}
+
+
+			@keyframes runA{
+				from{transform:perspective(10px) rotateX(12deg) rotateY(0deg) rotateZ(180deg) translateY(200px);opacity:1;}
+				to{transform:perspective(10px) rotateX(12deg) rotateY(0deg) rotateZ(180deg) translateY(-100px);opacity:1;}
+			}
+			@keyframes runB{
+				from{transform:perspective(10px) rotateX(-12deg) translateY(200px);opacity:1;}
+				to{transform:perspective(10px) rotateX(-12deg)  translateY(-100px);opacity:1;}
+			}
+			@keyframes runC{
+				from{transform:perspective(10px) rotateX(0deg) rotateY(12deg) rotateZ(-90deg) translateY(200px);opacity:1;}
+				to{transform:perspective(10px) rotateX(0deg) rotateY(12deg) rotateZ(-90deg) translateY(-100px);opacity:1;}
+			}
+			@keyframes runD{
+				from{transform:perspective(10px) rotateX(0deg) rotateY(-12deg) rotateZ(90deg) translateY(200px);opacity:1;}
+				to{transform:perspective(10px) rotateX(0deg) rotateY(-12deg) rotateZ(90deg) translateY(-100px);opacity:1;}
+			}
+			@keyframes play{
+				from{transform:rotate(0deg)scale(1);}
+				50%{transform:rotate(180deg)scale(2);}
+				to{transform:rotate(360deg)scale(1);}
+				
+			}
+			
+		</style>
+	</head>
+
+<body>
+	
+	<div id="conent">
+		<div class="d d1">鸽</div>
+		<div class="d d1 d11">鸽</div>
+		<div class="d d1 d111">鸽</div>
+		<div class="d d2">鸽</div>
+		<div class="d d2 d22">鸽</div>
+		<div class="d d22 d222">鸽</div>
+		<div class="d d3">鸽</div>
+		<div class="d d3 d33">鸽</div>
+		<div class="d d3 d333">鸽</div>
+		<div class="d d4">鸽</div>
+		<div class="d d4 d44">鸽</div>
+		<div class="d d4 d444">鸽</div>
+	</div>
+
+</body>
+</html>

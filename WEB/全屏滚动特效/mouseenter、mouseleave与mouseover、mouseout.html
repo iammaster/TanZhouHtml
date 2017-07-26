@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面编码集(中文编码<gbk,gb2312>,国际编码<utf-8>)-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="keywords" content="关键词,关键词">
+		<meta name="description" content="">
+		<title> html </title>
+        <style type="text/css">
+			*{padding:0px;margin:0px;}
+			#box{width:200px;margin:150px auto;}
+			#box ul{border:1px solid red;}
+			#box ul li{width:200px;background:red;height:50px;list-style:none;margin-top:10px;}
+		</style>
+	</head>
+<body>
+
+	<div id="box">
+		<ul id="ul">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+
+	<script>
+		var ul = document.getElementById("ul");
+		/*
+			当鼠标指针穿过元素时，会发生 mouseenter 事件。该事件大多数时候会与mouseleave 事件一起使用。
+			与 mouseover 事件不同，只有在鼠标指针穿过被选元素时，才会触发 mouseenter 事件。如果鼠标指针穿过任何子元素，同样会触发 mouseover 事件。
+		*/
+		/*
+		ul.onmouseover = function(){
+			console.log(1);
+		};
+		
+		ul.onmouseout = function(){
+			console.log(2);
+		};
+		
+		ul.onmouseenter = function(){
+			console.log(1);
+		};
+		ul.onmouseleave = function(){
+			console.log(2);
+		};
+		*/	
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,823 @@
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面的编码集：charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!--当前页面的三要素-->
+		<title>腾讯课堂-专业的在线教育平台</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="">
+
+		<!--css,js-->
+		<style type="text/css">
+			*{margin:0;padding:0;}
+			body{font-size:12px;font-family:"微软雅黑";color:#666;height:1500px;}
+			img{border:0;}
+			/*header start*/
+			.header{width:1200px;height:100px;margin:0 auto;padding-top:10px;}
+			.header h1{float:left;}
+			.header .h_search{float:left;margin-left:220px;}
+			.header .h_search .search{width:450px;height:36px;border:2px solid #188eee;
+				position:relative;}
+			.header .h_search .search .s_text{width:370px;height:30px;line-height:30px;font-size:14px;font-family:"微软雅黑";color:#545454;padding:2px 0 0 10px;border:0;}
+			.header .h_search .search a{width:58px;height:36px;display:block;background:#188eee;
+				position:absolute;top:0;right:0;}
+			.header .h_search .search a i{width:20px;height:20px;display:block;
+				background:url("images/icon-search-white.png");margin:6px auto;}
+			.header .login{float:right;line-height:40px;color:#dedede;}
+			.header .login a{text-decoration:none;color:#333;}
+			/*end header*/
+
+			/*banner start*/
+			.banner{width:100%;height:350px;}
+			.banner .b_adv{width:1200px;height:50px;margin:0 auto;position:relative;}
+			.banner .b_adv a{position:absolute;top:0;left:220px;}
+			.banner .b_bg{height:300px;background:#4a4d9c;z-index:1;}
+			.banner .b_bg .b_con{width:1200px;height:300px;margin:0 auto;
+				position:relative;z-index:2;
+			}
+			/*menu start*/
+			.banner .b_bg .b_con .menu{width:220px;height:476px;background:#0477c0;
+				position:absolute;top:-50px;left:0;z-index:4;}
+
+			.banner .b_bg .b_con .menu ul li{border-bottom:1px solid #1681c4;list-style:none;height:70px; position:relative;}
+			.banner .b_bg .b_con .menu ul li:hover{background:#09699c;}
+			
+			.banner .b_bg .b_con .menu ul .m_all{background:#188eee;height:50px;}
+			.banner .b_bg .b_con .menu ul .m_all a {display:block;line-height:50px;text-decoration:none;color:#fff;font-size:16px;font-weight:500;}
+			.banner .b_bg .b_con .menu ul .m_all a:hover{text-decoration:underline;}
+			.banner .b_bg .b_con .menu ul .m_all a i{width:32px;height:50px;display:block;background:url("images/icon-hamburg.png") no-repeat center;float:left;}
+			.banner .b_bg .b_con .menu ul li h2{padding: 8px 0 6px 15px;font-weight:500;}
+			.banner .b_bg .b_con .menu ul li h2 i{width:6px;height:12px;display:inline-block;background:url("images/icon.png") -147px -163px ;float:right;margin:12px 10px 0 0;}
+
+			.banner .b_bg .b_con .menu ul li h2 a{font-size:16px;color:#fff;text-decoration:none;}
+			.banner .b_bg .b_con .menu ul li h2 a:hover{text-decoration:underline;}
+			.banner .b_bg .b_con .menu ul li h3{padding-left:15px;font-weight:500;}
+			.banner .b_bg .b_con .menu ul li h3 a{font-size:14px;color:#97d2f7;text-decoration:none;}
+			.banner .b_bg .b_con .menu ul li h3 a:hover{text-decoration:underline;}
+
+			.banner .b_bg .b_con .menu ul li .show_menu{width:438px;border: 0px solid #09699c;display:none;position:absolute;top:0;left:220px;}
+			.banner .b_bg .b_con .menu ul li .show{display:block;}
+			/*end menu*/
+
+			/*focus start*/
+			.banner .b_bg .b_con .focus{width:760px;height:300px;background-color: rgb(77, 78, 155);
+				position:absolute;left:220px;top:0;z-index:3;overflow:hidden;}
+			.banner .b_bg .b_con .focus .f_pic{position:relative;}
+			.banner .b_bg .b_con .focus .f_pic li{list-style:none;}
+
+			.banner .b_bg .b_con .focus .f_btn{height:24px;
+				position:absolute;bottom:10px;left:330px;
+				/*left:50%;margin-left:-70px;*/
+			}
+			.banner .b_bg .b_con .focus .f_btn ul{background:#000;display:inline-block;padding:7px 28px;opacity:0.4;filter:alpha(opacity=40); border-radius:15px;}
+
+			.banner .b_bg .b_con .focus .f_btn ul li{width:8px;height:8px;border-radius:10px;border:1px solid #fff;float:left;list-style:none;margin:0 3px;}
+			.banner .b_bg .b_con .focus .f_btn ul .no{background:#fff;}
+
+			.banner .b_bg .b_con .focus .f_ear{width:46px;height:70px;display:block;background:url("images/icon.png") no-repeat;
+				position:absolute;display:none;
+			}
+			.banner .b_bg .b_con .focus:hover .f_ear{display:block;}
+
+			.banner .b_bg .b_con .focus .pre{left:10px;top:110px;background-position:-74px 0;}
+			.banner .b_bg .b_con .focus .pre:hover{background-position:-172px 0;}
+
+			.banner .b_bg .b_con .focus .next{right:10px;top:110px;background-position:-123px 0;}
+			.banner .b_bg .b_con .focus .next:hover{background-position:0 -57px;}
+
+
+			/*end focus*/
+
+			/*tools start*/
+			.banner .b_bg .b_con .tools{width:220px;height:260px;float:right;									position:absolute;right:0;top:0;z-index:3;margin-top:20px;
+				/*background: rgba(0,0,0,0.4);
+				filter: progid:DXImageTransform.Microsoft.
+				gradient(startColorstr=#66000000,endColorstr=#66000000);*/
+				/*background:#000;
+				opacity:0.4;filter:alpha(opacity=40);*/
+				
+			}
+			/*--------需要用一个透明的div盒子绝对定位,还需要设置阴影层的显示级别--------*/
+			.banner .b_bg .b_con .tools .t_yy{width:220px;height:260px;opacity:0.4;background:#000;filter:alpha(opacity=40);position:absolute;right:0;top:0;z-index:-1;}
+
+			.banner .b_bg .b_con .tools .t_news{width:220px;height:150px;}
+			.banner .b_bg .b_con .tools .t_news ul{margin-left:20px;padding-left:15px;}
+			.banner .b_bg .b_con .tools .t_news ul li{padding:13px 10px 0 0;color:#fff;}
+			.banner .b_bg .b_con .tools .t_news ul li a{text-decoration:none;color:#fff;font-size:14px;}
+			.banner .b_bg .b_con .tools .t_news ul li a:hover{text-decoration:underline;}
+			.banner .b_bg .b_con .tools .t_news .t_tool{width:220px;height:110px;margin-top:18px;position:relative;color:#fff;}
+
+			/*---------增加透明选中效果--------*/
+			.banner .b_bg .b_con .tools .t_news .t_tool .l_yy{width:220px;height:110px;background:#000;opacity:0.2;filter:alpha(opacity=20);
+				position:absolute;right:0;top:0;z-index:-1;
+			}
+
+			.banner .b_bg .b_con .tools .down_qq{width:110px;height:110px;display:block;text-align:center;
+				font-size:12px;color:#fff;text-decoration:none;float:left;
+				position:absolute;top:0px;left:0px;
+			}
+
+			/*---------增加透明选中效果-------*/			
+			.banner .b_bg .b_con .tools .down_qq .d_yy{width:110px;height:110px;background:#000;opacity:0.1;filter:alpha(opacity=10);position:absolute;right:0;top:0;display:none;}
+			.banner .b_bg .b_con .tools .down_qq:hover .d_yy{display:block;}
+
+			.banner .b_bg .b_con .tools .down_qq .desc{font-size:16px;}
+			.banner .b_bg .b_con .tools .down_qq i{width:44px;height:44px;display:block;position:absolute;top:10px;left:32px;
+			background:url("images/icon.png") no-repeat -123px -73px;}
+			.banner .b_bg .b_con .tools .down_qq .d_all{position:absolute;left:32px;bottom:10px;}
+
+			.sys{width:110px;height:110px;float:left;text-align:center;}
+			/*---------增加透明选中效果-------*/
+			.sys .s_yy{width:110px;height:110px;background:#000;opacity:0.1;filter:alpha(opacity=10);
+			position:absolute;right:0;top:0;display:none;}
+			.sys:hover .s_yy{display:block;}
+
+			.sys i{width:44px;height:44px;display:block;position:absolute;top:10px;left:143px;
+			background:url("images/icon.png") no-repeat -172px -73px;}
+			.sys .s_all{position:absolute;left:143px;bottom:10px;}
+			.sys .s_all .desc{font-size:16px;}
+			.sys .code{width:126px;height:126px;position:absolute;left:0px;top:-9px;display:none;}
+			/*end tools*/
+			
+			/*end banner*/
+
+			/*activities start*/
+			.activities{width:980px;height:125px;margin:0 auto;border-right:1px solid #eaeaea;border-bottom:1px solid #eaeaea;padding-left:220px;}
+			.activities a{float:left;}
+			/*end activities*/
+
+			/*hot-course start*/
+			.hot-course{width:1200px;margin:0 auto;padding-top:40px;}
+			.hot-course .h_nav{height:40px;border-bottom:1px solid #eaeaea;}
+			.hot-course .h_nav a{width:220px;height:40px;display:block;font-size:22px;color:#202020;text-decoration:none;float:left;}
+			.hot-course .h_nav .live{float:left;width:974px;line-height:36px;margin-top:3px;}
+			.hot-course .h_nav .live li{list-style:none;float:left;width:90px;text-align:center;font-size:14px; }
+			.hot-course .h_box .h_all{height:230px;font-size:14px;padding-top:30px;}
+			.hot-course .h_box .h_all .list_live{height:180px;}
+			.hot-course .h_box .h_all ul li{float:left;list-style:none;width:240px;height:200px;}
+			.hot-course .h_box .h_all ul li .l_course{padding:10px 11px 8px 8px;}
+			.hot-course .h_box .h_all ul li .l_course:hover{border:1px solid #dddddd;
+				box-shadow: #ececec 0 1px 1px;
+				padding:9px 10px 7px 7px; /*当鼠标滑动时，减过1px*/
+			}
+
+			.hot-course .h_box .h_all ul li .l_course .c_pic{display:block;}
+			.hot-course .h_box .h_all ul li .l_course p{font-size:12px;color:#dedede;}
+			.hot-course .h_box .h_all ul li .l_course p a{color:#999;text-decoration:none;font-size:14px;}
+			.hot-course .h_box .h_all ul li .l_course p .mf{color:#5FB41B;font-size:14px;}
+			.hot-course .h_box .h_all ul li .l_course .c_title{color:#333;text-decoration:none;line-height:24px;}
+			.hot-course .h_box .h_all ul li .l_course .c_title:hover{color:#62B4F7;}
+			.hot-course .h_box .h_all .list_video{display:none;}
+
+			.hot-course .h_nav .live .l_sel{border-bottom:2px solid #188eee;color:#188eee;}
+			/*end hot-course*/
+
+
+			/*content start*/
+			.content{width:100%;background:#f9f9f9;padding: 36px 0 40px 0;}
+			.content .c_course_list{width:1200px;height:540px;margin:0 auto;}
+			.content .c_course_list .c_list_box{width:1200px;}
+			.content .c_course_list .c_list_box .c_nav{width:1200px;height:40px;border-bottom:1px solid #eaeaea;}
+			.content .c_course_list .c_list_box .c_nav a{width:220px;height:40px;display:block;font-size:22px;color:#202020;text-decoration:none;float:left;}
+			.content .c_course_list .c_list_box .c_nav ul{float:left;width:974px;line-height:36px;margin-top:3px;}
+			.content .c_course_list .c_list_box .c_nav ul li{list-style:none;float:left;width:90px;text-align:center;font-size:14px; }
+			.content .c_course_list .c_list_box .c_nav ul .c_sel{border-bottom:2px solid #188eee;color:#188eee;}
+			.content .c_course_list .c_list_box .c_list_all{position:relative;padding-top:30px;}
+			.content .c_course_list .c_list_box .c_list_all .c_banner{width:220px;height:420px;display:block;position:absolute;top:-2px;left:-21px;}
+
+			.content .c_course_list .c_list_box .c_list_all .c_a_list{width:980px;height:390px;margin-left:220px;}
+			.c_a_list .c_all_ul{width:722px;padding-left:10px;float:left;}
+			.c_a_list .c_all_ul li{float:left;list-style:none;width:240px;height:200px;}
+			.c_a_list .c_all_ul li .l_course{padding:10px 11px 8px 8px;}
+			.c_a_list .c_all_ul li .l_course:hover{border:1px solid #dddddd;
+				box-shadow: #ececec 0 1px 1px;
+				padding:9px 10px 7px 7px; /*当鼠标滑动时，减过1px*/
+				background:#fff;
+			}
+			.c_a_list .c_all_ul li .l_course .c_pic{display:block;}
+			.c_a_list .c_all_ul li .l_course p{font-size:12px;color:#dedede;}
+			.c_a_list .c_all_ul li .l_course p a{color:#999;text-decoration:none;font-size:14px;}
+			.c_a_list .c_all_ul li .l_course p .mf{color:#5FB41B;font-size:14px;}
+			.c_a_list .c_all_ul li .l_course .c_title{color:#333;text-decoration:none;line-height:24px;}
+			.c_a_list .c_all_ul li .l_course .c_title:hover{color:#62B4F7;}
+			.c_a_list .list_video{display:none;}
+			.hot-course .h_nav .live .l_sel{border-bottom:2px solid #188eee;color:#188eee;}
+
+			.c_a_list .c_ph{width:242px;height:420px;float:right;}
+			.c_a_list .c_ph .p_nav{width:242px;height:30px;border-bottom:1px solid #eaeaea;}
+			.c_a_list .c_ph .p_nav ul{margin-top:1px;}
+			.c_a_list .c_ph .p_nav ul li{list-style:none;font-size:16px;float:left;width:107px;height:30px;line-height:30px;text-align:center;}
+			.c_a_list .c_ph .p_nav ul .p_sel{border-bottom:1px solid #188eee;}
+			.c_a_list .c_ph .p_con ul li{list-style:none;padding: 6px 10px;}
+			.c_a_list .c_ph .p_con ul li:hover{background:#e5e5e5;}
+			.c_a_list .c_ph .p_con ul .li_first{list-style:none;height:75px;padding:10px 12px;}
+
+			.c_a_list .c_ph .p_con ul li .p_n{width:18px;height:18px;display:block;background:url("images/icon.png") no-repeat;float:left;margin-right:10px;margin-top:2px;}
+
+			.c_a_list .c_ph .p_con ul .li_first .number-1{background-position:-105px -163px;}
+			.c_a_list .c_ph .p_con ul li .number-2{background-position:-84px -163px;} 
+			.c_a_list .c_ph .p_con ul li .number-3{background-position:-21px -163px;}
+			.c_a_list .c_ph .p_con ul li .number-4{background-position:-174px -130px;}
+			.c_a_list .c_ph .p_con ul li .number-5{background-position:-49px -57px ;}
+			.c_a_list .c_ph .p_con ul li .number-6{background-position:0 -163px;}
+			.c_a_list .c_ph .p_con ul li .number-7{background-position:-63px -163px ;}
+			.c_a_list .c_ph .p_con ul li .number-8{background-position:-42px -163px ;}
+			.c_a_list .c_ph .p_con ul li .number-9{background-position:-195px -130px ;}
+
+
+			.c_a_list .c_ph .p_con ul li a{font-size:14px;text-decoration:none;color:#666;}
+			.c_a_list .c_ph .p_con ul li .d_title{margin-bottom: 4px;display: inline-block;}
+			.c_a_list .c_ph .p_con ul .li_first .p_desc{width:184px;float:right;}
+			.p_desc .d_pic{float:left;}
+			.p_desc .p_text{width:88px;height:56px;float:right;font-size:14px;}
+			.p_desc .p_text span{display:block;width:80px;}
+			.p_desc .p_text .p_num{color:red;margin-bottom:8px;}
+			/*end content*/
+			.clear{clear:both;}
+		</style>
+
+	</head>
+<body>
+
+	<!--header start-->
+	<div class="header">
+		<h1>
+			<a href="#"><img src="images/logo.png" alt="腾讯课堂" width="288" height="38" /></a>
+		</h1>
+		
+		<div class="h_search">
+			<div class="search">
+				<input type="text" class="s_text" value="搜索课程"/>
+				<a href="#"><i></i></a>
+			</div>
+		</div>
+		
+		<div class="login">
+			<a href="#">登录</a> | <a href="#">帮助</a>
+		</div>
+	</div>
+	<!--end header-->
+
+	<!--banner start-->
+	<div class="banner">
+		<div class="b_adv">
+			<a href="#"><img src="images/banner-top.jpg" alt="群聚学习" width="760" height="50" /></a>
+		</div>
+
+		<div class="b_bg">
+			<div class="b_con">
+
+				<!--menu start-->
+				<div class="menu">
+					<ul>
+						<li class="m_all">
+							<a href="#">
+								<i></i>
+								全部课程
+							</a>
+						</li>
+						<li>
+							<h2>
+								<i></i>
+								<a href="#">职业技能</a>
+							</h2>
+							<h3>
+								<a href="#">职场技能</a>
+								<a href="#">SNS营销</a>
+								<a href="#">公务员</a>
+							</h3>
+							<div class="show_menu"><img src="images/menu-pic.jpg"/></div>
+						</li>
+						<li>
+							<h2>
+								<i></i>
+								<a href="#">IT培训</a>
+							</h2>
+							<h3>
+								<a href="#">职场技能</a>
+								<a href="#">SNS营销</a>
+								<a href="#">公务员</a>
+							</h3>
+							<div class="show_menu"><img src="images/menu-pic.jpg"/></div>
+						</li>
+						<li>
+							<h2>
+								<i></i>
+								<a href="#">语言学习</a>
+							</h2>
+							<h3>
+								<a href="#">职场技能</a>
+								<a href="#">SNS营销</a>
+								<a href="#">公务员</a>
+							</h3>
+							<div class="show_menu"><img src="images/menu-pic.jpg"/></div>
+						</li>
+						<li>
+							<h2>
+								<i></i>
+								<a href="#">中小学/大学</a>
+							</h2>
+							<h3>
+								<a href="#">职场技能</a>
+								<a href="#">SNS营销</a>
+								<a href="#">公务员</a>
+							</h3>
+							<div class="show_menu"><img src="images/menu-pic.jpg"/></div>
+						</li>
+						<li>
+							<h2>
+								<i></i>
+								<a href="#">兴趣爱好</a>
+							</h2>
+							<h3>
+								<a href="#">职场技能</a>
+								<a href="#">SNS营销</a>
+								<a href="#">公务员</a>
+							</h3>
+							<div class="show_menu"><img src="images/menu-pic.jpg"/></div>
+						</li>
+						<li>
+							<h2>
+								<i></i>
+								<a href="#">亲子课堂</a>
+							</h2>
+							<h3>
+								<a href="#">职场技能</a>
+								<a href="#">SNS营销</a>
+								<a href="#">公务员</a>
+							</h3>
+							<div class="show_menu"><img src="images/menu-pic.jpg"/></div>
+						</li>
+
+
+
+					</ul>
+
+
+				</div>
+				<!--end menu-->
+				
+				<!--focus start-->
+				<div class="focus">
+				
+					<ul class="f_pic">
+						<li>
+							<a href="#">
+								<img src="images/banner-3.jpg" alt="潭州学院" width="760" height="300" />
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="images/banner-1.jpg" alt="潭州学院" width="760" height="300" />
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="images/banner-2.jpg" alt="潭州学院" width="760" height="300" />
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="images/banner-4.jpg" alt="潭州学院" width="760" height="300" />
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="images/banner-5.jpg" alt="潭州学院" width="760" height="300" />
+							</a>
+						</li>
+					</ul>
+					<div class="f_btn">
+						<ul>
+							<li class="no" data-color="#4a4d9c"></li>
+							<li data-color="#a534d6"></li>
+							<li data-color="#6365ce"></li>
+							<li data-color="#523484"></li>
+							<li data-color="#009ee7"></li>
+						</ul>
+					</div>
+
+					<a href="#" class="f_ear pre"></a>
+					<a href="#" class="f_ear next"></a>
+				
+				</div>
+				<!--end focus-->
+				
+				<!--tools start-->
+				<div class="tools">
+					<div class="t_yy"></div>
+					<div class="t_news">
+						<ul type="square">
+							<li><a href="#">手把手教你做小霸王游戏</a></li>
+							<li><a href="#">2015考研英语名师解析</a></li>
+							<li><a href="#">网站制作达人分享</a></li>
+							<li><a href="#">海归型男的中秋邂逅</a></li>
+						</ul>
+						<div class="t_tool">
+							<div class="l_yy"></div>
+							<a href="#" class="down_qq">
+								<div class="d_yy"></div>
+								<i></i>
+								<span class="d_all"><span class="desc">下载</span><br />专用QQ</span>
+							</a>
+							<div class="sys">
+								<div class="s_yy"></div>
+								<i></i>
+								<span class="s_all"><span class="desc">下载</span><br />专用QQ</span>	<div class="code"><img src="images/bg-board-qr.png" alt="QQ二维码" width="126" height="126"/></div>		
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--end tools-->
+
+			</div>
+		</div>
+	
+	</div>
+	<!--end banner-->
+	
+	
+	<!--activities start-->
+	
+	<div class="activities">
+		<a href="#"><img src="images/a-1.jpg" alt="" width="326" height="125"/></a>
+		<a href="#"><img src="images/a-2.jpg" alt="" width="326" height="125"/></a>
+		<a href="#"><img src="images/a-3.jpg" alt=""  width="326" height="125"/></a>
+	</div>
+
+	<!--end activities-->
+
+	<!--hot-course start-->
+	<div class="hot-course">
+		<div class="h_box">
+			
+			<div class="h_nav">
+				<a href="#">热门课程</a>
+				<ul class="live">
+					<li class="l_sel">直播课</li>
+					<li>录播课</li>
+				</ul>
+			</div>
+
+			<div class="h_all">
+				<ul class="list_live">
+					<li>
+						<div class="l_course">
+							<a href="#" class="c_pic"><img src="images/220.jpg" alt="" width="220" height="124" /></a>
+							<a href="#" class="c_title">英福伦斯Live Show</a>
+							<p>
+								<span class="mf">免费</span> &nbsp;|&nbsp; 
+								<a href="#">腾讯课堂【官方】</a>
+							</p>
+						</div>
+					</li>
+					<li>
+						<div class="l_course">
+							<a href="#" class="c_pic"><img src="images/220.png" alt="" width="220" height="124" /></a>
+							<a href="#" class="c_title">英福伦斯Live Show</a>
+							<p>
+								<span class="mf">免费</span> &nbsp;|&nbsp; 
+								<a href="#">腾讯课堂【官方】</a>
+							</p>
+						</div>
+					</li>
+					<li>
+						<div class="l_course">
+							<a href="#" class="c_pic"><img src="images/220 (1).jpg" alt="" width="220" height="124" /></a>
+							<a href="#" class="c_title">英福伦斯Live Show</a>
+							<p>
+								<span class="mf">免费</span> &nbsp;|&nbsp; 
+								<a href="#">腾讯课堂【官方】</a>
+							</p>
+						</div>
+					</li>
+					<li>
+						<div class="l_course">
+							<a href="#" class="c_pic"><img src="images/220 (2).jpg" alt="" width="220" height="124" /></a>
+							<a href="#" class="c_title">英福伦斯Live Show</a>
+							<p>
+								<span class="mf">免费</span> &nbsp;|&nbsp; 
+								<a href="#">腾讯课堂【官方】</a>
+							</p>
+						</div>
+					</li>
+					<li>
+						<div class="l_course">
+							<a href="#" class="c_pic"><img src="images/220 (3).jpg" alt="" width="220" height="124" /></a>
+							<a href="#" class="c_title">英福伦斯Live Show</a>
+							<p>
+								<span class="mf">免费</span> &nbsp;|&nbsp; 
+								<a href="#">腾讯课堂【官方】</a>
+							</p>
+						</div>
+					</li>
+				</ul>
+				<ul class="list_video">
+<li>
+						<div class="l_course">
+							<a href="#" class="c_pic"><img src="images/220.jpg" alt="" width="220" height="124" /></a>
+							<a href="#" class="c_title">英福伦斯Live Show</a>
+							<p>
+								<span class="mf">免费</span> &nbsp;|&nbsp; 
+								<a href="#">腾讯课堂【官方】</a>
+							</p>
+						</div>
+					</li>
+					<li>
+						<div class="l_course">
+							<a href="#" class="c_pic"><img src="images/220.png" alt="" width="220" height="124" /></a>
+							<a href="#" class="c_title">英福伦斯Live Show</a>
+							<p>
+								<span class="mf">免费</span> &nbsp;|&nbsp; 
+								<a href="#">腾讯课堂【官方】</a>
+							</p>
+						</div>
+					</li>
+					<li>
+						<div class="l_course">
+							<a href="#" class="c_pic"><img src="images/220 (1).jpg" alt="" width="220" height="124" /></a>
+							<a href="#" class="c_title">英福伦斯Live Show</a>
+							<p>
+								<span class="mf">免费</span> &nbsp;|&nbsp; 
+								<a href="#">腾讯课堂【官方】</a>
+							</p>
+						</div>
+					</li>
+					<li>
+						<div class="l_course">
+							<a href="#" class="c_pic"><img src="images/220 (2).jpg" alt="" width="220" height="124" /></a>
+							<a href="#" class="c_title">英福伦斯Live Show</a>
+							<p>
+								<span class="mf">免费</span> &nbsp;|&nbsp; 
+								<a href="#">腾讯课堂【官方】</a>
+							</p>
+						</div>
+					</li>
+					<li>
+						<div class="l_course">
+							<a href="#" class="c_pic"><img src="images/220 (3).jpg" alt="" width="220" height="124" /></a>
+							<a href="#" class="c_title">英福伦斯Live Show</a>
+							<p>
+								<span class="mf">免费</span> &nbsp;|&nbsp; 
+								<a href="#">腾讯课堂【官方】</a>
+							</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!--end hot-course-->
+
+	<!--content start-->
+	<div class="content">
+		<div class="c_course_list">
+			<div class="c_list_box">
+				<!--c_nav start-->
+				<div class="c_nav">
+					<a href="#">职业技能</a>
+					<ul>    
+						<li class="c_sel">推荐</li>
+						<li>职场/求职</li>
+						<li>职业类考试</li>
+						<li>市场营销</li>
+						<li>最新发布</li>
+					</ul>
+				</div>
+				<!--end c_nav-->
+				<div class="c_list_all">
+					<a href="#" class="c_banner">
+						<img src="images/3846e35f_yb_240_420.png" alt="" width="240" height="420" />
+					</a>
+					<div class="c_a_list">
+						<ul class="c_all_ul">
+							<li>
+								<div class="l_course">
+									<a href="#" class="c_pic"><img src="images/220.jpg" alt="" width="220" height="124" /></a>
+									<a href="#" class="c_title">英福伦斯Live Show</a>
+									<p>
+										<span class="mf">免费</span> &nbsp;|&nbsp; 
+										<a href="#">腾讯课堂【官方】</a>
+									</p>
+								</div>
+							</li>
+							<li>
+								<div class="l_course">
+									<a href="#" class="c_pic"><img src="images/220.png" alt="" width="220" height="124" /></a>
+									<a href="#" class="c_title">英福伦斯Live Show</a>
+									<p>
+										<span class="mf">免费</span> &nbsp;|&nbsp; 
+										<a href="#">腾讯课堂【官方】</a>
+									</p>
+								</div>
+							</li>
+							<li>
+								<div class="l_course">
+									<a href="#" class="c_pic"><img src="images/220 (1).jpg" alt="" width="220" height="124" /></a>
+									<a href="#" class="c_title">英福伦斯Live Show</a>
+									<p>
+										<span class="mf">免费</span> &nbsp;|&nbsp; 
+										<a href="#">腾讯课堂【官方】</a>
+									</p>
+								</div>
+							</li>
+							<li>
+								<div class="l_course">
+									<a href="#" class="c_pic"><img src="images/220 (2).jpg" alt="" width="220" height="124" /></a>
+									<a href="#" class="c_title">英福伦斯Live Show</a>
+									<p>
+										<span class="mf">免费</span> &nbsp;|&nbsp; 
+										<a href="#">腾讯课堂【官方】</a>
+									</p>
+								</div>
+							</li>
+							<li>
+								<div class="l_course">
+									<a href="#" class="c_pic"><img src="images/220 (3).jpg" alt="" width="220" height="124" /></a>
+									<a href="#" class="c_title">英福伦斯Live Show</a>
+									<p>
+										<span class="mf">免费</span> &nbsp;|&nbsp; 
+										<a href="#">腾讯课堂【官方】</a>
+									</p>
+								</div>
+							</li>
+							<li>
+								<div class="l_course">
+									<a href="#" class="c_pic"><img src="images/220 (3).jpg" alt="" width="220" height="124" /></a>
+									<a href="#" class="c_title">英福伦斯Live Show</a>
+									<p>
+										<span class="mf">免费</span> &nbsp;|&nbsp; 
+										<a href="#">腾讯课堂【官方】</a>
+									</p>
+								</div>
+							</li>
+
+						</ul>	
+						
+						<div class="c_ph">
+							<div class="p_nav">
+								<ul>
+									<li class="p_sel">免费排行</li>
+									<li>收费排行</li>
+								</ul>
+							</div>
+							<div class="p_con">
+								<ul>
+									<li class="li_first">
+										<span class="p_n number-1"></span>
+										<div class="p_con_text">
+											<div class="p_desc">
+												<a href="#" class="d_title">教你如何通过银行笔试</a>
+												<a href="#" class="d_pic"><img src="images/90.jpg" alt="" width="89" height="50" /></a>
+												<div class="p_text">
+													<span class="p_num">478人</span>
+													<span class="p_name">潭州学院</span>
+												</div>
+											</div>
+										</div>
+										<div class="clear"></div>
+									</li>
+									<li>
+										<span class="p_n number-2"></span>
+										<a href="#">城市综合体建筑设计基础班</a>
+									</li>
+									<li>
+										<span class="p_n number-3"></span>
+										<a href="#">城市综合体建筑设计基础班</a>
+									</li>
+									<li>
+										<span class="p_n number-4"></span>
+										<a href="#">城市综合体建筑设计基础班</a>
+									</li>
+									<li>
+										<span class="p_n number-5"></span>
+										<a href="#">城市综合体建筑设计基础班</a>
+									</li>
+									<li>
+										<span class="p_n number-6"></span>
+										<a href="#">城市综合体建筑设计基础班</a>
+									</li>
+									<li>
+										<span class="p_n number-7"></span>
+										<a href="#">城市综合体建筑设计基础班</a>
+									</li>
+									<li>
+										<span class="p_n number-8"></span>
+										<a href="#">城市综合体建筑设计基础班</a>
+									</li>
+									<li>
+										<span class="p_n number-9"></span>
+										<a href="#">城市综合体建筑设计基础班</a>
+									</li>
+											
+
+								</ul>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+
+
+			</div>
+		</div>
+		
+	</div>
+	<!--end content-->
+
+
+
+
+
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		// 左侧菜单栏切换
+		$(".menu").find("li").mouseover(function(){
+			$(this).find(".show_menu").addClass("show");
+		}).mouseout(function(){
+			$(this).find(".show_menu").removeClass("show");
+		});
+
+		
+		// 焦点图切换
+		var index = 0;
+		// 轮展图切换
+		$(".f_btn").find("li").mouseover(function(){
+			// 控制小按钮
+			$(this).addClass("no").siblings().removeClass("no");
+			var _index = $(this).index(); // 获取当前选中的索引
+			index = _index; // 重新赋值
+			$(".f_pic").find("li").eq(_index).fadeIn("slow").siblings().hide(); // 联动切换
+			// 切换背景颜色
+			var background = $(this).data("color");
+			$(this).parents(".b_bg").css("background",background);
+		});
+
+		// 下一张
+		$(".next").click(function(){
+			index++;
+			var length = $(".f_pic").find("li").length;
+			if(index >= length){
+				index = 0;
+			}
+			// 切换背景颜色
+			var background = $(".f_btn").find("li").eq(index).data("color");
+			$(this).parents(".b_bg").css("background",background);
+			// 联动小按钮
+			$(".f_btn").find("li").eq(index).addClass("no").siblings().removeClass("no");
+			$(".f_pic").find("li").eq(index).fadeIn("slow").siblings().hide(); // 联动切换
+		});
+
+		// 上一张
+		$(".pre").click(function(){
+			index--;
+			var length = $(".f_pic").find("li").length;
+			if(index < 0){
+				index = length - 1;
+			}
+			// 切换背景颜色
+			var background = $(".f_btn").find("li").eq(index).data("color");
+			$(this).parents(".b_bg").css("background",background);
+			// 联动小按钮
+			$(".f_btn").find("li").eq(index).addClass("no").siblings().removeClass("no");
+			$(".f_pic").find("li").eq(index).fadeIn("slow").siblings().hide(); // 联动切换
+		});
+
+		// 自动切换,一般不使用setTimeout只执行一次
+		setInterval(function(){
+			index++;
+			var length = $(".f_pic").find("li").length;
+			if(index >= length){
+				index = 0;
+			}
+			// 切换背景颜色
+			var background = $(".f_btn").find("li").eq(index).data("color");
+			$(".b_bg").css("background",background);
+			// 联动小按钮
+			$(".f_btn").find("li").eq(index).addClass("no").siblings().removeClass("no");
+			$(".f_pic").find("li").eq(index).fadeIn("slow").siblings().hide(); // 联动切换			
+		},2000);
+
+
+		// 显示二维码
+		$(".sys").hover(function(){
+			$(".code").fadeTo(300,1);
+		},function(){
+			$(".code").hide();
+		});
+
+		// 热播课程滑动导航
+		$(".live").find("li").hover(function(){
+			$(this).addClass("l_sel").siblings().removeClass("l_sel");
+			var _index = $(this).index();
+			$(".h_all").find("ul").hide().eq(_index).fadeTo(300,1);
+		});
+
+	});
+
+</script>
+
+</body>
+</html>

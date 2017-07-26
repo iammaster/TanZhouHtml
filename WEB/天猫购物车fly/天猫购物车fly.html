@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>JavaWEB开发天猫购物车系统 - Arry老师</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="">
+
+		<style type="text/css">
+			*{margin:0;padding:0;}
+			body{font-size:12px;font-family:"微软雅黑";color:#666;}
+			img{border:0;}
+			/*top start*/
+			.top{width:100%;height:85px;}
+			.top .t_header{width:1000px;height:85px;margin:0 auto;position:relative;}
+			.top .t_header .t_logo{width:200px;height:85px;display:block;font-size:200px;text-decoration:none;color:#dd2727;position:absolute;top:-60px;left:0;}
+			/*end top*/
+
+			/*banner start*/
+			.banner{width:100%;height:160px;background:url("images/banner.jpg") no-repeat top center;}
+			/*end banner*/
+
+			/*shop start*/
+			.shop{width:1000px;height:340px;margin:30px auto;}
+			.shop ul li{border:1px solid #EFEFEF;list-style:none;width:210px;padding:5px;float:left;margin: 0 0 20px 22px;}
+			.shop ul li:hover{border:1px solid red;}
+			.shop ul li .s_price{font-size:20px;color:#C00;}
+			.shop ul li .s_title{font-size:14px;line-height:30px;}
+			.shop ul li .s_btn{width:210px;height:36px;display:block;background:#C00;border-radius:3px;text-align:center;line-height:36px;text-decoration:none;font-size:14px;color:#fff;}
+			.shop ul li .s_btn:hover{background:#900;}
+			/*end shop*/
+
+			/*car start*/
+			.car{width:260px;height:100%;position:absolute;top:0;right:0;background:#EEE;}
+			.car .c_tools{width:35px;height:100%;background:#000;float:left;}
+			.car .c_tools .c_btn{width:35px;height:110px;background:#C00;display:block;margin-top:280px;text-decoration:none;color:#fff;}
+			.car .c_tools .c_btn i{width:35px;height:35px;display:block;font-size:22px;text-align:center;line-height:35px;}
+			.car .c_tools .c_btn span{display:block;width:15px;margin:0 auto;font-size:14px;}
+			.car .c_con{width:225px;height:100%;float:right;position:relative;overflow:auto;}
+			.car .c_con ul li{list-style:none;background:#fff;margin-bottom:10px;}
+			.car .c_con .c_total{width:225px;height:40px;background:#C00;display:block;text-align:center;line-height:40px;font-size:18px;text-decoration:none;color:#fff;position:absolute;bottom:0;left:0;}
+			.car .c_con .c_total:hover{background:#900;}
+			/*end car*/
+
+			.fly{width:50px;height:50px;border-radius:25px;}
+
+		</style>
+		<link type="text/css" rel="stylesheet" href="iconfont/iconfont.css"></link>
+	</head>
+<body>
+
+	<!--top start-->
+	<div class="top">
+		<div class="t_header">
+			<a href="#" class="t_logo iconfont">&#x3438;</a>
+		</div>
+	</div>
+	<!--end top-->
+	
+	<!--banner start-->
+	<div class="banner"></div>
+	<!--end banner-->
+	
+	<!--shop start-->
+	<div class="shop">
+		<ul>
+			<li>
+				<a href="#"><img src="images/1.jpg" alt="美女" width="210" height="210"/></a>
+				<p class="s_price">￥<span class="s_p">1000</span>.</p>
+				<p class="s_title">卡洛莱韩版修身露肩收腰A字裙</p>
+				<a href="#" class="s_btn">加入购物车</a>
+			</li>
+			<li>
+				<a href="#"><img src="images/2.jpg" alt="美女" width="210" height="210"/></a>
+				<p class="s_price">￥<span class="s_p">1256</span>.</p>
+				<p class="s_title">卡洛莱韩版修身露肩收腰A字裙</p>
+				<a href="#" class="s_btn">加入购物车</a>
+			</li>
+			<li>
+				<a href="#"><img src="images/3.jpg" alt="美女" width="210" height="210"/></a>
+				<p class="s_price">￥<span class="s_p">2680</span>.</p>
+				<p class="s_title">卡洛莱韩版修身露肩收腰A字裙</p>
+				<a href="#" class="s_btn">加入购物车</a>
+			</li>
+			<li>
+				<a href="#"><img src="images/4.jpg" alt="美女" width="210" height="210"/></a>
+				<p class="s_price">￥<span class="s_p">899</span>.</p>
+				<p class="s_title">卡洛莱韩版修身露肩收腰A字裙</p>
+				<a href="#" class="s_btn">加入购物车</a>
+			</li>
+		</ul>
+	</div>
+	<!--end shop-->
+
+	<!--car start-->
+	<div class="car">
+		<div class="c_tools">
+			<a href="#" class="c_btn">
+				<i class="iconfont" id="end">&#x3558;</i>
+				<span>购物车</span>
+			</a>
+		</div>
+		<div class="c_con">
+			<ul id="c_ul"></ul>
+			<a href="#" class="c_total">结 算</a>
+		</div>
+	</div>
+	<!--end car-->
+
+
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="js/tz_fly.js"></script>
+<script type="text/javascript">
+	$(function(){
+		
+		// 添加购物车
+		$(".s_btn").click(function(e){
+			var price = $(this).parent().find(".s_p").text();
+			var src = $(this).parent().find("img").attr("src");
+			$("#c_ul").append("<li>"+
+			"					<a href='#'><img src='"+src+"' alt='美女' width='50' height='50'/></a>"+
+			"					<span>优惠价格：￥"+price+".</span>"+
+			"				</li>");
+
+			addFly(e);
+
+		});
+
+		// 点击收起
+		$(".c_btn").click(function(){
+			// 购物车的宽度
+			var width = $(".car").width() - 35;
+			// 购物车距离左边的距离
+			var left = $(".car").offset().left;
+			// 动态计算购物车的宽度
+			var w = $(window).width() - left;
+			var i = 1;
+			if(w < width){
+				i = 0;
+			}
+			$(".car").animate({right:-width*i},1000);
+		});
+
+	});
+
+	// 添加抛物线
+	function addFly(e){
+		// 设置落脚点
+		var offset = $("#end").offset();
+		// 获取当前点击的js对象
+		var _this = $(e.target);
+		// 获取抛物线中间的图片地址
+		var src = _this.parent().find("img").attr("src");
+		// 设置图片
+		var flyer = $("<img src='"+src+"' class='fly'/>");
+
+		flyer.fly({
+			start:{
+				left:e.clientX,
+				top:e.clientY
+			},
+			end:{
+				left:offset.left,
+				top:offset.top,
+				width:20,
+				height:20
+			},
+			onEnd:function(){
+				flyer.fadeOut("slow",function(){
+					$(this).remove();
+				});
+			}
+		});
+	}
+
+
+</script>
+
+</body>
+</html>

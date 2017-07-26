@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style type="text/css">
+	body{
+		background: #000;
+	}
+	#canvas{
+		border: 3px solid #ddd;
+		border-radius: 10px;
+		background: #000;
+	}
+  </style>
+ </head>
+ <body>
+	<select id="color">
+		<option>pink</option>
+		<option>green</option>
+		<option>black</option>
+	</select>
+	<select id="size">
+		<option>1</option>
+		<option>10</option>
+		<option>20</option>
+		<option>30</option>
+	</select>
+	<center>
+		<canvas id="canvas" width="600" height="500"></canvas>
+	</center>
+	<script type="text/javascript">
+		var canvas = document.getElementById("canvas");
+		var ctx = canvas.getContext("2d");
+		canvas.onmousedown = function(e){
+			ctx.beginPath();
+			var color = document.getElementById("color").value;
+			var size = document.getElementById("size").value;
+			var x = e.clientX - this.offsetLeft;
+			var y = e.clientY - this.offsetTop;
+			//	设置或返回两条线相交时，所创建的拐角类型
+			ctx.lineJoin = "round";
+			//	设置或返回线条的结束端点样式
+			ctx.strokeStyle = color;
+			ctx.lineWidth = size;
+			ctx.lineCap = "round";
+			ctx.moveTo(x,y);
+			this.onmousemove= function(e){
+				var x = e.clientX - this.offsetLeft;
+				var y = e.clientY - this.offsetTop;
+				ctx.lineTo(x,y);
+				ctx.stroke();
+			};
+		};
+		canvas.onmouseup = function(e){
+			this.onmousemove = null;
+		}
+	</script>
+ </body>
+</html>

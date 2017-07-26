@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面编码集(中文编码<gbk,gb2312>,国际编码<utf-8>)-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="keywords" content="关键词,关键词">
+		<meta name="description" content="">
+		<title> html </title>
+        <style type="text/css">
+			*{padding:0px;margin:0px;}
+		</style>
+	</head>
+<body>
+	
+	<script>
+		/*
+			抽象工厂设计模式
+			通过对类的工厂抽象使其业务用于对产品簇的创建，而不负责创建某一类产品的实例
+
+			抽象类
+			是一种声明但不能使用的类，当你使用的时候就会报错。所以我们可以在类的方法中手动的抛出错误来模拟抽象类。
+		*/
+
+		/*汽车抽象类
+		var Car = function(){};
+		Car.prototype = {
+			getPrice:function(){
+				return new Error("抽象方法不能使用");
+			},
+			getSpeed:function(){
+				return new Error("抽象方法不能使用");
+			}
+		};
+
+		//var c  = new Car();
+		//console.log(c.getPrice());
+		*/
+
+
+
+		//抽象工厂方法(子类名称，父类[抽象类]的名称)
+		var absFactory = function(subType,superType){
+			//判断抽象工厂中是否有该抽象类
+			if(typeof absFactory[superType] === "function"){
+				//过渡类
+				function F(){};
+				//继承父类的属性与方法
+				F.prototype = new absFactory[superType]();
+				//子类原型继承父类
+				subType.prototype = new F();
+				//将子类的constructor指向子类
+				subType.prototype.constructor = subType;
+			}else{
+				throw new Error("不存在抽象类");
+			}
+		};
+
+		//小汽车抽象类
+		absFactory.Car = function(){
+			this.type = "car";
+		};
+		absFactory.Car.prototype = {
+			getPrice:function(){
+				return new Error("抽象方法不能使用");
+			},
+			getSpeed:function(){
+				return new Error("抽象方法不能使用");
+			}
+		};
+		absFactory.Bus = function(){
+			this.type = "bus";
+		};
+		absFactory.Bus.prototype = {
+			getPrice:function(){
+				return new Error("抽象方法不能使用");
+			},
+			getSpeed:function(){
+				return new Error("抽象方法不能使用");
+			}
+		};
+	
+		
+		//宝马汽车子类
+		function BWM(price,speed){
+			this.price = price;
+			this.speed = speed;
+		};
+		absFactory(BWM,"Car");
+		BWM.prototype.getPrice = function(){
+			return this.price;
+		};
+		BWM.prototype.getSpeed = function(){
+			return this.speed;
+		};
+		
+		var bwm = new BWM(100000,1000);
+		console.log(bwm.getPrice()+"==="+bwm.getSpeed()+"==="+bwm.constructor);
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,911 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>天猫tmall.com -上天猫，就够了 - Arry老师</title>
+		<meta name="keywords" content="关键词,关键词">
+		<meta name="description" content="">
+		
+		<link type="text/css" rel="stylesheet" href="css/iconfont.css"></link>
+		<style type="text/css">
+			*{margin:0;padding:0;}
+			body{font-size:12px;font-family:"微软雅黑";color:#666;height:3000px;background:#f5f5f5;}
+			img{display:block;}
+
+			/*top start*/
+			#top{width:100%;height:32px;background:#f2f2f2;border-bottom:1px solid #e5e5e5;}
+			#top .t_header{width:1230px;height:32px;margin:0 auto;}
+			#top .t_header .t_welcome{line-height:32px;color:#999;float:left;}
+			#top .t_header .t_welcome a{color:#999;text-decoration:none;margin-left:15px;}
+			#top .t_header .t_welcome a:hover{color:#c40000;}
+			#top .t_header .t_nav{list-style:none;float:right;}
+			#top .t_header .t_nav li{float:left;line-height:32px;padding:0 10px;}
+			#top .t_header .t_nav li a{text-decoration:none;color:#999;}
+			#top .t_header .t_nav li a:hover{color:#c40000;}
+			#top .t_header .t_nav li a i{font-size:12px;padding-right:3px;color:#c40000;}
+			#top .t_header .t_nav li a b{border:3px solid #bbb;border-left:3px solid transparent;border-right:3px solid transparent;border-bottom:none;vertical-align: middle;display: inline-block;transform: rotate(0deg);transition: transform 0.5s;}
+			#top .t_header .t_nav li a:hover b{transform: rotate(180deg);}
+
+			/*end top*/
+			
+			/*search start*/
+			#search{width:100%;height:130px;background:#fff;}
+			#search .s_header{width:1230px;height:130px;margin:0 auto;}
+			#search .s_logo{float:left;}
+			#search .s_box{float:left;padding:38px 0px 0px 30px;}
+			#search .s_box .s_text{width:410px;height:36px;border:2px solid #c40000;}
+			#search .s_box .s_text .s_txt{width:271px;height:26px;padding:3px 0 3px 5px;border:none;outline:none;font-size:14px;color:#000;}
+			#search .s_box .s_text .s_button{width:134px;height:37px;background:#c40000;border:none;outline:none;font-size:18px;font-weight:bold;font-family:"微软雅黑";color:#fff;cursor:pointer;}
+			#search .s_box .s_keyword .s_ul{margin-left:-10px;padding:8px 0;}
+			#search .s_box .s_keyword .s_ul li{list-style:none;float:left;font-size:14px;padding:0 10px;border-right:1px solid #ccc;line-height:16px;}
+			#search .s_box .s_keyword .s_ul li:last-child{border:none;}
+			#search .s_box .s_keyword .s_ul li a{color:#999;text-decoration:none;}
+			#search .s_box .s_keyword .s_ul li a:hover{color:#c40000;}
+			#search .s_box .s_keyword .s_ul li .s_sel{color:#c40000;}
+			/*end search*/
+
+			/*main start*/
+			#main{width:100%;height:536px;}
+			#main .m_nav{height:36px;background:#DD2727;}
+			#main .m_nav .m_con{width:1230px;height:36px;margin:0 auto;}
+			#main .m_nav .m_con ul{float:left;}
+			#main .m_nav .m_con ul li{list-style:none;float:left;}
+			#main .m_nav .m_con ul .m_class{width:200px;height:36px;background:#C60A0A;font-size:16px;font-weight:bold;color:#fff;line-height:36px;}
+			#main .m_nav .m_con ul .m_class i{font-size:16px;font-weight:bold;color:#fff;margin:0 8px 0 20px;}
+			#main .m_nav .m_con ul li a{display:block;padding:0 17px;font-size:16px;font-weight:500;color:#fff;text-decoration:none;line-height:36px;position:relative;}
+			#main .m_nav .m_con ul li a span{display:block;width:100%;height:20px;background:url("images/mxcppng.png") no-repeat center/contain;position:absolute;top:0;left:0;opacity:0;transition:0.5s;}
+			#main .m_nav .m_con ul li a:hover span{top:-10px;opacity:1;}
+			#main .m_nav .m_con ul li a img{position:relative;}
+			#main .m_nav .m_con ul li a label{position:relative;}
+
+
+			#main .m_banner{width:100%;height:500px;}
+			#main .m_banner .m_box{width:100%;height:500px;background:#3D0A75;}
+			#main .m_banner .m_box .m_con{width:1230px;margin:0 auto;position:relative;top:-500px;}
+			#main .m_banner .m_box .m_con .m_list{width:100%;height:500px;background:url("images/1.jpg") no-repeat top center;position:absolute;top:0;left:0;}
+
+
+
+			/*banner start*/
+			#main .m_banner .m_box .banner{width:100%;height:500px;}
+			#main .m_banner .m_box .banner .b_con{width:100%;height:500px;margin:0 auto;position:relative;}
+			#main .m_banner .m_box .banner .b_con .b_img{position:relative;}
+			#main .m_banner .m_box .banner .b_con .b_img li{position:absolute;left:0;list-style:none;display:none;width:100%;}
+			#main .m_banner .m_box .banner .b_con .b_img li .b_list{width:1230px;height:500px;margin:0 auto;}
+			#main .m_banner .m_box .banner .b_con .b_img li .b_list .b_box{width:1130px;height:500px;margin:0 auto;}
+			#main .m_banner .m_box .banner .b_con .b_img .b_sel{display:block;background:#4C0004;}
+			#main .m_banner .m_box .banner .b_con .b_btn{width:100%;position:absolute;bottom:10px;left:0;}
+			#main .m_banner .m_box .banner .b_con .b_btn .b_ul{width:1230px;margin:0 auto;text-align:center;}
+			#main .m_banner .m_box .banner .b_con .b_btn .b_ul li{list-style:none;width:18px;height:18px;background:rgba(0,0,0,0.5);margin:0 8px;border-radius:50%;border:2px solid transparent;display:inline-block;cursor: pointer;}
+			#main .m_banner .m_box .banner .b_con .b_btn .b_ul .b_show{border:2px solid rgba(0,0,0,0.5);background:rgba(255,255,255,0.5);}
+			/*end banner*/
+
+
+
+
+			#main .m_banner .m_box  .m_con .m_left_nav{width:200px;height:500px;background-color:rgba(238,238,238,.95);position:absolute;left:0;top:0;}
+			#main .m_banner .m_box .m_con .m_left_nav ul li{list-style:none;height:31.2px;line-height:31.2px;padding-left:10px;}
+			#main .m_banner .m_box .m_con .m_left_nav ul li a{color:#000;text-decoration:none;font-size:14px;}
+			#main .m_banner .m_box .m_con .m_left_nav ul li span{margin-right:5px;}
+			#main .m_banner .m_box .m_con .m_left_nav ul li:hover{background:#fff;color:#c40000;}
+			#main .m_banner .m_box .m_con .m_left_nav ul li:hover a{font-weight:bold;}
+			#main .m_banner .m_box .m_con .m_left_nav ul li:hover .sel_1{color:#e54077;}
+			#main .m_banner .m_box .m_con .m_left_nav ul li:hover .sel_2{color:#427def;}
+			#main .m_banner .m_box .m_con .m_left_nav ul li:hover .sel_3{color:#6347ed;}
+
+			#main .m_banner .m_box .m_con .m_left_nav ul li .m_s_box{width:852px;height:500px;background:#fff;position:absolute;top:0;left:200px;display:none;}
+			#main .m_banner .m_box .m_con .m_left_nav ul li:hover .m_s_box{display:block;}
+			
+
+			/*end main*/
+
+			/*adv start*/
+			.adv{width:982px;margin:30px auto;position:relative;}
+			.adv .a_con{width:600px;height:40px;margin:0 auto;padding-bottom:20px;}
+			.adv .a_item{width:100%;height:269px;}
+			.adv .a_item a{float:left;margin:0 3px;}
+			.adv .a_item a:hover img{opacity:0.8;filter:alpha(opacity=80);}
+			/*end adv*/
+
+			/*brand start*/
+			#brand{width:982px;height:436px;margin:0 auto;}
+			#brand .b_video{width:488px;height:436px;background:#000;float:left;}
+			#brand .b_video .b_play{position:relative;}
+			#brand .b_video .b_play .b_play_btn{width:70px;height:58px;display:block;position:absolute;left:218px;top:110px;}
+			#brand .b_video .b_list{width:488px;height:90px;background:#000;margin:10px 0;}
+			#brand .b_video .b_list .b_img{float:left;margin-right:2px;}
+			#brand .b_video .b_live{width:488px;height:40px;float:left;}
+			#brand .b_video .b_live .b_logo{width:78px;height:31px;background:url("images/live.png");margin:6px 0 0 20px;float:left;}
+			#brand .b_video .b_live .b_info{width:302px;height:40px;float:left;overflow:hidden;}
+			#brand .b_video .b_live .b_info ul li{list-style:none;font-size:14px;line-height:20px;padding-left:10px;}
+			#brand .b_video .b_live .b_info ul li .b_text{color:#fff;}
+			#brand .b_video .b_live .b_info ul li .b_time{color:#FD4889;}
+			#brand .b_con{width:488px;height:436px;float:right;}
+			#brand .b_con ul li{list-style:none;width:121px;height:108px;background:#6cf;float:left;margin:0 1px 1px 0;position:relative;}
+			#brand .b_con ul li .b_img{width:121px;height:81px;background:#fff;padding-top:27px;}
+			#brand .b_con ul li .b_img img{vertical-align: middle;margin:0 auto;}
+			#brand .b_con ul li .b_coupon{width:121px;height:108px;background:#000;position:absolute;left:0;top:0;opacity:0;filter:alpha(opacity=0);transition:0.5s;}
+			#brand .b_con ul li .b_coupon .b_love{width:20px;height:20px;text-decoration:none;color:#fff;position:absolute;top:10px;right:10px;}
+			#brand .b_con ul li .b_coupon .b_price{color:#fff;margin-top:40px;text-align:center;}
+			#brand .b_con ul li .b_coupon .b_click{width:63px;height:18px;display:block;text-decoration:none;background:red;color:#fff;text-align:center;border-radius:9px;margin:10px auto;}
+			#brand .b_con ul li:hover .b_coupon{opacity:0.8;filter:alpha(opacity=80);} 
+			/*end brand*/
+
+			/*fashion start*/
+			#fashion{width:982px;margin:30px auto;}
+			#fashion .f_shop{width:982px;height:477px;}
+			#fashion .f_shop .f_list{width:238px;height:477px;background:#fff;float:left;margin-right:7px;}
+			#fashion .f_shop .f_list .f_title{height:36px;background:#DD2727;text-align:center;line-height:36px;font-size:18px;font-weight:bold;color:#fff;}
+			#fashion .f_shop .f_list .f_new{width:238px;height:220px;position:relative;}
+			#fashion .f_shop .f_list .f_new .n_title{font-size:22px;font-weight:300;color:#000;text-align:center;padding-top:18px;}
+			#fashion .f_shop .f_list .f_new .n_desc{font-size:14px;color:#888;text-align:center;line-height:20px;}
+			#fashion .f_shop .f_list .f_new .n_con{width:140px;height:140px;background:#000;opacity:0.03;border-radius:70px;position:absolute;top:70px;left:50px;z-index:1;}
+			#fashion .f_shop .f_list .f_new .n_img{position:absolute;top:74px;left:54px;}
+			#fashion .f_shop .f_list .f_hr{height:1px;background:#eee;width:200px;margin:0 auto;}
+			#fashion .f_shop .f_list .f_new .f_a{width:238px;height:220px;display:block;position:absolute;top:0;left:0;z-index:2;}
+			#fashion .f_adv .f_banner{width:100%;height:90px;display:block;background:url("images/banner-1.jpg") top center;}
+			/*end fashion*/
+
+			/*sitem start*/
+			.sitem{width:982px;height:470px;margin:20px auto;}
+			.sitem .s_nav{width:982px;height:31px;}
+			.sitem .s_nav .s_icon{width:5px;height:20px;display:inline-block;background:#EA5F8D;margin-top:6px;float:left;}
+			.sitem .s_nav .s_title{font-size:14px;color:#000;padding-left:15px;line-height:31px;float:left;height:31px;}
+			.sitem .s_nav .s_title span{font-size:18px;}
+			.sitem .s_nav .s_ul {display:block;float:right;}
+			.sitem .s_nav .s_ul li{list-style:none;float:left;line-height:31px;padding:0 10px;}
+			.sitem .s_nav .s_ul li a{text-decoration:none;font-size:14px;color:#000;border-bottom:1px solid #f5f5f5;padding-bottom:1px;}
+			.sitem .s_nav .s_ul li a:hover{border-color:#000;}
+			.sitem .s_con{width:982px;height:440px;background:#fff;}
+			.sitem .s_con .s_left{width:246px;height:440px;float:left;position:relative;}
+			.sitem .s_con .s_left .l_a{width:246px;height:440px;display:block;position:absolute;top:0;left:0;}
+			.sitem .s_con .s_left .s_desc{width:246px;height:110px;background:#EA5F8D;text-align:center;color:#fff;}
+			.sitem .s_con .s_left .s_desc .d_title{font-size:22px;font-weight:bold;line-height:40px;padding-top:10px;}
+			.sitem .s_con .s_left .s_desc .d_letter{font-size:18px;}
+			.sitem .s_con .s_right{width:735px;height:440px;float:right;}
+			.sitem .s_con .s_right .s_list{width:225px;height:200px;padding:20px 0 0 20px;position:relative;float:left;}
+			.sitem .s_con .s_right .s_list .l_a{width:225px;height:200px;display:block;position:absolute;left:0;top:0;}
+			.sitem .s_con .s_right .s_list .l_title{font-size:18px;color:#000;padding-bottom:5px;}
+			.sitem .s_con .s_right .s_list .l_letter{font-size:14px;color:#EA5F8D;}
+			.sitem .s_con .s_right .s_list .l_img{position:absolute;right:0;bottom:0;transition:0.5s;}
+			.sitem .s_con .s_right .s_list:hover .l_img{right:10px;}
+
+			/*edn sitem*/
+
+			#fixsearch{width:100%;height:50px;background:#DD2727;position:fixed;top:-50px;left:0;z-index:99;transition: 0.5s;}
+			.adv #a_left_menu{width:35px;height:370px;position:absolute;top:0;left:-45px;}
+			.adv #a_left_menu .l_m_box{width:0px;height:0px;background:url("images/left_menu.png");position:fixed;bottom:0;transition: 0.5s;}
+			
+			
+
+		</style>
+
+	</head>
+<body>
+
+<!--top start-->
+<div id="top">
+	<div class="t_header">
+		<p class="t_welcome">
+			<span>喵，欢迎来天猫</span>
+			<a href="#">请登录</a>
+			<a href="#">免费注册</a>
+		</p>
+		<ul class="t_nav">
+			<li><a href="#">我的淘宝 <b></b></a></li>
+			<li><a href="#"><i class="iconfont">&#xe657;</i>我关注的品牌</a></li>
+			<li><a href="#"><i class="iconfont">&#xe6b5;</i>购物车0件</a></li>
+			<li><a href="#">收藏夹 <b></b></a></li>
+			<li><a href="#"><i class="iconfont">&#xe94e;</i>手机版</a></li>
+			<li><a href="#">淘宝网</a></li>
+			<li><a href="#">企业采购</a></li>
+			<li><a href="#">商家支持 <b></b></a></li>
+			<li><a href="#"><i class="iconfont">&#xe600;</i>网站导航 <b></b></a></li>
+		</ul>
+	</div>
+</div>
+<!--end top-->
+
+<!--search start-->
+<div id="search">
+	<div class="s_header">
+		<div class="s_logo">
+			<a href="#"><img src="images/tmalllogo.png" alt="天猫" width="240" height="130" /></a>
+		</div>
+		<div class="s_box">
+			<div class="s_text">
+				<input type="text" class="s_txt" placeholder="请输入搜索文字"/><input type="button" value="搜 索" class="s_button"/>
+			</div>
+			<div class="s_keyword">
+				<ul class="s_ul">
+					<li><a href="#">连衣裙秋</a></li>
+					<li><a href="#" class="s_sel">牛仔裤男</a></li>
+					<li><a href="#">小白鞋</a></li>
+					<li><a href="#" class="s_sel">平板电脑</a></li>
+					<li><a href="#">文胸</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!--end search-->
+
+<div id="fixsearch"></div>
+
+<!--main start-->
+<div id="main">
+	<div class="m_nav">
+		<div class="m_con">
+			<ul>
+				<li class="m_class"><i class="iconfont">&#xe676;</i>商品分类</li>
+				<li>
+					<a href="#">
+						<span></span>
+						<img src="images/tmcs.png" alt="天猫超市" width="90" height="36" />
+					</a>
+				</li>
+				<li>
+					<a href="#"><span></span><img src="images/tmgj.png" alt="天猫国际" width="90" height="36" /></a>				
+				</li>
+				<li><a href="#"><span></span><label>天猫会员</label></a></li>
+				<li><a href="#"><span></span><label>品牌街</label></a></li>
+				<li><a href="#"><span></span><label>电器城</label></a></li>
+				<li><a href="#"><span></span><label>瞄鲜生</label></a></li>
+				<li><a href="#"><span></span><label>医药馆</label></a></li>
+				<li><a href="#"><span></span><label>营业厅</label></a></li>
+				<li><a href="#"><span></span><label>魅力惠</label></a></li>
+				<li><a href="#"><span></span><label>阿里旅行</label></a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="m_banner">
+		<div class="m_box">
+			<!--banner start-->
+			<div class="banner">
+				<div class="b_con">
+					<ul class="b_img">
+						<li class="b_bg b_sel">
+							<div class="b_list">
+								<div class="b_box">
+									<img src="images/banner-1.jpg_.webp" alt="banner图" width="1130" height="500" />
+								</div>
+							</div>
+						</li>
+						<li class="b_bg">
+							<div class="b_list">
+								<div class="b_box">
+									<img src="images/banner-2.jpg" alt="banner图" width="1130" height="500" />
+								</div>
+							</div>
+						</li>
+						<li class="b_bg">
+							<div class="b_list">
+								<div class="b_box">
+									<img src="images/banner-3.jpg" alt="banner图" width="1130" height="500" />
+								</div>
+							</div>
+						</li>
+						<li class="b_bg">
+							<div class="b_list">
+								<div class="b_box">
+									<img src="images/banner-4.jpg" alt="banner图" width="1130" height="500" />
+								</div>
+							</div>
+						</li>
+						<li class="b_bg">
+							<div class="b_list">
+								<div class="b_box">
+									<img src="images/banner-5.jpg_.webp" alt="banner图" width="1130" height="500" />
+								</div>
+							</div>
+						</li>
+						<li class="b_bg">
+							<div class="b_list">
+								<div class="b_box">
+									<img src="images/banner-6.jpg_.webp" alt="banner图" width="1130" height="500" />
+								</div>
+							</div>
+						</li>
+					</ul>
+					<div class="b_btn">
+						<ul class="b_ul">
+							<li class="b_show" data-color="#4C0004"></li>
+							<li data-color="#E8E8E8"></li>
+							<li data-color="#FFF1D4"></li>
+							<li data-color="#E8E8E8"></li>
+							<li data-color="#3A3C53"></li>
+							<li data-color="#0E3CFE"></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!--end banner-->
+			<div class="m_con">
+				<div class="m_left_nav">
+					<ul id="m_l_n_ul">
+						<li>
+							<span class="iconfont sel_1">&#x3459;</span>
+							<a href="#" class="sel_1">女装</a> / <a href="#" class="sel_1">内衣</a>
+							<div class="m_s_box">
+								<div class="m_img"><img src="images/menu-1.jpg" alt="导航" width="833" height="489" /></div>
+							</div>
+						</li>
+						<li>
+							<span class="iconfont sel_2">&#x3459;</span><a href="#" class="sel_2">运动户外</a> / <a href="#" class="sel_2">男装</a>
+							<div class="m_s_box">
+								<div class="m_img"><img src="images/menu-2.jpg" alt="导航" width="833" height="489" /></div>
+							</div>							
+						</li>
+						<li>
+							<span class="iconfont sel_3">&#x3459;</span><a href="#" class="sel_3">女鞋</a> / <a href="#" class="sel_3">男鞋</a> / <a href="#" class="sel_3">箱包</a>
+							<div class="m_s_box">
+								<div class="m_img"><img src="images/menu-3.jpg" alt="导航" width="833" height="489" /></div>
+							</div>						
+						</li>
+						<li>
+							<span class="iconfont">&#x3459;</span>
+							<a href="#">女装</a> / <a href="#">内衣</a>
+						</li>
+						<li><span class="iconfont">&#x3459;</span><a href="#">女装</a> / <a href="#">内衣</a></li>
+						<li><span class="iconfont">&#x3459;</span><a href="#">女装</a> / <a href="#">内衣</a></li>
+						<li><span class="iconfont">&#x3459;</span><a href="#">女装</a> / <a href="#">内衣</a></li>
+						<li><span class="iconfont">&#x3459;</span><a href="#">女装</a> / <a href="#">内衣</a></li>
+						<li><span class="iconfont">&#x3459;</span><a href="#">女装</a> / <a href="#">内衣</a></li>
+						<li><span class="iconfont">&#x3459;</span><a href="#">女装</a> / <a href="#">内衣</a></li>
+						<li><span class="iconfont">&#x3459;</span><a href="#">女装</a> / <a href="#">内衣</a></li>
+						<li><span class="iconfont">&#x3459;</span><a href="#">女装</a> / <a href="#">内衣</a></li>
+						<li><span class="iconfont">&#x3459;</span><a href="#">女装</a> / <a href="#">内衣</a></li>
+						<li><span class="iconfont">&#x3459;</span><a href="#">女装</a> / <a href="#">内衣</a></li>
+						<li><span class="iconfont">&#x3459;</span><a href="#">女装</a> / <a href="#">内衣</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--end main-->
+
+<!--adv start-->
+<div class="adv">
+	<div class="a_con">
+		<img src="images/shop.png" alt="广告位" width="600" height="40" />
+	</div>
+	<div class="a_item">
+		<a href="#"><img src="images/n_1.jpg_.webp" alt="1元秒大牌" width="238" height="269" /></a>
+		<a href="#"><img src="images/n_2.jpg_.webp" alt="1元秒大牌" width="238" height="269" /></a>
+		<a href="#"><img src="images/n_3.jpg_.webp" alt="1元秒大牌" width="238" height="269" /></a>
+		<a href="#"><img src="images/n_4.jpg_.webp" alt="1元秒大牌" width="238" height="269" /></a>
+	</div>
+
+	<div id="a_left_menu">
+		<div class="l_m_box" id="l_m_box"></div>
+	</div>
+</div>
+<!--end adv-->
+
+<!--brand start-->
+<div id="brand">
+	<div class="b_video">
+		<div class="b_play">
+			<img src="images/video.jpg_.webp" alt="天猫直播" width="488" height="275" />
+			<a href="#" class="b_play_btn"><img src="images/play_btn.png" alt="" width="70" height="58" /></a>
+		</div>
+		<div class="b_list">
+			<div class="b_img"><img src="images/v_1.jpg_.webp" alt="视频缩略图1" width="160" height="90" /></div>
+			<div class="b_img"><img src="images/v_2.jpg_.webp" alt="视频缩略图1" width="160" height="90" /></div>
+			<div class="b_img"><img src="images/v_3.jpg_.webp" alt="视频缩略图1" width="160" height="90" /></div>
+		</div>
+		<div class="b_live">
+			<div class="b_logo"></div>
+			<div class="b_info">
+				<ul>
+					<li>
+						<p class="b_text">Olay携手张一山直播，快来围观</p>
+						<p class="b_time">8月29日</p>
+					</li>
+					<li>
+						<p class="b_text">Olay携手张一山直播，快来围观</p>
+						<p class="b_time">8月29日</p>
+					</li>
+					<li>
+						<p class="b_text">Olay携手张一山直播，快来围观</p>
+						<p class="b_time">8月29日</p>
+					</li>
+					<li>
+						<p class="b_text">Olay携手张一山直播，快来围观</p>
+						<p class="b_time">8月29日</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="b_con">
+		<ul>
+			<li>
+				<div class="b_img">
+					<img src="images/b_1.jpg_.webp" alt="品牌" width="99" height="50" />
+				</div>
+				<div class="b_coupon">
+					<a href="#" class="iconfont b_love">&#xe657;</a>
+					<p class="b_price">优惠券 ￥100</p>
+					<a href="#" class="b_click">点击进入</a>
+				</div>
+			</li>
+			<li>
+				<div class="b_img">
+					<img src="images/b_2.jpg_.webp" alt="品牌" width="99" height="50" />
+				</div>
+				<div class="b_coupon">
+					<a href="#" class="iconfont b_love">&#xe657;</a>
+					<p class="b_price">优惠券 ￥100</p>
+					<a href="#" class="b_click">点击进入</a>
+				</div>
+			</li>
+			<li>
+				<div class="b_img">
+					<img src="images/b_3.jpg_.webp" alt="品牌" width="99" height="50" />
+				</div>
+				<div class="b_coupon">
+					<a href="#" class="iconfont b_love">&#xe657;</a>
+					<p class="b_price">优惠券 ￥100</p>
+					<a href="#" class="b_click">点击进入</a>
+				</div>
+			</li>
+			<li>
+				<div class="b_img">
+					<img src="images/b_4.jpg_.webp" alt="品牌" width="99" height="50" />
+				</div>
+				<div class="b_coupon">
+					<a href="#" class="iconfont b_love">&#xe657;</a>
+					<p class="b_price">优惠券 ￥100</p>
+					<a href="#" class="b_click">点击进入</a>
+				</div>
+			</li>
+			<li>
+				<div class="b_img">
+					<img src="images/b_5.jpg_.webp" alt="品牌" width="99" height="50" />
+				</div>
+				<div class="b_coupon">
+					<a href="#" class="iconfont b_love">&#xe657;</a>
+					<p class="b_price">优惠券 ￥100</p>
+					<a href="#" class="b_click">点击进入</a>
+				</div>
+			</li>
+			<li>
+				<div class="b_img">
+					<img src="images/b_6.jpg_.webp" alt="品牌" width="99" height="50" />
+				</div>
+				<div class="b_coupon">
+					<a href="#" class="iconfont b_love">&#xe657;</a>
+					<p class="b_price">优惠券 ￥100</p>
+					<a href="#" class="b_click">点击进入</a>
+				</div>
+			</li>
+			<li>
+				<div class="b_img">
+					<img src="images/b_7.jpg_.webp" alt="品牌" width="99" height="50" />
+				</div>
+				<div class="b_coupon">
+					<a href="#" class="iconfont b_love">&#xe657;</a>
+					<p class="b_price">优惠券 ￥100</p>
+					<a href="#" class="b_click">点击进入</a>
+				</div>
+			</li>
+			<li>
+				<div class="b_img">
+					<img src="images/b_8.jpg_.webp" alt="品牌" width="99" height="50" />
+				</div>
+				<div class="b_coupon">
+					<a href="#" class="iconfont b_love">&#xe657;</a>
+					<p class="b_price">优惠券 ￥100</p>
+					<a href="#" class="b_click">点击进入</a>
+				</div>
+			</li>
+			<li>
+				<div class="b_img">
+					<img src="images/b_9.jpg_.webp" alt="品牌" width="99" height="50" />
+				</div>
+				<div class="b_coupon">
+					<a href="#" class="iconfont b_love">&#xe657;</a>
+					<p class="b_price">优惠券 ￥100</p>
+					<a href="#" class="b_click">点击进入</a>
+				</div>
+			</li>
+			<li>
+				<div class="b_img">
+					<img src="images/b_10.jpg_.webp" alt="品牌" width="99" height="50" />
+				</div>
+				<div class="b_coupon">
+					<a href="#" class="iconfont b_love">&#xe657;</a>
+					<p class="b_price">优惠券 ￥100</p>
+					<a href="#" class="b_click">点击进入</a>
+				</div>
+			</li>
+			<li>
+				<div class="b_img">
+					<img src="images/b_11.jpg_.webp" alt="品牌" width="99" height="50" />
+				</div>
+				<div class="b_coupon">
+					<a href="#" class="iconfont b_love">&#xe657;</a>
+					<p class="b_price">优惠券 ￥100</p>
+					<a href="#" class="b_click">点击进入</a>
+				</div>
+			</li>
+			<li>
+				<div class="b_img">
+					<img src="images/b_12.jpg_.webp" alt="品牌" width="99" height="50" />
+				</div>
+				<div class="b_coupon">
+					<a href="#" class="iconfont b_love">&#xe657;</a>
+					<p class="b_price">优惠券 ￥100</p>
+					<a href="#" class="b_click">点击进入</a>
+				</div>
+			</li>
+			<li>
+				<div class="b_img">
+					<img src="images/b_13.jpg_.webp" alt="品牌" width="99" height="50" />
+				</div>
+				<div class="b_coupon">
+					<a href="#" class="iconfont b_love">&#xe657;</a>
+					<p class="b_price">优惠券 ￥100</p>
+					<a href="#" class="b_click">点击进入</a>
+				</div>
+			</li>
+			<li>
+				<div class="b_img">
+					<img src="images/b_14.jpg_.webp" alt="品牌" width="99" height="50" />
+				</div>
+				<div class="b_coupon">
+					<a href="#" class="iconfont b_love">&#xe657;</a>
+					<p class="b_price">优惠券 ￥100</p>
+					<a href="#" class="b_click">点击进入</a>
+				</div>
+			</li>
+			<li>
+				<div class="b_img">
+					<img src="images/b_7.jpg_.webp" alt="品牌" width="99" height="50" />
+				</div>
+				<div class="b_coupon">
+					<a href="#" class="iconfont b_love">&#xe657;</a>
+					<p class="b_price">优惠券 ￥100</p>
+					<a href="#" class="b_click">点击进入</a>
+				</div>
+			</li>
+			<li>
+				<div class="b_img">
+					<img src="images/b_9.jpg_.webp" alt="品牌" width="99" height="50" />
+				</div>
+				<div class="b_coupon">
+					<a href="#" class="iconfont b_love">&#xe657;</a>
+					<p class="b_price">优惠券 ￥100</p>
+					<a href="#" class="b_click">点击进入</a>
+				</div>
+			</li>
+
+
+		</ul>
+	
+	</div>
+</div>
+<!--end brand-->
+
+<!--fashion start-->
+<div id="fashion">
+	<div class="f_shop">
+		<div class="f_list">
+			<div class="f_title">
+				<i class="iconfont">&#x3459;</i>
+				<span>潮流前沿</span>
+			</div>
+			<div class="f_new">
+				<p class="n_title">换新</p>
+				<p class="n_desc">品牌精选新品</p>
+				<div class="n_con"></div>
+				<img src="images/kuku.jpg" alt="裤子" width="133" height="133" class="n_img"/>
+				<a href="#" class="f_a"></a>
+			</div>
+			<div class="f_hr"></div>
+			<div class="f_new">
+				<p class="n_title">快时尚</p>
+				<p class="n_desc">你的包包不够用了</p>
+				<div class="n_con"></div>
+				<img src="images/bb.jpg" alt="裤子" width="133" height="133" class="n_img"/>
+				<a href="#" class="f_a"></a>
+			</div>
+		</div>
+		<div class="f_list">
+			<div class="f_title">
+				<i class="iconfont">&#x3459;</i>
+				<span>潮流前沿</span>
+			</div>
+			<div class="f_new">
+				<p class="n_title">换新</p>
+				<p class="n_desc">品牌精选新品</p>
+				<div class="n_con"></div>
+				<img src="images/kuku.jpg" alt="裤子" width="133" height="133" class="n_img"/>
+				<a href="#" class="f_a"></a>
+			</div>
+			<div class="f_hr"></div>
+			<div class="f_new">
+				<p class="n_title">快时尚</p>
+				<p class="n_desc">你的包包不够用了</p>
+				<div class="n_con"></div>
+				<img src="images/bb.jpg" alt="裤子" width="133" height="133" class="n_img"/>
+				<a href="#" class="f_a"></a>
+			</div>
+		</div>
+		<div class="f_list">
+			<div class="f_title">
+				<i class="iconfont">&#x3459;</i>
+				<span>潮流前沿</span>
+			</div>
+			<div class="f_new">
+				<p class="n_title">换新</p>
+				<p class="n_desc">品牌精选新品</p>
+				<div class="n_con"></div>
+				<img src="images/kuku.jpg" alt="裤子" width="133" height="133" class="n_img"/>
+				<a href="#" class="f_a"></a>
+			</div>
+			<div class="f_hr"></div>
+			<div class="f_new">
+				<p class="n_title">快时尚</p>
+				<p class="n_desc">你的包包不够用了</p>
+				<div class="n_con"></div>
+				<img src="images/bb.jpg" alt="裤子" width="133" height="133" class="n_img"/>
+				<a href="#" class="f_a"></a>
+			</div>
+		</div>
+		<div class="f_list">
+			<div class="f_title">
+				<i class="iconfont">&#x3459;</i>
+				<span>潮流前沿</span>
+			</div>
+			<div class="f_new">
+				<p class="n_title">换新</p>
+				<p class="n_desc">品牌精选新品</p>
+				<div class="n_con"></div>
+				<img src="images/phone.jpg" alt="裤子" width="133" height="133" class="n_img"/>
+				<a href="#" class="f_a"></a>
+			</div>
+			<div class="f_hr"></div>
+			<div class="f_new">
+				<p class="n_title">快时尚</p>
+				<p class="n_desc">你的包包不够用了</p>
+				<div class="n_con"></div>
+				<img src="images/bb.jpg" alt="裤子" width="133" height="133" class="n_img"/>
+				<a href="#" class="f_a"></a>
+			</div>
+		</div>
+	</div>	
+	<div class="f_adv">
+		<a href="#" class="f_banner"></a>
+	</div>
+</div>
+<!--end fashion-->
+
+<!--sitem start-->
+<div class="sitem">
+	<div class="s_nav">
+		<i class="s_icon"></i>
+		<p class="s_title"><span>美丽人生</span> FASHION & BEAUTY</p>
+		<ul class="s_ul">      
+			<li><a href="#">连衣裙</a></li>
+			<li><a href="#">T恤男</a></li>
+			<li><a href="#">美容护肤</a></li>
+			<li><a href="#">休闲男鞋</a></li>
+			<li><a href="#">黄金项链</a></li>
+			<li><a href="#">单鞋</a></li>
+			<li><a href="#">女包</a></li>
+			<li><a href="#">文胸</a></li>
+			<li><a href="#">大牌腕表</a></li>
+		</ul>
+	</div>
+	<div class="s_con">
+		<div class="s_left">
+			<img src="images/banner-2.png" alt="美女" width="246" height="330" />
+			<div class="s_desc">
+				<div class="d_title">优雅而知性</div>
+				<div class="d_letter">时尚女装搭配</div>
+			</div>
+			<a href="#" class="l_a"></a>
+		</div>
+		<div class="s_right">
+			<div class="s_list">
+				<p class="l_title">清凉夏季 优选背</p>
+				<p class="l_letter">花花公子女士吊带背心</p>
+				<img src="images/mv.jpg" alt="美女" width="154" height="154" class="l_img"/>
+				<a href="#" class="l_a"></a>
+			</div>
+			<div class="s_list">
+				<p class="l_title">清凉夏季 优选背</p>
+				<p class="l_letter">花花公子女士吊带背心</p>
+				<img src="images/l-1.jpg" alt="美女" width="154" height="154" class="l_img"/>
+				<a href="#" class="l_a"></a>
+			</div>
+			<div class="s_list">
+				<p class="l_title">清凉夏季 优选背</p>
+				<p class="l_letter">花花公子女士吊带背心</p>
+				<img src="images/l-2.jpg" alt="美女" width="154" height="154" class="l_img"/>
+				<a href="#" class="l_a"></a>
+			</div>
+			<div class="s_list">
+				<p class="l_title">清凉夏季 优选背</p>
+				<p class="l_letter">花花公子女士吊带背心</p>
+				<img src="images/l-3.jpg" alt="美女" width="154" height="154" class="l_img"/>
+				<a href="#" class="l_a"></a>
+			</div>
+			<div class="s_list">
+				<p class="l_title">清凉夏季 优选背</p>
+				<p class="l_letter">花花公子女士吊带背心</p>
+				<img src="images/l-4.jpg" alt="美女" width="154" height="154" class="l_img"/>
+				<a href="#" class="l_a"></a>
+			</div>
+			<div class="s_list">
+				<p class="l_title">清凉夏季 优选背</p>
+				<p class="l_letter">花花公子女士吊带背心</p>
+				<img src="images/mv.jpg" alt="美女" width="154" height="154" class="l_img"/>
+				<a href="#" class="l_a"></a>
+			</div>
+		</div>
+	</div>
+
+</div>
+<!--end sitem-->
+
+<!--sitem start-->
+<div class="sitem">
+	<div class="s_nav">
+		<i class="s_icon"></i>
+		<p class="s_title"><span>美丽人生</span> FASHION & BEAUTY</p>
+		<ul class="s_ul">      
+			<li><a href="#">连衣裙</a></li>
+			<li><a href="#">T恤男</a></li>
+			<li><a href="#">美容护肤</a></li>
+			<li><a href="#">休闲男鞋</a></li>
+			<li><a href="#">黄金项链</a></li>
+			<li><a href="#">单鞋</a></li>
+			<li><a href="#">女包</a></li>
+			<li><a href="#">文胸</a></li>
+			<li><a href="#">大牌腕表</a></li>
+		</ul>
+	</div>
+	<div class="s_con">
+		<div class="s_left">
+			<img src="images/banner-2.png" alt="美女" width="246" height="330" />
+			<div class="s_desc">
+				<div class="d_title">优雅而知性</div>
+				<div class="d_letter">时尚女装搭配</div>
+			</div>
+			<a href="#" class="l_a"></a>
+		</div>
+		<div class="s_right">
+			<div class="s_list">
+				<p class="l_title">清凉夏季 优选背</p>
+				<p class="l_letter">花花公子女士吊带背心</p>
+				<img src="images/mv.jpg" alt="美女" width="154" height="154" class="l_img"/>
+				<a href="#" class="l_a"></a>
+			</div>
+			<div class="s_list">
+				<p class="l_title">清凉夏季 优选背</p>
+				<p class="l_letter">花花公子女士吊带背心</p>
+				<img src="images/l-1.jpg" alt="美女" width="154" height="154" class="l_img"/>
+				<a href="#" class="l_a"></a>
+			</div>
+			<div class="s_list">
+				<p class="l_title">清凉夏季 优选背</p>
+				<p class="l_letter">花花公子女士吊带背心</p>
+				<img src="images/l-2.jpg" alt="美女" width="154" height="154" class="l_img"/>
+				<a href="#" class="l_a"></a>
+			</div>
+			<div class="s_list">
+				<p class="l_title">清凉夏季 优选背</p>
+				<p class="l_letter">花花公子女士吊带背心</p>
+				<img src="images/l-3.jpg" alt="美女" width="154" height="154" class="l_img"/>
+				<a href="#" class="l_a"></a>
+			</div>
+			<div class="s_list">
+				<p class="l_title">清凉夏季 优选背</p>
+				<p class="l_letter">花花公子女士吊带背心</p>
+				<img src="images/l-4.jpg" alt="美女" width="154" height="154" class="l_img"/>
+				<a href="#" class="l_a"></a>
+			</div>
+			<div class="s_list">
+				<p class="l_title">清凉夏季 优选背</p>
+				<p class="l_letter">花花公子女士吊带背心</p>
+				<img src="images/mv.jpg" alt="美女" width="154" height="154" class="l_img"/>
+				<a href="#" class="l_a"></a>
+			</div>
+		</div>
+	</div>
+
+</div>
+<!--end sitem-->
+
+<!--引入jQuery官方类库-->
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+	
+	// 获取fixsearch元素对象
+	var fixsearch = document.getElementById("fixsearch");
+	var l_m_box = document.getElementById("l_m_box");
+
+	// 当文档发生滚动的时候
+	window.onscroll = function(){
+		// 滚动条距离浏览器顶部的距离
+		var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+		if(scrollTop >= 700){
+			fixsearch.style.top = "0";
+		} else {
+			fixsearch.style.top = "-50px";
+		}
+
+		// 左侧导航
+		if(scrollTop >= 600){
+			l_m_box.style.width = "35px";
+			l_m_box.style.height = "370px";
+		} else {
+			l_m_box.style.width = "0px";
+			l_m_box.style.height = "0px";
+		}
+	}
+
+
+	$(function(){
+
+		// 初始默认索引值
+		var index = 0;
+		// 时间
+		var timer = null;
+
+		// 滑动按钮时切换
+		$(".b_ul").find("li").mouseover(function(){
+			// 初始化定时任务
+			clearInterval(timer);
+			// 控制小按钮
+			$(this).addClass("b_show").siblings().removeClass("b_show");
+			// 获取当前元素索引值
+			var _index = $(this).index();
+			// 重新赋值
+			index = _index;
+			// 联动banner图片区域
+			$(".b_img").find("li").eq(_index).fadeIn(300).siblings().hide(); 
+			// 联动背景颜色值同步变化
+			var background = $(this).data("color");
+			$(this).parents(".b_con").find(".b_bg").css("background",background);
+		});
+
+		// 离开按钮时
+		$(".b_ul").find("li").mouseout(function(){
+			autoTimer();
+		});
+		
+		// 自动切换
+		function autoTimer(){
+			timer = setInterval(function(){
+				index++;
+				var length = $(".b_img").find("li").length;
+				if(index >= length){
+					index = 0;
+				}
+				// 切换背景颜色
+				var background = $(".b_ul").find("li").eq(index).data("color");
+				$(".b_img").find(".b_bg").css("background",background);
+				// 联动图片
+				$(".b_img").find("li").eq(index).fadeIn(300).siblings().hide(); 
+				// 联动按钮
+				$(".b_ul").find("li").eq(index).addClass("b_show").siblings().removeClass("b_show");
+
+			},2000);
+		}
+
+		// 页面加载时，自动切换
+		autoTimer();
+
+	});
+
+
+</script>
+
+
+</body>
+</html>

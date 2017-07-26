@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面编码集(中文编码<gbk,gb2312>,国际编码<utf-8>)-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="keywords" content="关键词,关键词">
+		<meta name="description" content="">
+		<title> html </title>
+        <style type="text/css">
+			*{padding:0px;margin:0px;}
+			html,body{height:100%;}
+			/*body{overflow:hidden;}*/
+			/*header start*/
+			#bg{width:100%;height:100%;}
+			#bg div{width:100%;height:100%;background-position:center;background-attachment:fixed;}
+			#header{width:100%;height:47px;position:fixed;top:25px;left:0;}
+			#header .h-logo{height:47px;margin-left:50px;float:left;}
+			#header .h-nav{height:47px;width:400px;float:right;margin-right:20px;position:relative;}
+			#header .h-nav ul{height:47px;line-height:47px;z-index:5;position:relative;} 
+			#header .h-nav ul li{list-style:none;float:left;margin:0 20px;}
+			#header .h-nav ul li a{text-decoration:none;color:#c2d5eb;}
+
+			#header .h-nav ul li a.h-c{color:#fff;font-weight:bold;}
+			
+			#wrap{width:58px;height:28px;border:1px solid #fff;border-radius:12px;position:absolute;top:8px;left:4px;z-index:3;}
+
+			#slide{width:100px;height:270px;position:fixed;top:30%;left:50px;background:url("img/nav.png") no-repeat;}
+			#slide ul{padding-top:6px;} 
+			#slide ul li{list-style:none;font-size:12px;font-family:"Microsoft yahei";padding-left:50px;color:#fff;height:21px;margin-bottom: 56px;cursor:pointer;}
+			#slide ul li.on{background:url("img/nav_cho.png") no-repeat;}
+			/*header end*/
+
+			/*滚动条兼容*/
+			::-webkit-scrollbar{width:10px;height:6px;background:#ccc;}
+			::-webkit-scrollbar-button{background-color:#e5e5e5;}
+			::-webkit-scrollbar-track{background:#999;}
+			::-webkit-scrollbar-track-piece{background:#ccc}
+			::-webkit-scrollbar-thumb{background:#666;}
+			::-webkit-scrollbar-corner{background:#82AFFF;}
+			::-webkit-scrollbar-resizer{background:#FF0BEE;}
+			scrollbar{-moz-appearance:none !important;background:rgb(0,255,0) !important;}
+			scrollbarbutton{-moz-appearance:none !important;background-color:rgb(0,0,255) !important;}
+			scrollbarbutton:hover{-moz-appearance:none !important;background-color:rgb(255,0,0) !important;}
+		</style>
+	</head>
+<body>
+	<!--header start-->
+	<div id="header">
+		<div class="h-logo">
+			<img src="img/logo.png"/>
+		</div>
+		<div class="h-nav">
+			<ul>
+				<li><a href="#" class="h-c">首页</a></li>		
+				<li><a href="#">常见问题</a></li>	
+				<li><a href="#">论坛</a></li>
+				<li><a href="#">360首页>></a></li>
+			</ul>
+			<div id="wrap"></div>
+		</div>
+		<div id="slide">
+			<ul>
+				<li class="on">安全换机</li>
+				<li>无网对传</li>
+				<li>隐私粉碎</li>
+				<li>一键转移</li>
+			</ul>
+		</div>
+	</div>
+	<div id="bg">
+		<div style="background-image:url(img/1.jpg)"></div>
+		<div style="background-image:url(img/2.jpg)"></div>
+		<div style="background-image:url(img/3.jpg)"></div>
+		<div style="background-image:url(img/4.jpg)"></div>
+	</div>
+	<!--header end-->
+
+	<!--引入js官方类库jQuery-->
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script src="js/jquery.mousewheel.js"></script>
+	<script>
+		$(function(){
+			var $navLi = $("#header .h-nav ul li");
+			var $navUl = $("#header .h-nav ul");
+			var $wrap = $("#wrap");
+			var $slideLi = $("#slide ul li");
+
+			//解决缓存问题
+			var timer = setInterval(function(){
+				$(document).scrollTop(0);
+				if($(document).scrollTop()==0){
+					clearInterval(timer);
+				}
+			},50);
+			
+
+
+			$navLi.mouseenter(function(){
+				$(this).find("a").addClass("h-c").parent().siblings().find("a").removeClass("h-c");
+				var Left = $(this).position().left;
+				var Width = $(this).width();
+				$wrap.stop(true,true).animate({
+					left:Left+4,
+					width:Width+26
+				},300);
+			});
+			//鼠标离开ul的时候
+			$navUl.mouseleave(function(){
+				$(this).find("a").removeClass("h-c");
+				//$(this).find("li").eq(0).find("a").addClass("h-c");
+				$(this).find("li:first-child a").addClass("h-c");
+				$wrap.stop(true,true).animate({
+					left:4,
+					width:58
+				});
+			});
+			//鼠标点击slide下面li的时候
+			var winH = $(window).height();
+			var index = 0;
+			$slideLi.click(function(){
+				index = $(this).index();
+				$(this).addClass("on").siblings().removeClass("on");
+				$("html,body").animate({
+					"scrollTop":winH * index
+				},800);
+			});
+
+			//鼠标滚轮事件
+			$(document).mousewheel(function(){
+				var dr = arguments[1];
+				if(dr<0){
+					index++;//0,1,2,3
+					index %= 4;
+				}else{
+					index--;
+					if(index<0)index=3;
+				}
+				$slideLi.eq(index).addClass("on").siblings().removeClass("on");
+				$("html,body").stop(true).animate({
+					"scrollTop":winH * index
+				},800);
+			});
+
+			//页面窗口改变高度
+			$(window).resize(function(){
+				winH = $(window).height();
+				$(document).scrollTop(winH * index);
+			});
+		});
+	</script>
+</body>
+
+</html>

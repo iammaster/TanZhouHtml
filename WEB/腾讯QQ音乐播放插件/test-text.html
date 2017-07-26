@@ -1,0 +1,94 @@
+<!doctype html>
+<html  >
+ <head>
+ <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+   <title>检查整理学习的内容 CSS样式语法 </title>
+    <meta name="keyword" content="关键字">
+    <meta name="description" content="J201607012,曾少煌">
+ </head>
+ <style>
+  *{margin:0px ;padding:0px;}
+
+  .tab{
+  border:1px solid #aaa;
+  width:80%;
+  border-collapse:collapse;
+ 
+  }
+  .tab .t_title{
+   text-align:center;
+   font-weight:bold;
+   font-size:19px;
+   color:#454545;
+   font-family:"微软雅黑";
+   background:#eaeaea;
+  }
+  .tab .t_head{
+   font-weight:900;
+   font-family:"微软雅黑";
+   color:#222;
+   font-size:15px;
+   background:#aaa
+  }
+  .tab td{
+border:1px solid #ddd;
+  line-height:40px;
+  text-indent:1em;
+  }
+  .tab  .t_body tr:hover{
+    background:#eaeaea;
+	
+  }
+   .tab  .t_body tr td:hover{
+    background:#cc6633;
+	color:#fff;
+	font-weight:900;
+  }
+ </style>
+ <body>
+  <h1> css 样式 -table 表格布局</h1>
+  <table class="tab"> 
+  <thead>
+    <tr><td colspan="5" class="t_title"> 我的班级通讯录</td></tr>
+	<tr class="t_head">
+	   <td>编号</td>
+	   <td>姓名</td>
+	   <td>性别</td>
+	   <td>年龄</td>
+	   <td>婚否</td>
+	</tr>
+	</thead>
+	<tbody class="t_body">
+	<tr>
+		<td>001</td>
+		<td>小风</td>
+		<td>女</td>
+		<td>18</td>
+		<td>已婚</td>
+	</tr>
+	<tr>
+		<td>002</td>
+		<td>型雅阁</td>
+		<td>女</td>
+		<td>20</td>
+		<td>未婚</td>
+	</tr>
+	<tr>
+		<td>003</td>
+		<td>煌</td>
+		<td>男</td>
+		<td>26</td>
+		<td>未婚</td>
+	</tr>
+	<tr>
+	<td>004</td>
+		<td>diuiu</td>
+		<td>男</td>
+		<td>26</td>
+		<td>未婚</td>
+	</tr>
+	</tbody>
+
+  </table>
+ </body>
+</html>

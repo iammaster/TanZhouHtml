@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="Keywords" content="">
+<meta name="Description" content="">
+<title>Document</title>
+<style type="text/css">
+	* {
+		margin: 0;
+		padding: 0;
+	}
+	body {
+		font-size: 12px;
+		font-family: "微软雅黑";
+	}
+</style>
+</head>
+<body>
+	<script>
+		  // 怎么是对象   对象具有自己的属性和方法  能通过点的形式获取属性和方法
+		  var obj = {
+				name: "ide",
+				say: function(){
+					alert("我是"+this.name+"我爱你们！");
+				}
+		  };
+
+		alert(obj.name);
+		obj.say();
+	</script>
+</body>
+</html>

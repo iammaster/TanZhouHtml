@@ -1,0 +1,853 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>终极项目实战 - 百度音乐系统 - Arry老师</title>
+		<meta name="keywords" content="关键词,关键词">
+		<meta name="description" content="">
+
+		<style type="text/css">
+			*{margin:0;padding:0;}
+			body{font-size:12px;font-family:"微软雅黑";color:#666;}
+			img{border:none;}
+
+			/*top start*/
+			.top{width:100%;height:56px;background:#333;}
+			.top .t_header{width:95%;height:56px;margin:0 auto;}
+			.top .t_header .t_logo{margin-top:12px;float:left;}
+			.top .t_header .t_desc{float:right;line-height:56px;font-size:18px;}
+			/*end top*/
+
+			/*content start*/
+			.content{width:100%;margin-top:15px}
+			.content .c_box{padding:10px;}
+
+			/*c_select start*/
+			.content .c_box .c_select{width:190px;float:left;}
+			.content .c_box .c_select .c_menu{border-bottom:1px solid #ddd;}
+			.content .c_box .c_select .c_menu ul li{list-style:none;line-height:36px;color:#333;padding-left: 10px;border-radius:4px;cursor: pointer;}
+			.content .c_box .c_select .c_menu ul li:hover{background:#f0f0f0;}
+			.content .c_box .c_select .c_menu ul .c_sel{background:#f0f0f0;}
+			.content .c_box .c_select .c_add .c_mymusic{float:left;color:#aaa;line-height:40px;}
+			.content .c_box .c_select .c_add .c_create{width:18px;height:18px;display:block;float:right;background:url("images/icon.png") 0px -412px;margin-top: 12px;}
+			/*end c_select*/
+			
+			/*c_list start*/
+			.content .c_box .c_list{width:58%;float:left;margin-left:35px;}
+			.content .c_box .c_list .c_music .m_title{width:100%;height:36px;border-bottom:1px solid #ebebeb;}
+			.content .c_box .c_list .c_music .m_title .m_check{float:left;padding: 11px 5px 0px 10px;}
+			.content .c_box .c_list .c_music .m_title .m_info{width:57%;float:left;margin-left:70px;color:#aaa;}
+			.content .c_box .c_list .c_music .m_title .m_info .m_t{width:33%;float:left;padding-top:8px;}
+			.content .c_box .c_list .c_music .s_list{width:100%;height:44px;border-bottom:1px solid #ebebeb;}
+			.content .c_box .c_list .c_music .s_list:hover{background:#f5f5f5;}
+			.content .c_box .c_list .c_music .m_song .s_list .l_choose{float:left;padding: 15px 5px 0px 10px;}
+			.content .c_box .c_list .c_music .m_song .s_list .l_number{float:left;width:36px;height:44px;text-align:center;line-height:44px;}
+			.content .c_box .c_list .c_music .m_song .s_list .l_number .n_num{width:18px;height:18px;display:inline-block;background:url("images/play.gif") no-repeat;font-size:0;margin:15px 0 0 10px;}
+
+			.content .c_box .c_list .c_music .m_song .s_list .l_info{float:left;width:57%;margin-left:32px;}
+			.content .c_box .c_list .c_music .m_song .s_list .l_info .l_t{float:left;width:33%;line-height:44px;}
+			.content .c_box .c_list .c_music .m_song .s_list .l_love{height:44px;float:right;}
+			.content .c_box .c_list .c_music .m_song .s_list .l_love .l_icon{width:18px;height:18px;display:block;float:left;margin: 12px 18px 0 0;background:url("images/icon.png") no-repeat;}
+			.content .c_box .c_list .c_music .m_song .s_list .l_love .l_like{background-position: 0 -155px;}
+			.content .c_box .c_list .c_music .m_song .s_list .l_love .l_more{background-position:0 -473px;}
+			.content .c_box .c_list .c_music .m_song .s_list .l_love .l_del{background-position:0 -491px;}
+			/*end c_list*/
+
+			.content .c_box .c_lrc{width:250px;height:600px;float:right;}
+			.content .c_box .c_lrc .l_img{text-align:center;padding-top:15px;}
+			.content .c_box .c_lrc .l_img img{border-radius:10px;box-shadow: 1px 2px 10px -1px #000;}
+			.content .c_box .c_lrc .l_btn{width:120px;height:40px;background:#F90;display:block;text-align:center;line-height:40px;margin:10px auto;border-radius:3px;color:#fff;text-decoration:none;font-size:16px;}
+			.content .c_box .c_lrc .l_btn:hover{background:#F60;}
+			.content .c_box .c_lrc .l_con{width:250px;height:350px;overflow:auto;}
+			.content .c_box .c_lrc .l_con ul li{list-style:none;height:30px;line-height:30px;padding-left:33px;font-size:14px;position:relative;transition:font-size 0.6s ease;width:100%;}
+			.content .c_box .c_lrc .l_con ul li>div{position:absolute;left:20px;top:0;bottom:0;overflow: hidden;}
+			.content .c_box .c_lrc .l_con ul li .l_cover{color:red;width:0;}
+			.content .c_box .c_lrc .l_con ul li.sel{font-size:16px;color:#69F;}
+			/*end content*/
+
+			::-webkit-scrollbar{width:5px;height:6px;background:#ccc;}
+			::-webkit-scrollbar-button{background-color:#e5e5e5;}
+			::-webkit-scrollbar-track{background:#999;}
+			::-webkit-scrollbar-track-piece{background:#ccc}
+			::-webkit-scrollbar-thumb{background:#666;}
+			::-webkit-scrollbar-corner{background:#82AFFF;}
+			::-webkit-scrollbar-resizer{background:#FF0BEE;}
+			scrollbar{-moz-appearance:none !important;background:rgb(0,255,0) !important;}
+			scrollbarbutton{-moz-appearance:none !important;background-color:rgb(0,0,255) !important;}
+			scrollbarbutton:hover{-moz-appearance:none !important;background-color:rgb(255,0,0) !important;}
+
+
+			/*player start*/
+			.player{width:100%;height:80px;background:#333;position:fixed;left:0;bottom:0;}
+			.player .p_left{width:230px;height:80px;float:left;}
+			.player .p_left .p_icon{width:30px;height:30px;display:block;background:url("images/icon.png") no-repeat;float:left;margin: 25px 0 0 25px;}
+			.player .p_left .p_pre{background-position:0 -90px;}
+			.player .p_left .p_pre:hover{background-position:-30px -90px;}
+			.player .p_left .p_play{background-position:0 0;}
+			.player .p_left .p_play:hover{background-position:-30px 0;}
+			.player .p_left .p_stop{background-position:0px -30px;display:none;}
+			.player .p_left .p_next{background-position:0px -60px;}
+			.player .p_left .p_next:hover{background-position:-30px -60px;}
+			.player .p_left .p_tool .t_t{width:20px;height:18px;display:block;background:url("images/icon.png") no-repeat;float:left;margin:30px 0 0 42px;}
+			.player .p_left .p_tool .t_list{background-position:0 -180px;}
+			.player .p_left .p_tool .t_list:hover{background-position:-30px -180px;}
+			.player .p_left .p_tool .t_single{background-position:0 -200px;display:none;}
+			.player .p_left .p_tool .t_single:hover{background-position:-30px -200px;display:none;}
+			.player .p_left .p_tool .t_random{background-position:0 -220px;display:none;}
+			.player .p_left .p_tool .t_random:hover{background-position:-30px -220px;display:none;}
+
+			.player .p_content{width:46%;height:60px;float:left;padding: 20px 0 0 50px;}
+			.player .p_content .c_name{width:100%;height:25px;}
+			.player .p_content .c_name .n_title{font-size:14px;text-decoration:none;color:#fff;float:left;}
+			.player .p_content .c_name .n_group {float:right;}
+			.player .p_content .c_name .n_group .g_g{width:18px;height:18px;display:block;float:left;background:url("images/icon.png") no-repeat;margin-left:20px;}
+			.player .p_content .c_name .n_group .g_fav{background-position:0px -240px;}
+			.player .p_content .c_name .n_group .g_fav:hover{background-position:-28px -240px;}
+			.player .p_content .c_name .n_group .q_share{background-position:0px -259px;}
+			.player .p_content .c_name .n_group .q_share:hover{background-position:-28px -259px;}
+			.player .p_content .c_name .n_group .q_more{background-position:0px -277px;}
+			.player .p_content .c_name .n_group .q_more:hover{background-position:-28px -277px;}
+
+			.player .p_content .c_time{width:100%;height:25px;}
+			.player .p_content .c_time .t_left{float:left;}
+			.player .p_content .c_time .t_center{width:83%;height:4px;background:#9b9b9b;float:left;margin: 7px 0 0 10px;}
+			.player .p_content .c_time .t_right{float:right;}
+			.player .p_content .c_time .t_center{position:relative;}
+			.player .p_content .c_time .t_center .c_played{width:0;height:4px;background:#fff;}
+			.player .p_content .c_time .t_center .c_current{width:9px;height:9px;background:#fff;border-radius:5px;position:absolute;top:-3px;left:0;cursor: pointer;}
+
+			.player .p_right{width:310px;height:80px;float:right;}
+			.player .p_right .r_qua{width:80px;height:30px;display:block;background:#E1E1E1;text-decoration:none;text-align:center;line-height:30px;color:#505050;border-radius:15px;margin: 25px 0 0 50px;float:left;}
+			.player .p_right .r_qua:hover{background:#fff;}
+			.player .p_right .r_voice{width:110px;height:18px;float:left;margin: 32px 0 0 26px;}
+			.player .p_right .r_voice .v_trumpet{width:18px;height:18px;display:block;background:url("images/icon.png") no-repeat 0px -296px;float:left;}
+			.player .p_right .r_voice .v_sel{width:18px;height:18px;display:block;background:url("images/icon.png") no-repeat 0px -314px;float:left;}
+			.player .p_right .r_voice .t_box{width:80px;height:18px;float:right;}
+			.player .p_right .r_voice .t_box .b_all{width:80px;height:3px;background:#9B9B9B;margin-top:8px;position:relative;}
+			.player .p_right .r_voice .t_box .b_all .a_small{width:40%;height:3px;background:#fff;}
+			.player .p_right .r_voice .t_box .b_all .a_current{width:9px;height:9px;border-radius:5px;background:#fff;position:absolute;top:-3px;left:40%;cursor: pointer;z-index:1;}
+			.player .p_right .r_voice .t_box .b_all .a_big{width:100%;height:3px;position:absolute;top:0;left:0;}
+
+			/*end player*/
+
+			#lrc{display:none;}
+			.selected{background:#f5f5f5;}
+			
+			/*响应式布局*/
+			@media screen and (max-width:1160px){
+				.content .c_box .c_list{width:50%;}
+				.player .p_content{width:43%;}
+			}
+
+			@media screen and (max-width:1050px){
+				.content .c_box .c_list .c_music .m_song .s_list .l_info .l_t{float: left;width:23%;text-overflow: ellipsis;white-space: nowrap;overflow:hidden;}
+				.player .p_content{width:33%;}
+				.player .p_content .c_time .t_center{width:70%;}
+			}
+
+			@media screen and (max-width:985px){
+				.content .c_box .c_list .c_music .m_song .s_list .l_info{width:40%;}
+				.content .c_box .c_list{width:40%;}
+				.player .p_content{width:28%;}
+
+			}
+
+			@media screen and (max-width:886px){
+				.content .c_box .c_list .c_music .m_song .s_list .l_love .l_more{display:none;width:0;}
+				.content .c_box .c_list .c_music .m_song .s_list .l_love .l_del{width:display:none;width:0;}
+				.content .c_box .c_list{width:35%;}
+				.player .p_content .c_name .n_group{display:none;}
+				.player .p_content .c_time .t_center{width:40%;}
+				.player .p_content{width:15%;}
+
+			}
+
+			@media screen and (max-width:886px){
+				.player .p_content{display:none;}
+			}
+
+			@media screen and (max-width:756px){
+				.content .c_box .c_list{display:none;}	
+			}
+
+			@media screen and (max-width:546px){
+				.player .p_right{display:none;}
+			}
+
+			@media screen and (max-width:465px){
+				.content .c_box .c_select{display:none;}
+				.player .p_left{float:none;margin:0 auto;}
+				.content .c_box .c_lrc{float:none;margin:0 auto;}
+			}
+
+			@media screen and (max-width:315px){
+				.top .t_header .t_desc{display:none;}
+			}
+
+
+
+
+
+		</style>
+
+	</head>
+<body>
+	
+	<!--top start-->
+	<div class="top">
+		<div class="t_header">
+			<div class="t_logo">
+				<a href="#">
+					<img src="images/logo.png" alt="潭州教育音乐系统" width="134" height="32" />
+				</a>
+			</div>
+			<div class="t_desc">潭州Music音乐系统</div>
+		</div>
+	</div>
+	<!--end top-->
+
+	<!--content start-->
+	<div class="content">
+		<div class="c_box">
+
+			<!--c_select start-->
+			<div class="c_select">
+				<div class="c_menu">
+					<ul>
+						<li class="c_sel">正在播放</li>
+						<li>播放历史</li>
+						<li>收藏列表</li>
+					</ul>
+				</div>
+				<div class="c_add">
+					<span class="c_mymusic">我创建的精选集</span>
+					<a href="#" class="c_create"></a>
+					<div class="c_title"><img src="images/01.png" alt="创建选集提示" width="185" height="89" /></div>
+				</div>
+			</div>
+			<!--end c_select-->
+		
+			<!--c_list start-->
+			<div class="c_list">
+				<div class="c_music">
+					<div class="m_title">
+						<a href="#" class="m_check"><input type="checkbox" /></a>
+						<div class="m_info">
+							<div class="m_t">歌曲(30)</div>
+							<div class="m_t">演唱者</div>
+							<div class="m_t">专辑</div>
+						</div>
+					</div>
+					<div class="m_song">
+						<div class="s_list" data-link="mp3/1.mp3">
+							<p class="l_choose"><input type="checkbox"></p>
+							<p class="l_number">
+								<span>1</span>
+							</p>
+							<div class="l_info">
+								<div class="l_t">相亲相爱一家人</div>
+								<div class="l_t">群星</div>
+								<div class="l_t">《一家人》</div>
+							</div>
+							<div class="l_love">
+								<a href="#" class="l_icon l_like"></a>
+								<a href="#" class="l_icon l_more"></a>
+								<a href="#" class="l_icon l_del"></a>
+							</div>
+						</div>
+						<div class="s_list" data-link="mp3/2.mp3">
+							<p class="l_choose"><input type="checkbox"></p>
+							<p class="l_number"><span>2</span></p>
+							<div class="l_info">
+								<div class="l_t">年轻的战场</div>
+								<div class="l_t">张杰</div>
+								<div class="l_t">《逆战》</div>
+							</div>
+							<div class="l_love">
+								<a href="#" class="l_icon l_like"></a>
+								<a href="#" class="l_icon l_more"></a>
+								<a href="#" class="l_icon l_del"></a>
+							</div>
+						</div>
+						<div class="s_list" data-link="mp3/3.mp3">
+							<p class="l_choose"><input type="checkbox"></p>
+							<p class="l_number"><span>3</span></p>
+							<div class="l_info">
+								<div class="l_t">海阔天空</div>
+								<div class="l_t">黄家驹</div>
+								<div class="l_t">《光辉岁月》</div>
+							</div>
+							<div class="l_love">
+								<a href="#" class="l_icon l_like"></a>
+								<a href="#" class="l_icon l_more"></a>
+								<a href="#" class="l_icon l_del"></a>
+							</div>
+						</div>
+						<div class="s_list" data-link="mp3/4.mp3">
+							<p class="l_choose"><input type="checkbox"></p>
+							<p class="l_number"><span>4</span></p>
+							<div class="l_info">
+								<div class="l_t">让我一次爱个够</div>
+								<div class="l_t">群星</div>
+								<div class="l_t">《中国好声音》</div>
+							</div>
+							<div class="l_love">
+								<a href="#" class="l_icon l_like"></a>
+								<a href="#" class="l_icon l_more"></a>
+								<a href="#" class="l_icon l_del"></a>
+							</div>
+						</div>
+						<div class="s_list" data-link="mp3/5.mp3">
+							<p class="l_choose"><input type="checkbox"></p>
+							<p class="l_number"><span>5</span></p>
+							<div class="l_info">
+								<div class="l_t">撕夜</div>
+								<div class="l_t">阿杜</div>
+								<div class="l_t">《天黑》</div>
+							</div>
+							<div class="l_love">
+								<a href="#" class="l_icon l_like"></a>
+								<a href="#" class="l_icon l_more"></a>
+								<a href="#" class="l_icon l_del"></a>
+							</div>
+						</div>
+						<div class="s_list" data-link="mp3/6.mp3">
+							<p class="l_choose"><input type="checkbox"></p>
+							<p class="l_number"><span>6</span></p>
+							<div class="l_info">
+								<div class="l_t">五星红旗迎风飘扬</div>
+								<div class="l_t">刘媛媛</div>
+								<div class="l_t">《歌唱祖国》</div>
+							</div>
+							<div class="l_love">
+								<a href="#" class="l_icon l_like"></a>
+								<a href="#" class="l_icon l_more"></a>
+								<a href="#" class="l_icon l_del"></a>
+							</div>
+						</div>
+						<div class="s_list" data-link="mp3/7.mp3">
+							<p class="l_choose"><input type="checkbox"></p>
+							<p class="l_number">1</p>
+							<div class="l_info">
+								<div class="l_t">相伴潭州</div>
+								<div class="l_t">Arry老师</div>
+								<div class="l_t">《古潭州》</div>
+							</div>
+							<div class="l_love">
+								<a href="#" class="l_icon l_like"></a>
+								<a href="#" class="l_icon l_more"></a>
+								<a href="#" class="l_icon l_del"></a>
+							</div>
+						</div>
+						<div class="s_list" data-link="mp3/8.mp3">
+							<p class="l_choose"><input type="checkbox"></p>
+							<p class="l_number">1</p>
+							<div class="l_info">
+								<div class="l_t">相伴潭州</div>
+								<div class="l_t">Arry老师</div>
+								<div class="l_t">《古潭州》</div>
+							</div>
+							<div class="l_love">
+								<a href="#" class="l_icon l_like"></a>
+								<a href="#" class="l_icon l_more"></a>
+								<a href="#" class="l_icon l_del"></a>
+							</div>
+						</div>
+						<div class="s_list" data-link="mp3/9.mp3">
+							<p class="l_choose"><input type="checkbox"></p>
+							<p class="l_number">1</p>
+							<div class="l_info">
+								<div class="l_t">相伴潭州</div>
+								<div class="l_t">Arry老师</div>
+								<div class="l_t">《古潭州》</div>
+							</div>
+							<div class="l_love">
+								<a href="#" class="l_icon l_like"></a>
+								<a href="#" class="l_icon l_more"></a>
+								<a href="#" class="l_icon l_del"></a>
+							</div>
+						</div>
+						<div class="s_list" data-link="mp3/10.mp3">
+							<p class="l_choose"><input type="checkbox"></p>
+							<p class="l_number">1</p>
+							<div class="l_info">
+								<div class="l_t">相伴潭州</div>
+								<div class="l_t">Arry老师</div>
+								<div class="l_t">《古潭州》</div>
+							</div>
+							<div class="l_love">
+								<a href="#" class="l_icon l_like"></a>
+								<a href="#" class="l_icon l_more"></a>
+								<a href="#" class="l_icon l_del"></a>
+							</div>
+						</div>
+						<div class="s_list" data-link="mp3/11.mp3">
+							<p class="l_choose"><input type="checkbox"></p>
+							<p class="l_number">1</p>
+							<div class="l_info">
+								<div class="l_t">相伴潭州</div>
+								<div class="l_t">Arry老师</div>
+								<div class="l_t">《古潭州》</div>
+							</div>
+							<div class="l_love">
+								<a href="#" class="l_icon l_like"></a>
+								<a href="#" class="l_icon l_more"></a>
+								<a href="#" class="l_icon l_del"></a>
+							</div>
+						</div>
+
+
+						
+
+					</div>
+				</div>
+			
+			</div>
+			<!--end c_list-->
+
+			<!--c_lrc start-->
+			<div class="c_lrc">
+				<div class="l_img">
+					<img src="images/mv.jpg" alt="美女" width="185" height="185" />
+				</div>
+				<a href="#" class="l_btn">亲亲我 ^_^</a>
+				<div class="l_con">
+					<ul id="lyrics"></ul>
+				</div>
+			</div>
+			<!--end c_lrc-->
+		</div>
+	</div>
+	<!--end content-->
+
+	<!--player start-->
+	<div class="player">
+
+		<div class="p_left">
+			<a href="#" class="p_icon p_pre" title="上一首"></a>
+			<a href="#" class="p_icon p_play" title="播放"></a>
+			<a href="#" class="p_icon p_stop" title="暂停"></a>
+			<a href="#" class="p_icon p_next" title="下一首"></a>
+			<div class="p_tool">
+				<a href="#" class="t_t t_list" title="列表循环"></a>
+				<a href="#" class="t_t t_single" title="单曲循环"></a>
+				<a href="#" class="t_t t_random" title="随机播放"></a>
+			</div>
+		</div>
+		<div class="p_content">
+			<div class="c_name">
+				<a href="#" class="n_title">相伴潭州 - arry老师</a>
+				<div class="n_group">
+					<a href="#" class="g_g g_fav"></a>
+					<a href="#" class="g_g q_share"></a>
+					<a href="#" class="g_g q_more"></a>
+				</div>
+			</div>
+			<div class="c_time">
+				<div class="t_left">00:00</div>
+				<div class="t_center">
+					<div class="c_played"></div>
+					<div class="c_current"></div>
+					<div class="c_futrue"></div>
+				</div>
+				<div class="t_right">00:00</div>
+			</div>
+		</div>
+
+		<div class="p_right">
+			<a href="#" class="r_qua">高品质</a>
+			<div class="r_voice">
+				<a href="#" class="v_trumpet"></a>
+				<div class="t_box">
+					<div class="b_all">
+						<div class="a_small"></div>
+						<div class="a_current"></div>
+						<div class="a_big"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<!--end player-->
+
+	<audio id="audio"></audio>
+
+	<textarea id="lrc">
+[ti:]
+[ar:]
+[al:]
+[offset:0]
+
+[00:00.00]歌名：相亲相爱一家人
+[00:01.16]演唱：群星
+[00:02.61]
+[00:03.52]我喜欢一回家
+[00:07.12]就有暖洋洋的灯光在等待
+[00:11.23]我喜欢一起床
+[00:14.59]就看到大家微笑的脸庞
+[00:18.71]我喜欢一出门
+[00:21.51]就为了家人和自己的理想打拼
+[00:25.85]我喜欢一家人
+[00:27.55]心朝着同一个方向眺望
+[00:31.58]哦！
+[00:33.47]我喜欢快乐时
+[00:36.87]马上就想要和你一起分享
+[00:40.61]我喜欢受伤时
+[00:43.98]就想起你们温暖的怀抱
+[00:48.12]我喜欢生气时
+[00:51.02]就想到你们永远包容多么伟大
+[00:55.07]我喜欢旅行时
+[00:57.08]为你把美好记忆带回家
+[01:02.45]因为我们是一家人
+[01:06.42]相亲相爱的一家人
+[01:09.95]有缘才能相聚
+[01:11.97]有心才会珍惜
+[01:13.68]何必让满天乌云遮住眼睛
+[01:17.45]因为我们是一家人
+[01:21.19]相亲相爱的一家人
+[01:24.95]有福就该同享
+[01:26.59]有难必然同当
+[01:28.47]用相知相守换地久天长
+[01:32.61]
+[01:41.43]我喜欢一回家
+[01:45.04]就把乱糟糟的心情都忘掉
+[01:49.03]我喜欢一起床
+[01:52.40]就带给大家微笑的脸庞
+[01:56.44]我喜欢一出门
+[01:59.48]就为了个人和世界的美好打拼
+[02:03.41]我喜欢一家人
+[02:05.31]梦朝着同一个方向创造
+[02:09.44]哦！
+[02:11.38]当别人快乐时
+[02:14.50]好像是自己获得幸福一样
+[02:18.76]当别人受伤时
+[02:22.04]我愿意敞开最真的怀抱
+[02:26.11]当别人生气时
+[02:28.94]告诉他就算观念不同不必激动
+[02:33.24]当别人需要时
+[02:35.00]我一定卷起袖子帮助他
+[02:40.34]因为我们是一家人
+[02:44.14]相亲相爱的一家人
+[02:48.01]有缘才能相聚
+[02:49.72]有心才会珍惜
+[02:51.55]何必让满天乌云遮住眼睛
+[02:55.46]因为我们是一家人
+[02:59.14]相亲相爱的一家人
+[03:02.84]有福就该同享
+[03:04.53]有难必然同当
+[03:06.38]用相知相守换地久天长
+[03:10.01]
+[03:11.40]处处为你用心
+[03:14.11]一直最有默契
+[03:18.26]请你相信这份感情值得感激
+[03:28.99]因为我们是一家人
+[03:32.54]相亲相爱的一家人
+[03:36.09]有缘才能相聚
+[03:37.76]有心才会珍惜
+[03:39.52]何必让满天乌云遮住眼睛
+[03:43.34]因为我们是一家人
+[03:47.10]相亲相爱的一家人
+[03:50.55]有福就该同享
+[03:52.60]有难必然同当
+[03:54.23]用相知相守换地久天长
+[04:02.43]
+	</textarea>
+
+
+<!--引入jQuery官方类库-->
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+
+	$(function(){
+		
+		// 创建一个mp3的播放器
+		var audioDom = document.getElementById("audio");
+
+		function loadLrc(){
+			// 设置播放音乐地址
+			audioDom.src = "mp3/1.mp3";
+			// 设置初始音量
+			audioDom.volume = 0.5; 
+			// 获取textarea中间的歌词内容
+			var lrc = $("#lrc").val();
+			// 把时间和歌词分离出来
+			var lrcArr = lrc.split("[");
+			var html = "";
+			for(var i = 0; i < lrcArr.length; i++){
+				// 第二次分割
+				var arr = lrcArr[i].split("]");
+				// 取到歌词
+				var message = arr[1];
+				// 取到时间
+				var timer = arr[0].split(".");
+				// 取到分钟和秒
+				var stime = timer[0].split(":");
+				// 转换成秒数
+				var ms = stime[0]*60 + stime[1]*1 - 1;	
+				if(message && ms > 0){
+					html += "<li class='l_"+ms+"'><div class='l_text'>"+message+"</div><div class='l_cover'>"+message+"</div></li>";
+				}
+			}
+			// 把解析好的歌词放入容器中
+			$("#lyrics").html(html);
+		}
+
+		// 联动音乐播放歌词
+		audioDom.addEventListener("timeupdate",function(){
+			// 获取当前播放时间
+			var timer = this.currentTime;
+			// 解析音乐对应的时间
+			var m = parseInt(timer / 60);
+			var s = parseInt(timer);
+			// 对应的时间选中歌词
+			//$(".l_"+s).addClass("sel").siblings().removeClass("sel");
+			var ms = ($(".l_"+s).find(".l_text").eq(0).text().length-2) || 7;
+			$(".l_"+s).siblings().find(".l_cover").removeAttr("style");
+			$(".l_"+s).addClass("sel").siblings().removeClass("sel").end().find(".l_cover").css("transition","width "+ms+"s linear").width("100%");
+			
+			// 联动滚动条自动滚动
+			$(".l_con").scrollTop(($(".sel").index()-2)*24);
+		});
+
+
+		// 点击拖动进度条
+		$(".t_center").mousedown(function(e){
+			// 获取点击的位置
+			var _this = $(this);
+			// 获取鼠标的位置
+			var x = e.clientX || e.pageX;
+			// 获取起点的位置
+			var left = _this.parent().offset().left;
+			// 获取终点的位置
+			var maxWidth = _this.parent().width();
+			// 最大位置
+			var w = x - left;
+			// 根据点击位置除以最大的位置得到百分比
+			var percent = (w / maxWidth) * 100;
+			
+			// 根据进度条赋值
+			$(".c_played").width(percent+"%");
+			$(".c_current").css("left",percent+"%");
+
+			// 点击进度条的进度百分比 同步 音乐文件当前播放的时间的百分比
+			audioDom.currentTime  = audioDom.duration * (w / maxWidth);
+
+		});
+
+		// 播放事件监听
+		audioDom.ontimeupdate = function(){
+			// 获取总时长
+			var time = this.duration;
+			// 获取播放时长
+			var stime = this.currentTime;
+			//格式化时间
+			var ftime = formartTime(stime);
+			// 赋值
+			$(".t_left").text(ftime);
+			// 获取播放的进度
+			var pbit = stime / time;
+			// 转换成百分比
+			var percent = pbit * 100;
+
+			$(".c_played").width(percent+"%");
+			$(".c_current").css("left",percent+"%");
+		}
+
+		// 音乐播放结束
+		audioDom.onended = function(){
+			$(".p_next").trigger("click");
+		}
+
+		// 时间监听
+		function timeEvent(){
+			// 音频文件加载完毕监听
+			audioDom.oncanplaythrough = function(){
+				// 获取音乐文件总时间
+				var time = this.duration;
+				// 格式化时间
+				var ftime = formartTime(time);
+				// 赋值
+				$(".t_right").text(ftime);
+			}
+		}
+
+		// 音量拖动改变
+		$(".a_current").mousedown(function(e){
+			// 获取拖动对象
+			var _this = $(this);
+			// 获取鼠标的位置
+			var x = e.clientX || e.pageX;
+			// 获取拖动元素的起点位置
+			var left = _this.position().left;
+			// 获取拖动元素的终点位置
+			var maxLeft = _this.parent().width();
+
+			// 拖动元素开始
+			$(document).mousemove(function(e){
+				// 获取鼠标拖动最终位置
+				var n = (e.clientX || e.pageX) - x + left;
+				// 判断边界
+				if(n < 0){
+					n = 0;
+				}
+				if(n > maxLeft){
+					n = maxLeft;
+				}
+		
+				// 定位拖动进度最终位置
+				_this.css("left",n);
+				
+				// 根据拖动的位置除以最大位置 获取百分比
+				var percent = (n / maxLeft) * 100;
+				// 跟进度条和拖动元素赋值
+				$(".a_small").width(percent+"%");
+				// 同步音乐文件的时间加载
+				audioDom.volume = (n / maxLeft);
+			}).mouseup(function(){
+				// 移除事件
+				$(document).unbind("mousemove");
+				$(document).unbind("mouseup");
+			});
+		});
+
+		// 音量点击控制
+		$(".a_big").mousedown(function(e){
+			// 获取点击位置
+			var _this = $(this);
+			// 获取鼠标的位置
+			var x = e.clientX || e.pageX;
+			// 获取起点位置
+			var left = _this.parent().offset().left;
+			// 获取终点的位置
+			var maxWidth = _this.parent().width();
+			// 最大值
+			var w = x - left;
+			// 根据点击位置除以最大位置 计算百分比
+			var percent = (w / maxWidth) * 100;
+			// 根据进度赋值
+			$(".a_current").css("left",percent + "%");
+			$(".a_small").width(percent + "%");
+			// 同步音乐文件的加载时间
+			audioDom.volume = (w / maxWidth);
+
+		});
+
+		//设置静音
+		$(".v_trumpet").on("click",function(){
+			$(this).toggleClass("v_trumpet v_sel");
+			if(!$(this).hasClass("v_trumpet")){
+				$(".a_current").css("left","0%");
+				$(".a_small").width("0%");
+				audioDom.volume = 0;
+			} else {
+				$(".a_current").css("left","40%");
+				$(".a_small").width("40%");
+				audioDom.volume = 0.4;
+			}
+		});
+
+
+		// 定义格式化日期的函数
+		function formartTime(time){
+			var m = Math.floor(time / 60);
+			var s = Math.floor(time % 60);
+			return (m < 10 ? "0" + m:m) + " : " + (s < 10 ? "0" + s : s);
+		}
+		
+		// 获取音乐列表
+		var children = $(".m_song").children();
+		// 音乐列表的总长度
+		var len = children.length;
+		// 定义音乐列表
+		var musicArr = [];
+		// 定义数组下标
+		var playIndex = -1;
+
+		
+		// 点击播放音乐
+		children.each(function(){
+			musicArr.push($(this).data("link"));
+		}).on("click",function(){
+			$(this).addClass("selected").siblings().removeClass("selected");
+			playIndex = $(this).index();
+			// 通过点击音乐列表中的某一行取到下标，在musicArr数组中对应取到相应的音乐地址，然后赋值
+			audioDom.src = musicArr[playIndex];
+			// 开始播放
+			playMusic(playIndex);
+		});
+
+		// 播放音乐的方法
+		function playMusic(playIndex){
+			// 加载歌词
+			loadLrc();
+			// 播放音乐
+			audioDom.play();
+			// 播放暂停按钮切换
+			$(".p_play").hide();
+			$(".p_stop").show();
+
+			// 设置播放状态图标
+			children.eq(playIndex).find(".l_number span").addClass("n_num").parents(".s_list").siblings().find(".l_number span").removeClass("n_num");
+			// 当前行选中
+			children.eq(playIndex).addClass("selected").siblings().removeClass("selected");
+
+			// 时间的监听
+			timeEvent();
+
+		}
+		
+		// 点击播放按钮
+		$(".p_play").on("click",function(){
+			// 默认播放第一首
+			if(playIndex == -1){
+				playIndex = 0;
+				audioDom.src = musicArr[playIndex];
+			}
+			// 播放
+			playMusic(playIndex);
+		});
+
+		// 播放器暂停
+		$(".p_stop").on("click",function(){
+			stopMusic();
+		});
+
+		// 暂停音乐
+		function stopMusic(){
+			// 暂停
+			audioDom.pause();
+			// 播放按钮切换
+			$(".p_play").show();
+			$(".p_stop").hide();
+			children.removeClass("selected");
+			children.eq(playIndex).find(".l_number span").removeClass("n_num");
+		}
+	
+		// 下一首
+		$(".p_next").on("click",function(){
+			// 边界判断
+			playIndex = (playIndex == (len-1) ? 0 : ++playIndex);
+			// 赋值给播放地址
+			audioDom.src = musicArr[playIndex];
+			// 播放
+			playMusic(playIndex);
+		});
+		
+		// 上一首
+		$(".p_pre").on("click",function(){
+			// 边界判断
+			playIndex = (playIndex <= 0 ? 0 : --playIndex);
+			// 赋值播放地址
+			audioDom.src = musicArr[playIndex];
+			// 播放音乐
+			playMusic(playIndex);
+		});
+	
+	});
+	
+
+</script>
+
+</body>
+</html>

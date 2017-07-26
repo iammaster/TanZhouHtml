@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面编码集(中文编码<gbk,gb2312>,国际编码<utf-8>)-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="keywords" content="关键词,关键词">
+		<meta name="description" content="">
+		<title> 酷炫照片墙展示项目——Jery老师 </title>
+        <style type="text/css">
+			*{padding:0px;margin:0px;}
+			body{overflow:hidden;}
+			html,body{height:100%;}
+			/*wrap start*/
+			#wrap{width:90%;height:90%;position:absolute;top:5%;left:5%;box-shadow:0 0 10em #000;}
+			#wrap ul li{list-style:none;width:125px;height:125px;box-shadow:0 0 1px #000;position:absolute;transition:left 1s,top 1s;}
+			#wrap ul li img{transform:scale(0.95);transition:transform 1s;}
+			#wrap div input{position:fixed;top:50%;display:none;}
+			#left{left:0;}
+			#right{right:0;}
+			/*wrap end*/
+		</style>
+	</head>
+<body onselectstart = "return false;">
+	<!--wrap start-->
+	<div id="wrap">
+		<ul></ul>
+		<div>
+			<input type="button" id="left" value="左按钮"/>
+			<input type="button" id="right" value="右按钮"/>
+		</div>
+	</div>
+	<!--wrap end-->
+	<!--引入js官方类库jQuery-->
+	<script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var $ul = $("#wrap ul");
+			var $wrap = $("#wrap");
+			init();//初始化所有的li元素
+			var $li = $("#wrap ul li");
+			var $img = $("#wrap ul li img");
+			var $btn = $("#wrap div input");
+			var onOff = true;
+			var index = 0;
+			var btnTime = 0;
+			var liTime = 0;
+			//初始化所有的li元素
+			function init(){
+				for(var i=0;i<24;i++){
+					var $li = $("<li><img src='img/"+(i+1)+".jpg'/></li>");
+					$ul.append($li);
+				};
+			}
+			liPosition();//调用li的初始定位方法
+			liRotate();//调用li的初始化度数方法
+			//窗口移动的时候，动态改变li的位置
+			$(window).resize(liPosition);
+			//li的初始定位
+			function liPosition(){
+				var wrapWidth = $wrap.width();
+				var wrapHeight = $wrap.height();
+				var w = (wrapWidth - 125*6)/5;
+				var h = (wrapHeight - 125*4)/3;
+				$li.each(function(i){
+					var iX = i%6;//0 1 2 3 4 5
+					var iY = parseInt(i/6);
+					$(this).css({
+						left:125*iX+w*iX,
+						top:125*iY+h*iY,
+						backgroundPosition:-iX*125+"px "+(-iY*125)+"px"
+					});
+				});
+			};
+			//li的旋转度数
+			function liRotate(){
+				$li.each(function(i){//[-0.5,0.5)-*60--->(-30,30)
+					var r = (Math.random()-0.5)*60;
+					$(this).css("transform","rotate("+r+"deg)");
+				});
+			};
+			//点击li对象的时候
+			$li.click(function(){
+				if(new Date() - liTime >2500){
+					liTime =  new Date();
+					if(onOff){
+					index = $(this).index();
+					$img.css("transform","scale(1)");
+					setTimeout(function(){
+						liClick();
+						$img.fadeOut(1000);//图片淡出
+						$li.css("backgroundImage","url(img/big/"+(index+1)+".jpg)");
+					},1000);
+					//解绑liPosition事件,绑定liClick事件
+					$(window).off("resize").resize(liClick);
+					$btn.show();
+					onOff = false;
+				}else{
+					$img.fadeIn(1000,function(){
+						$li.css("backgroundImage","");
+						$(this).css("transform","scale(0.95)");
+					});
+					//调用liPosition
+					liPosition();
+					//调用liRotate();
+					liRotate();
+					//解绑窗口移动事件，绑定liPosition事件
+					$(window).off("resize").resize(liPosition);
+					$btn.hide();
+					onOff = true;
+					}	
+				}
+			});
+			//点击li的一个方法
+			function liClick(){
+				var wrapWidth = $wrap.width();
+				var wrapHeight = $wrap.height();
+				var l = (wrapWidth-125*6)/2;
+				var t = (wrapHeight - 125*4)/2;
+				$li.each(function(i){
+					var iX = i%6;
+					var iY = parseInt(i/6);
+					$(this).css({
+						left:iX*125+l,
+						top:iY*125+t,
+						transform:"rotate(0deg)"
+					});
+				});
+			};
+			//点击btn按钮
+			$btn.click(function(){
+				if(new Date() - btnTime > 1300){
+					btnTime = new Date();
+					var i = $(this).index();
+					if(i){//右按钮
+						index++;
+						index %= $li.length;
+					}else{
+						index--;
+						if(index<0)index = $li.length-1;
+					}
+					//$li.css("backgroundImage","url(img/big/"+(index+1)+".jpg)");
+					liBackground();	
+				}
+			});
+
+			//li背景随按钮切换
+			function liBackground(){
+				var arr = [];
+				for(var i=0;i<24;i++){ 
+					arr[i] = i;
+				}
+				var timer = setInterval(function(){
+					var r = Math.floor(Math.random()*arr.length);//0-23
+					$li.eq(arr[r]).css("backgroundImage","url(img/big/"+(index+1)+".jpg)");
+					arr.splice(r,1);
+					console.log(arr);
+					if(arr.length==0){
+						clearInterval(timer);
+					}
+				},50);
+			};
+			//屏蔽浏览器右键功能
+			$(document).contextmenu(function(){
+				return false;
+			});
+		});
+	</script>
+</body>
+
+</html>

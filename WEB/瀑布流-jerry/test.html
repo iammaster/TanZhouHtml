@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+ <head>
+ <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+   <title>检查整理学习的内容 CSS样式语法 </title>
+    <meta name="keyword" content="关键字">
+    <meta name="description" content="J201607012,曾少煌">
+ </head>
+ <style>
+  *{margin:0px ;padding:0px;}
+ 
+    body{background:linear-gradient(45deg, #92baac 45px, transparent 45px)64px 64px, linear-gradient(45deg, #92baac 45px, transparent 45px,transparent 91px, #e1ebbd 91px, #e1ebbd 135px, transparent 135px),
+linear-gradient(-45deg, #92baac 23px, transparent 23px, transparent 68px,#92baac 68px,#92baac 113px,transparent 113px,transparent 158px,#92baac 158px);
+        background-color:#e1ebbd;
+        background-size: 128px 128px;
+        -webkit-user-select: none;
+    }
+    #container{width:900px;margin:50px auto;border:1px dotted #666;position:relative;}
+    #container .items{position:absolute;border:2px solid #fff;}
+   #container .items img{display: block}
+    #loader{width:100%;height:50px;background:url("") no-repeat center;position:fixed; bottom: 10px;display:none}
+ #container .items .p1{background:#fff;width:180px;padding:10px;
+     font-size:12px;font-family:"楷体"}
+ </style>
+ <body>
+    <div id="container"></div>
+  <div id="loader"></div>
+  <script type="text/javascript" src="js/jquery-1.12.2.min.js" ></script>
+  <script>
+  //获取容器对象
+		var $container = $("#container");
+		//定义图片的初始宽度
+		var width = 200;
+		//定义一下图片之间的间隙
+		var space = 12;
+		//真实宽度
+		var outerWidth = width+space;
+		//列数
+		var cells = 0;
+		//访问数据url
+		var sURL = "http://www.wookmark.com/api/json/popular?callback=?";
+		//页码
+		var pageNo = 0;
+		//标识
+		var mark = true;
+		//加载图片
+		var $loader = $("#loader");
+
+		getCells();
+		function getCells(){
+			cells = Math.floor($(window).width()/outerWidth);
+			if(cells<2)cells=2;
+			$container.width(cells*outerWidth - space);
+		};
+		//循环列数
+		var arrTop = [];
+		var arrLeft = [];
+		for(var i=0;i<cells;i++){
+			arrTop.push(0);//[height,height5,height6,height4]
+			arrLeft.push(i*outerWidth);//[0,210,420,630]
+		}
+
+		$.getJSON(sURL,{page:pageNo},function(data){
+				$.each(data,function(index,obj){
+					//图片缩小后的真实高度
+					var height = width/obj.width*obj.height;
+					//创建了一个div对象
+					var $div = $("<div></div>");
+					//获取数组中最小值索引
+					var minIndex = getMinIndex(arrTop);
+					$div.addClass("items").animate({
+						top:arrTop[minIndex],
+						left:arrLeft[minIndex]
+					},500).html("<a href='"+obj.image+"' title='"+obj.title+"' target='_blank'><img src='"+obj.preview+"' width='"+width+"' height='"+height+"'/></a><p class='p1'>亲爱滴同学们！</p>");
+					$container.append($div);
+					arrTop[minIndex] += height+space;
+					});
+
+				});
+					//求数组最小值的索引
+		function getMinIndex(arr){
+			//arr = [1,3,4,0,5,8,9];
+			var value = arr[0];
+			var index = 0;
+			for(var i=1;i<arr.length;i++){
+				if(arr[i] < value){
+					value = arr[i];
+					index = i;
+				}
+			}
+			return index;
+		};
+	 
+  </script>
+ </body>
+</html>

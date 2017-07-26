@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>天猫banner图 - Arry老师</title>
+		<meta name="keywords" content="关键词,关键词">
+		<meta name="description" content="">
+		
+		<style type="text/css">
+			*{margin:0;padding:0;}
+
+			/*banner start*/
+			.banner{width:100%;height:500px;}
+			.banner .b_con{width:100%;height:500px;margin:0 auto;position:relative;}
+			.banner .b_con .b_img{position:relative;}
+			.banner .b_con .b_img li{position:absolute;left:0;list-style:none;display:none;width:100%;}
+			.banner .b_con .b_img li .b_list{width:1230px;height:500px;margin:0 auto;}
+			.banner .b_con .b_img li .b_list .b_box{width:1130px;height:500px;margin:0 auto;}
+			.banner .b_con .b_img .b_sel{display:block;background:#4C0004;}
+			.banner .b_con .b_btn{width:100%;position:absolute;bottom:10px;left:0;}
+			.banner .b_con .b_btn .b_ul{width:1230px;margin:0 auto;text-align:center;}
+			.banner .b_con .b_btn .b_ul li{list-style:none;width:18px;height:18px;background:rgba(0,0,0,0.5);margin:0 8px;border-radius:50%;border:2px solid transparent;display:inline-block;cursor: pointer;}
+			.banner .b_con .b_btn .b_ul .b_show{border:2px solid rgba(0,0,0,0.5);background:rgba(255,255,255,0.5);}
+			/*end banner*/
+
+		</style>
+
+	</head>
+<body>
+
+<!--banner start-->
+<div class="banner">
+	<div class="b_con">
+		<ul class="b_img">
+			<li class="b_bg b_sel">
+				<div class="b_list">
+					<div class="b_box">
+						<img src="images/banner-1.jpg_.webp" alt="banner图" width="1130" height="500" />
+					</div>
+				</div>
+			</li>
+			<li class="b_bg">
+				<div class="b_list">
+					<div class="b_box">
+						<img src="images/banner-2.jpg" alt="banner图" width="1130" height="500" />
+					</div>
+				</div>
+			</li>
+			<li class="b_bg">
+				<div class="b_list">
+					<div class="b_box">
+						<img src="images/banner-3.jpg" alt="banner图" width="1130" height="500" />
+					</div>
+				</div>
+			</li>
+			<li class="b_bg">
+				<div class="b_list">
+					<div class="b_box">
+						<img src="images/banner-4.jpg" alt="banner图" width="1130" height="500" />
+					</div>
+				</div>
+			</li>
+			<li class="b_bg">
+				<div class="b_list">
+					<div class="b_box">
+						<img src="images/banner-5.jpg_.webp" alt="banner图" width="1130" height="500" />
+					</div>
+				</div>
+			</li>
+			<li class="b_bg">
+				<div class="b_list">
+					<div class="b_box">
+						<img src="images/banner-6.jpg_.webp" alt="banner图" width="1130" height="500" />
+					</div>
+				</div>
+			</li>
+		</ul>
+		<div class="b_btn">
+			<ul class="b_ul">
+				<li class="b_show" data-color="#4C0004"></li>
+				<li data-color="#E8E8E8"></li>
+				<li data-color="#FFF1D4"></li>
+				<li data-color="#E8E8E8"></li>
+				<li data-color="#3A3C53"></li>
+				<li data-color="#0E3CFE"></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!--end banner-->
+
+<!--引入jQuery官方类库-->
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+	
+	$(function(){
+
+		// 初始默认索引值
+		var index = 0;
+		// 时间
+		var timer = null;
+
+		// 滑动按钮时切换
+		$(".b_ul").find("li").mouseover(function(){
+			// 初始化定时任务
+			clearInterval(timer);
+			// 控制小按钮
+			$(this).addClass("b_show").siblings().removeClass("b_show");
+			// 获取当前元素索引值
+			var _index = $(this).index();
+			// 重新赋值
+			index = _index;
+			// 联动banner图片区域
+			$(".b_img").find("li").eq(_index).fadeIn(300).siblings().hide(); 
+			// 联动背景颜色值同步变化
+			var background = $(this).data("color");
+			$(this).parents(".b_con").find(".b_bg").css("background",background);
+		});
+
+		// 离开按钮时
+		$(".b_ul").find("li").mouseout(function(){
+			autoTimer();
+		});
+		
+		// 自动切换
+		function autoTimer(){
+			timer = setInterval(function(){
+				index++;
+				var length = $(".b_img").find("li").length;
+				if(index >= length){
+					index = 0;
+				}
+				// 切换背景颜色
+				var background = $(".b_ul").find("li").eq(index).data("color");
+				$(".b_img").find(".b_bg").css("background",background);
+				// 联动图片
+				$(".b_img").find("li").eq(index).fadeIn(300).siblings().hide(); 
+				// 联动按钮
+				$(".b_ul").find("li").eq(index).addClass("b_show").siblings().removeClass("b_show");
+
+			},2000);
+		}
+
+		// 页面加载时，自动切换
+		autoTimer();
+
+	});
+
+</script>
+
+
+</body>
+</html>

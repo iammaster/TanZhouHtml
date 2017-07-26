@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>潭州人自己的计算器 - Arry老师</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="">
+
+		<style type="text/css">
+			*{margin:0;padding:0;}
+			body{font-size:12px;font-family:"微软雅黑";color:#666;}
+
+			/*cac start*/
+			#cac{width:830px;height:500px;background:#f2f2f2;margin:0 auto;padding:10px;}
+			#cac .c_show .s_text{width:810px;height:42px;border:none;outline:none;line-height:42px;text-align:right;padding-right:20px;font-size:34px;color:#9E9E9E;font-family:"微软雅黑";}
+			#cac h2{font-size:16px;color:#000;font-weight:500;padding:12px 0 12px 20px;cursor:move;}
+			#cac .c_key ul{border:1px solid #fff;overflow:auto;margin:10px auto;}
+			#cac .c_key ul li{float:left;width:140px;height:65px;background:#eaeaea;margin:11px;text-align:center;line-height:65px;font-size:32px; cursor: pointer;list-style:none;border:1px solid #fff;}
+			#cac .c_key ul li:hover{background:#fff;color:#000;}
+			#cac .c_key ul .c_tool{background:#738FD8;color:#fff;}
+			#cac .c_key ul .c_result{background:#F90;color:#fff;}
+			#cac .c_desc{line-height:36px;}
+			/*end cac*/
+
+		</style>
+
+	</head>
+<body>
+
+	<!--cac start-->
+	<div id="cac">
+		<h2>潭州人自己的计算器</h2>
+		<div class="c_show">
+			<input type="text" class="s_text" onfocus="this.blur();" value="0" id="result"/>
+		</div>
+		<div class="c_key">
+			<ul>
+				<li onclick="command(7);">7</li>
+				<li onclick="command(8);">8</li>
+				<li onclick="command(9);">9</li>
+				<li class="c_tool" onclick="del('j');">←</li>
+				<li class="c_tool" onclick="clearzero('j');">C</li>
+				<li onclick="command(4);">4</li>
+				<li onclick="command(5);">5</li>
+				<li onclick="command(6);">6</li>
+				<li class="c_tool" onclick="tools('*','g');">×</li>
+				<li class="c_tool" onclick="tools('/','g');">÷</li>
+				<li onclick="command(1);">1</li>
+				<li onclick="command(2);">2</li>
+				<li onclick="command(3);">3</li>
+				<li class="c_tool" onclick="tools('+','g');">+</li>
+				<li class="c_tool" onclick="tools('-','g');">-</li>
+				<li onclick="command(0);">0</li>
+				<li onclick="command(0);">00</li>
+				<li onclick="dot('g');">.</li>
+				<li class="c_tool" onclick="tools('%','g');">%</li>
+				<li class="c_result" onclick="equal('j')">=</li>
+			</ul>
+		</div>
+		<div class="c_desc">潭州学院计算器 ！版权所有CopyRight &copy; 2007-2015 潭州软件学院创始人 Arry老师 .</div>
+	</div>
+	<!--end cac-->
+
+	<div id="audioBox"></div>
+
+
+<script type="text/javascript">
+	
+	// 获取id = "result" 文本框对象
+	var resultDom = document.getElementById("result");
+	// 操作符锁
+	var operate = true;
+	// 锁
+	var xop = true;
+
+	// 点击计算器键盘执行的操作
+	function command(num){
+		var str = resultDom.value;
+		// 如果是0 , 就用""填充
+		str = (str == "0" ? "":str);
+		// 拼接点击数字
+		str += num;
+		// 赋值给文本框
+		resultDom.value = str;
+		
+		operate = true;
+
+		// 点击键盘时候的声音
+		paly(num);
+	}
+
+	// 播放声音
+	function paly(num){
+		var playDom = document.getElementById("audioBox");
+		playDom.innerHTML = "<embed src='wav/"+num+".wav' width='0' height='0'></embed>";
+	}
+
+	// 操作符
+	function tools(p,m){
+		if(operate){
+			var num = resultDom.value;
+			num = (num == "0" ? "":num);
+			// 拼接操作符
+			resultDom.value = num + p;
+			operate = false;
+			xop = true;
+		}
+		// 点击键盘时候的声音
+		paly(m);
+	}
+
+	// 计算等于
+	function equal(m){
+		paly(m);
+		var result = resultDom.value;
+		var r = eval(result);
+		resultDom.value = r;
+	}
+	
+	// 清空
+	function clearzero(m){
+		resultDom.value = 0;
+		paly(m);
+		xop = true;
+		operate = true;
+	}
+
+	// 点击小数点
+	function dot(m){
+		if(xop){
+			var num = resultDom.value;
+			num = num + "."; // num += ".";
+			resultDom.value = num;
+			xop = false;
+		}
+		// 播放按键声音
+		paly(m);
+	}
+
+	// 退格键
+	function del(m){
+		// 获取文本框的内容
+		var str = resultDom.value;
+		// 截取最后一个数字
+		str = str.substring(0,str.length - 1);
+		str = (str == "" ? 0 : str);
+		
+		// 重新赋值
+		resultDom.value = str;
+		// 
+		paly(m);
+
+	}
+
+
+</script>
+
+</body>
+</html>

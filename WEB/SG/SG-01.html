@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面的编码集：charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!--当前页面的三要素-->
+		<title>html模板</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="">
+
+		<!--css,js-->
+		<style type="text/css">
+			*{margin:0;padding:0;}
+		</style>
+
+	<!--引入sg的官方CSS文件-->
+	<link rel="stylesheet" href="css/sg.css">
+	
+	</head>
+<body>
+
+<input type="button" class="tmui-modal-black tmdialog3" tip="请输入内容" value="sure框">
+<input type="button" class="tmui-modal-black tmdialog3" tip="是模仿了浏览器自身提供的alert,confirm,prompt等开发的一个组件。也扩展了互联网上的常用的弹出形式，如Sure框，Message框，IFrame框等，也集成了很多酷炫的打开和关闭的动画效果." data-width="640" height="360" value="运行正确框">
+
+
+<!--第一步：引入jQuery的官方类库-->
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<!--第二步：导入自定义sgutil库-->
+<script type="text/javascript" src="js/sgutil.js"></script>
+<!--第三步：导入自定义sg库-->
+<script type="text/javascript" src="js/sg.js"></script>
+<!--调用接口方法-->
+<script type="text/javascript">
+	$(".tmdialog3").on("click",function(){
+		var width = $(this).data("width");
+		var height = $(this).data("height");
+		var content = $(this).attr("tip");
+		$.tmDialog.sure({width:width,height:height,title:"标题",content:content});
+	});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面编码集(中文编码<gbk,gb2312>,国际编码<utf-8>)-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="keywords" content="关键词,关键词">
+		<meta name="description" content="">
+		<title> html </title>
+        <style type="text/css">
+			*{padding:0px;margin:0px;}
+		</style>
+	</head>
+<body>
+	<button id="mybutton">点我</button>
+	<script>
+		/*
+			适配器模式
+			将一个类（对象）的接口转话成另外一个接口，以满足用户的需求。使得类（对象）之间的不兼容问题得以解决
+		*/
+
+		//适配异类框架  如适配A类框架   用jQuery
+		var A = A||{};
+		//通过id获取元素对象
+		A.g = function(id){
+			return document.getElementById(id);
+		};
+		//为元素绑定事件 DOM2级
+		A.on = function(id,type,fn){
+			//若传递参数id是字符串，否则以元素对象处理
+			var dom = typeof id === "string"?this.g(id):id;
+			if(dom.addEventListener){
+				//chrome FireFox opera safari ie9+
+				dom.addEventListener(type,fn,false);
+			}else if(dom.attachEvent){
+				//ie8及其以下版本
+				dom.attachEvent("on"+type,fn);
+			}else{
+				//早期浏览器
+				dom['on'+type] = fn;
+			}
+		};
+
+		/*窗口加载完毕事件
+		A.on(window,'load',function(){
+			A.on("mybutton",'click',function(){
+				alert(1);
+			});
+		});*/
+
+		/*
+		A.g = function(id){
+			return $("#"+id).get(0);
+		};
+		A.on = function(id,type,fn){
+			var dom = typeof id === "string"?$("#"+id):$(id);
+			dom.on(type,fn);//调用jQuery的on方法
+		}
+		*/
+
+
+		//参数适配器
+	//	function doSomeThing(name,title,age,color,size,prize){};
+		/*
+			obj.name:name
+			obj.title:tile
+			obj.age:age
+			obj.color:color
+			obj.size:size
+			obj.prize:prize
+		
+
+		function doSomeThing(obj){
+			var _adapter = {
+				name:"MA",
+				title:"设计模式",
+				age:24,
+				color:'pink',
+				size:100,
+				prize:50
+			};
+			
+			for(var i in _adapter){
+				_adapter[i] = obj[i] || _adapter[i];
+			}
+			//extend();
+		};
+		*/
+
+		
+		
+		//数据适配
+		var arr = ['Javascript','book','前端编程语言','2016'];
+		var obj = {
+			name:'',
+			type:'',
+			title:'',
+			time:''
+		};
+		function arrToObjAdapter(arr){
+			var json = {
+				name:arr[0],
+				type:arr[1],
+				title:arr[2],
+				time:arr[3]
+			};
+			return json;
+		};
+
+		var json1 = arrToObjAdapter(arr);
+		//console.log(JSON.stringify(json1));
+
+
+
+
+		//服务器端的数据适配
+		function ajaxAdapter(data){
+			return [data['key1'],data['key2'],data['key3']];
+		};
+		$.ajax({
+			url:"data.jsp",
+			success:function(data){
+				ajaxAdapter(data);
+			}
+		});
+	</script>
+</body>
+
+</html>

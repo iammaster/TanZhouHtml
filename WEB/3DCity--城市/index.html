@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+    <head>
+		<!--声明当前页面的编码集:charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+		<meta charset="UTF-8">
+		<meta name="Keywords" content="关键词,关键字">
+		<meta name="Description" content="">
+		<title>HTML模版</title>
+
+		<!--css,js-->	
+		<style type="text/css">
+			*{margin:0;padding:0;}
+			html,body{width:100%;height:100%;perspective:700px;background:url("images/1.jpg");background-size:100% 100%;}
+			div,b{position:absolute;transform-style:preserve-3d;}
+
+			#city3D{background:#40bcc6;border:10px solid #6aa7c4;position:absolute;top:0;left:0;right:0;bottom:0;margin:auto;animation:play 10s linear infinite;}
+
+			#city3D b{height:100%;background-color:rgba(176,208,223,0.9);transform:rotateX(90deg);transform-origin:0 0;}
+
+			#city3D b > b{background-color:rgba(128,174,197,0.9);transform:rotateY(90deg);transform-origin:0 0;}
+
+			#city3D b > b > b{background-color:rgba(176,208,223,0.9);transform:rotateY(90deg);transform-origin:100% 0;right:0;}
+
+			#city3D b > b > b > b{background-color:rgba(128,174,197,0.9);transform:rotateY(90deg);transform-origin:0 0;left:0;}
+
+			#city3D b > b > b > b > b{background-color:rgba(176,208,223,0.9);transform:rotateX(-90deg);bottom:1px;transform-origin:0 100%;}
+		
+			#city3D div.a b{background-image:url("images/1.png");}
+			#city3D div.b b{background-image:url("images/2.png");}
+			#city3D div.c b{background-image:url("images/3.png");}
+			#city3D div.e b{background-image:url("images/4.png");}
+			#city3D div.d b{background-image:url("images/5.png");}
+
+			@keyframes play{
+				from{transform:rotateX(60deg) rotateZ(-180deg);}
+				to{transform:rotateX(60deg) rotateZ(180deg);}
+			}
+		</style>
+	</head>
+
+<body>
+	
+	<script type="text/javascript">
+		
+		function Cidty3D(base){
+			this.base = base;//横向和纵向要建立的基数
+			this.max = 50;
+		}
+
+		//生成地皮的方法 并且添加到父级容器
+		Cidty3D.prototype.buildArea = function(parent){
+			this.city = document.createElement("div");
+			this.city.id = "city3D";
+			var b = this.base*this.max;
+			this.city.style.width = this.city.style.height = b+"px";
+			parent.appendChild(this.city);
+		}
+
+		//生成楼的随机高度 20 ~ 150
+		Cidty3D.prototype.genHeight = function(){
+			return (Math.random()*1000<<2)%130 +20;
+		}
+
+		//生成楼的随机高度 20 ~ 40
+		Cidty3D.prototype.genSize = function(){
+			return (Math.random()*1000<<2)%20 +20;
+		}
+
+		//楼皮随机
+			Cidty3D.prototype.STYLES = ['a','b','c','d','e'];
+			Cidty3D.prototype.genStyle = function(){
+				return this.STYLES[(Math.random()*100<<2)%5];
+			}
+
+		//生成楼的方法 并且添加到地皮
+		Cidty3D.prototype.buildEstate = function(top,left){
+			var estate = document.createElement("div");
+			estate.className = this.genStyle();
+			estate.style.height = this.genHeight() + "px";
+
+			var l = this.genSize();
+			var w = this.genSize();
+			estate.style.top = top + "px";
+			estate.style.left = left + "px";
+			this.city.appendChild(estate);
+			
+
+			var b1 = document.createElement("b");
+			b1.style.width = l + "px";
+			estate.appendChild(b1);
+			var b2 = document.createElement("b");
+			b2.style.width = w + "px";
+			b1.appendChild(b2);
+			var b3 = document.createElement("b");
+			b3.style.width = l + "px";
+			b2.appendChild(b3);
+			var b4 = document.createElement("b");
+			b4.style.width = w + "px";
+			b3.appendChild(b4);
+			var b5 = document.createElement("b");
+			b5.style.width = w + "px";
+			b5.style.height = l + "px";
+			b4.appendChild(b5);
+		}
+
+		//生成3d城市
+		Cidty3D.prototype.build = function(parent){
+			this.buildArea(parent);//创建地皮
+
+			for (var i= 0;i<this.base ;i++ )
+			{
+				for (var j = 0;j<this.base ;j++ )
+				{
+				this.buildEstate(i*this.max,j*this.max);
+				}
+			}
+			
+		}
+
+		new Cidty3D(8).build(document.body);
+		
+	</script>
+</body>
+</html>

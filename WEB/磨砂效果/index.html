@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+    <head>
+		<!--声明当前页面的编码集:charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+		<meta charset="UTF-8">
+		<meta name="Keywords" content="关键词,关键字">
+		<meta name="Description" content="">
+		<title>HTML模版</title>
+		<style type="text/css">
+			*{margin:0;padding:0;}
+			
+			#blur-div{width:600px;height:300px;margin:100px auto 0;position:relative;}
+			#blur-image{
+				/*-webkit-filter:blur(20px);//模糊度
+					-webkit-filter:grayscale(1);//灰度
+					-webkit-filter:sepia(0);
+					-webkit-filter:saturate(5);饱和度
+					-webkit-filter:hue-rotate(60deg);
+				*/
+				-webkit-filter:blur(20px);
+				position:absolute;top:0;left:0;
+			}
+			#canvas{position:absolute;top:0;left:0;z-index:0;}
+
+			.btn{display:block;width:100px;height:30px;position:absolute;text-align:center;line-height:30px;text-decoration:none;z-index:1;bottom:30px;border-radius:4px;color:#fff;}
+			#left{left:80px;background:#22998d;}
+			#right{right:80px;background:#097cbb;}
+
+
+		</style>
+	</head>
+
+<body>
+	
+	<div id="blur-div">
+		<img src="images/1.jpg" width="600" height="300" id="blur-image"/>
+		<canvas id="canvas"></canvas>
+		<a href="javascript:void(0)" class="btn" id="left" onclick="reset()">RESET</a>
+		<a href="javascript:void(0)" class="btn" id="right" onclick=" show();">SHOW</a>
+	</div>
+
+	<script>
+		
+		var canvaswidth = 600;
+		var canvasheight = 300;
+
+		//拿到画布
+		var canvas = document.getElementById("canvas");
+		//拿到权限
+		var context = canvas.getContext("2d");
+
+		canvas.width = canvaswidth;
+		canvas.height = canvasheight;
+		
+		var image = new Image();
+		var radius = 50;
+		var ClippingRegion = {x:5,y:-2,r:radius}
+		image.src="images/1.jpg";
+		
+		image.onload = function(){
+			initCanvas();
+		}
+
+		//绘图方法
+		function initCanvas(){
+			ClippingRegion = {x:Math.random()*(canvas.width-2*radius)+radius,y:Math.random()*(canvas.height-2*radius)+radius,r:radius}
+			draw(image,ClippingRegion);
+		}
+		
+		//定义剪辑的方法
+		function setClippingRegion(ClippingRegion){
+			//开始路径
+			context.beginPath();//开始路径
+			context.arc(ClippingRegion.x,ClippingRegion.y,ClippingRegion.r,0,Math.PI*2);
+			context.clip();
+		}
+
+
+		function draw(image,ClippingRegion){
+			//每次绘制之前要清空下画布   context.clearRect(x,y,x1,y1);
+			context.clearRect(0,0,canvas.width,canvas.height);
+			//画图
+			context.save();//绘制之前保存canvas当前的状态
+			setClippingRegion(ClippingRegion);
+			context.drawImage(image,0,0,600,300);
+			context.restore();//恢复状态
+		}
+		
+
+		//定义一个show的方法
+		function show(){
+			
+			var theAnimation = setInterval(function(){
+				ClippingRegion.r += 20;
+				draw(image,ClippingRegion);
+				if(ClippingRegion.r>2*Math.max(canvas.width,canvas.height)){
+					clearInterval(theAnimation);
+				}
+				console.log(ClippingRegion.r);
+			},10);
+		}
+		//恢复
+		function reset(){
+			initCanvas();
+		}
+
+	</script>
+
+</body>
+</html>

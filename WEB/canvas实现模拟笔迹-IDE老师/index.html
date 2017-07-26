@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="Keywords" content="">
+<meta name="Description" content="">
+<title>Document</title>
+<style type="text/css">
+	* {
+		margin: 0;
+		padding: 0;
+	}
+	body {
+		font-size: 12px;
+		font-family: "微软雅黑";
+	
+	}
+	#box {
+		width: 600px;
+		margin: 20px auto;
+	}
+	#canvas {
+		border: 3px solid #ddd;
+		border-radius: 10px;
+	
+	}
+	/*
+		canvas  html5 当中的一个标签  3d  2d  html5 游戏开发
+		必须要会js
+		加在样式的时候默认300 *150 
+	*/
+</style>
+</head>
+<body>
+	<div id="box">
+		<!-- 理解canvas  api -->
+		<canvas id="canvas" width="600" height="500"></canvas>
+	</div>
+	<script type="text/javascript">
+		// 1  获取canvas 对象
+		var  canvas = document.getElementById("canvas");
+		// 2  获取上下文  绘画环境
+		var  ctx = canvas.getContext("2d");
+		// 3 开始绘画
+		ctx.beginPath();
+		// 4 定义api方法
+			//起点 x  y
+		ctx.moveTo(0,100);
+			//终点
+		ctx.lineTo(600,100);
+		// 5 喷墨
+		ctx.stroke();
+	</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content=" ">
+    <title>Document</title>
+    <style type="text/css">
+        *{margin: 0;padding: 0;-webkit-user-select:none}
+        a{text-decoration: none;}
+        ul,li{list-style: none;}
+        body{font-size: 14px;font-family: "微软雅黑";}
+        .box{width: 300px;height: 200px;font-size: 30px;font-weight: 700;text-align: center;line-height: 200px;margin: 20px auto}
+    </style>
+</head>
+<body>
+    <div class="box">点击屏幕</div>
+    <script src="jquery-1.8.0.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            //第一步 获取鼠标的位置
+            //火狐body 看内容
+            $('html,body').on('click',function(e){
+                var x = e.pageX || e.clientX;
+                var y = e.pageY || e.clientY;
+                //给一个随机数字
+                var num = parseInt(Math.random()*10);
+                //创建strong标签
+                var $strong = $("<strong>点赞</strong>");
+                $strong.css({position:'absolute',top:y,left:x,color:color()});
+                //给定位置
+                $(this).append($strong);
+                e.stopPropagation();
+                //文字上升
+                var ctop = y-100;
+                if(ctop<=0)ctop=0;
+                $strong.animate({top:ctop,fontSize:40,opacity:0},800,function(){
+                    //执行过后清除
+                    $(this).remove();
+                })
+            })
+        })
+
+        function color(){
+            var r = Math.floor(Math.random()*256);
+            var g = Math.floor(Math.random()*256);
+            var b = Math.floor(Math.random()*256);
+            return "rgb("+r+","+g+","+b+")";
+        }
+    </script>
+</body>
+</html>

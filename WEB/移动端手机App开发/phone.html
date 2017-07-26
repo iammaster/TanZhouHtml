@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面的编码集：charset=gbk,gb2312(中文编码)，utf-8(国际编码)-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<!--声明当前页面的三要素-->
+		<title>移动手机版 - Arry老师</title>
+		<meta name="keywords" content="关键词,关键词">
+		<meta name="description" content="">
+
+		<!--js/css-->
+		<style type="text/css">
+			*{margin:0;padding:0;}
+			body{background:url("images/bg.jpg") no-repeat;background-size:cover;font-size:12px;font-family:"微软雅黑";color:#666;}
+
+			/*phone start*/
+			.phone{width:322px;height:641px;margin:30px auto;position:relative;}
+			.phone .p_top{height:42px;background:url("images/phone_top.png");}
+			.phone .p_info{height:20px;background:url("images/top.jpg");}
+			.phone .p_title{height:40px;background:#000;text-align:center;line-height:40px;font-size:18px;border-left:1px solid #fff;border-right:1px solid #fff;}
+			.phone .p_con{height:486px;background:url("images/arry.jpg");background-size:cover;border-left:1px solid #fff;border-right:1px solid #fff;}
+			.phone .p_bottom{height:47px;background:url("images/phone_bottom.png");}
+			.phone .p_btn{width:40px;height:40px;display:block;background:url("images/normalmusic.svg");position:absolute;top:130px;right:35px;background-size:cover;}
+			/*end phone*/
+
+			/*定义图片的旋转动画 关键帧*/
+			@-webkit-keyframes arry{
+				from{
+					-webkit-transform:rotate(0deg);
+				} to {
+					-webkit-transform:rotate(360deg);
+				}
+			}
+
+			/*调用关键帧*/
+			.rotate{
+				-webkit-animation: arry 1.2s linear infinite;
+			}
+
+			@media screen and (max-width:580px){
+				.phone .p_top,.phone .p_info,.phone .p_bottom{display:none;}
+				.phone{margin:0;width:100%;height:680px;}
+			}
+
+
+		</style>
+
+	</head>
+<body>
+	
+	<!--phone start-->
+	<div class="phone">
+		<div class="p_top"></div>
+		<div class="p_info"></div>
+		<div class="p_title">Arry老师是全宇宙最帅的男神 ！</div>
+		<div class="p_con"></div>
+		<div class="p_bottom"></div>
+		<a href="#" class="p_btn"></a>
+	</div>
+	<!--end phone-->
+
+<!--引入jQuery官方类库-->
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+
+	$(function(){
+		
+		// 创建一个mp3的播放器
+		var audioDom = document.createElement("audio");
+		// 设置播放器的地址
+		audioDom.src = "mp3/1.mp3";
+		// 自动播放
+		// audioDom.autoplay = "autoplay";
+
+		// 点击播放按钮 播放音乐
+		$(".p_btn").click(function(){
+			if(audioDom.paused){
+				audioDom.play();
+			} else {
+				audioDom.pause();
+			}
+			$(this).toggleClass("rotate");
+		});
+
+	});
+
+</script>
+
+</body>
+</html>

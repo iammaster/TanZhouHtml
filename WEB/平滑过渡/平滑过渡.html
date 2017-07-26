@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+<title>CSS3实现页面的平滑过渡</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE-edge,chrome=1"><!--该代码为了防止一些浏览器版本过低而设置的，它的效果是让旧版本的浏览器引用最新的渲染模式去运行本文件-->
+<meta name="viewport" content="width=device-width,initial-scale=1"> <!--device-width后面的值是本网页自适应设备的不同宽度，initial-scale则是不允许用户进行缩放-->
+<link type="text/css" rel="stylesheet" href="css/normalize.css">
+<link type="text/css" rel="stylesheet" href="css/pinghuacss.css">
+</head>
+<body>
+	<div class="container">
+    	<div class="st-container">
+        <!--导航栏开始-->
+        	<input type="radio" name="radio-set" checked="checked" id="st-control-1"><a href="#st-panel-1">Local music</a>
+            <input type="radio" name="radio-set" id="st-control-2"><a href="#st-panel-2">Download manager</a>
+            <input type="radio" name="radio-set" id="st-control-3"><a href="#st-panel-3">music network location</a>
+            <input type="radio" name="radio-set" id="st-control-4"><a href="#st-panel-4">My singer</a>
+            <input type="radio" name="radio-set" id="st-control-5"><a href="#st-panel-5">My radio</a>
+         <!--导航始结束,内容开始-->
+         	<div class="st-scroll">
+            	<section class="st-panel" id="st-panel-1">
+                	<div class="st-desc" data-icon="L"></div>
+                    <h2>Local music
+</h2>
+                    <p>When your friend speaks his mind you fear not the "nay" in your own mind, nor do you withhold the "ay." </p>              
+                </section>
+            	 <section class="st-panel st-color" id="st-panel-2">
+                	<div class="st-desc" data-icon="D"></div>
+                    <h2>Download manager</h2>
+                    <p>For without words, in friendship, all thoughts, all desires, all expectations are born and shared, with joy that is unacclaimed. </p>                   
+                </section>
+              	<section class="st-panel" id="st-panel-3">
+                	<div class="st-desc" data-icon="M"></div>
+                    <h2>music network location</h2>
+                    <p>For love that seeks aught but the disclosure of its own mystery is not love but a net cast forth: and only the unprofitable is caught. </p>
+                </section>
+                <section class="st-panel st-color" id="st-panel-4">
+                	<div class="st-desc" data-icon="S"></div>
+                    <h2>My singer</h2>
+                    <p>And in the sweetness of friendship let there be laughter, and sharing of pleasures. For in the dew of little things the heart finds its morning and is refreshed. </p>                   
+                </section>
+                <section class="st-panel" id="st-panel-5">
+                	<div class="st-desc" data-icon="R"></div>
+                    <h2>My radio</h2>
+                    <p>And he is your board and your fireside. For you come to him with your hunger, and you seek him for peace. </p>                    
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

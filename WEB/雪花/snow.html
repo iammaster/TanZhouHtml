@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+    <head>
+		<!--声明当前页面的编码集:charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+		<meta charset="UTF-8">
+		<meta name="Keywords" content="关键词,关键字">
+		<meta name="Description" content="">
+		<title>HTML模版</title>
+		<style type="text/css">
+			*{margin:0;padding:0;}
+			body{overflow:hidden;background:url("1.jpg");background-size:cover;}
+		
+		</style>
+	</head>
+
+<body>
+	
+	<!--
+		canvas 画布  html5  canvas  
+	-->
+	<canvas id="canvas"></canvas>
+
+	
+	<script>
+		
+		//拿到画板
+		var canvas = document.getElementById("canvas");
+		//拿到权限
+		var ctx =canvas.getContext("2d");
+		//可视区域
+		var s = window.screen;
+		var w = s.width;
+		var h = s.height;
+		
+		//设置画布大小
+		canvas.width = w;
+		canvas.height= h;
+		
+		//创建一个数组存放所有的雪花
+		var snow = [];
+		var mp = 200;//定义雪花个数
+		
+		for(var i=0;i<mp;i++){
+			snow.push({
+				x:Math.random()*w,//随机x坐标
+				y:Math.random()*h,//随机Y
+				r:Math.random()+1//随机半径
+			});
+		}
+
+		//绘画雪花
+		function draw(){
+			ctx.shadowColor ="yellow";
+			ctx.shadowBlur = 10;
+
+			ctx.clearRect(0,0,w,h);
+			ctx.fillStyle="#fff";
+			ctx.strokeStyle="#fff";
+			ctx.beginPath();
+			for(var i=0;i<mp;i++){
+				var p = snow[i];
+				ctx.moveTo(p.x,p.y);
+				ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+			}
+
+			ctx.stroke();
+			ctx.fill();
+			updates();
+		}
+		
+
+		function updates(){
+			for(var i=0;i<mp;i++){
+				var p = snow[i];
+				p.y+=Math.random()*5;
+				if(p.y>h){
+					p.y = 0;
+				}
+			}
+		}
+		setInterval(draw,15);
+		
+
+		
+		//画一个圆ctx.arc(x,y,r,开始,结束);
+		/*ctx.arc(300,300,50,0,Math.PI*2);
+		ctx.strokeStyle="red";
+		ctx.fillStyle="yellow";
+		ctx.fill();
+		ctx.stroke();*/
+		
+	
+	
+	</script>
+	
+
+
+</body>
+</html>

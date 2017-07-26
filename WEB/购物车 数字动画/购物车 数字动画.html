@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content=" ">
+    <title>Document</title>
+    <style type="text/css">
+        *{margin: 0;padding: 0;-webkit-user-select:none}
+        a{text-decoration: none;}
+        ul,li{list-style: none;}
+        body{font-size: 14px;font-family: "微软雅黑";}
+        .box{width: 300px;height: 30px;border: 2px solid #656565;text-align: center;margin: 20px auto;position: relative;overflow: hidden;}
+        .txt{width: 60px;height: 25px;text-align: center;}
+        .minus,.add{width: 50px;height: 30px;text-align: center;background: #AC26EC;display: inline-block;font-size: 16px;line-height: 30px;cursor: pointer;}
+        .num_pr{width: 64px; height: 30px;display: inline-block; position: absolute; left: 123px; top: 50px;text-align: center;line-height: 30px;font-weight: 600}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <span class='minus'>-</span>
+        <input type="text" value="1" class="txt" />
+        <span class="add">+</span>
+        <span class="num_pr"></span>
+    </div>
+    <div class="box">
+        <span class='minus'>-</span>
+        <input type="text" value="1" class="txt" />
+        <span class="add">+</span>
+        <span class="num_pr"></span>
+    </div>
+    <div class="box">
+        <span class='minus'>-</span>
+        <input type="text" value="1" class="txt" />
+        <span class="add">+</span>
+        <span class="num_pr"></span>
+    </div>
+    <div class="box">
+        <span class='minus'>-</span>
+        <input type="text" value="1" class="txt" />
+        <span class="add">+</span>
+        <span class="num_pr"></span>
+    </div>
+    <script src="jquery-1.8.0.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            //加
+            $('.box').find('.add').on('click',function(){
+                //input输入框
+                var $input = $(this).prev();
+                var val = $input.val() * 1;
+                val++;
+                //滚动效果
+                $(this).next().stop(true,true).text(val).animate({top:-30},700,function(){
+                    $(this).css("top","50px");
+                    $input.val(val);
+                });
+            });
+            //减
+            $('.box').find('.minus').on('click',function(){
+                //input输入框
+                var $input = $(this).next();
+                var val = $input.val() * 1;
+                val--;
+                console.log(val);
+                //滚动效果
+                $(this).nextAll().eq(2).stop(true,true).text(val).animate({top:-30},700,function(){
+                    $(this).css("top","50px");
+                    $input.val(val);
+                });
+            })
+        })
+    </script>
+</body>
+</html>

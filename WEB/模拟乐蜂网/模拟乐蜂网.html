@@ -1,0 +1,1064 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/http;charset=utf-8">
+		<title>模拟乐峰网</title>
+		<meta name="keywords" content="关键字，关键字">
+		<meta name="description" content="">
+		<style>
+			body{height:1600px;font-size:12px;font-family:"微软雅黑";color:#666;background:#f5f5f5;}
+			*{margin:0;padding:0;}
+			*img{border:none;}
+			a{ text-decoration:none;color:#666;outline: none;star:expression(this.onFocus=this.blur());display:block;}
+			span{display:block;}
+			li{list-style:none;}
+			.top{width:100%;height:67px;display:block;background:url(images/top.jpg) repeat center;}
+			.head{height:30px;background:#f2f2f2;line-height:31px;position:relative;z-index:20;}
+			.head .h_box{width:1000px;height:30px;margin:0 auto;background:#f2f2f2;position:relative;}
+			.head .h_box .h_left{width:115px;text-indent:15px;float:left;position:relative;}
+			.head .h_box .h_left span{display:block;float:left;}
+			.head .h_box .h_left .a1{text-decoration:none;color:red;display:block;float:left;font-weight:bold;font-family:"宋体";}
+
+			.head .h_box .h_right{float:right;}
+			.head .h_box .h_right span{float:left;margin-right:15px;}
+			.head .h_box .h_right a{float:left;margin-right:15px;color:red;}
+			.head .h_box .h_right .r_seven{color:red;margin-right:0;}
+			.head .h_box .h_right .r_six{color:#666;}
+			.head .h_box .h_right .r_five{}
+			.head .h_box .h_right .r_four{width:80px;float:left;margin-right:10px;position:relative;z-index:10;}
+			.head .h_box .h_right .r_four:hover{color:red;}
+			.head .h_box .h_right .r_four span{margin-left:9px;}
+			
+			.head .h_box .address{width:315px;height:185px;background:#fff;border:1px solid #bcbcbc;position:absolute;top:32px;left:0;display:none;z-index:5;}
+			.head .h_box .address ul{width:311px;height:185px;overflow: hidden;margin-top:0px;padding:15px 0 10px;}
+			.head .h_box .address ul li{float:left;width:62px;text-indent:18px;line-height:30px;font-size:14px;}
+			.head .h_box .address ul li a:hover{color:red;}
+			
+			.head .h_box .order{width:80px;height:65px;background:#fff;border:1px solid #bcbcbc;position:absolute;top:32px;left:73.4%;display:none;}
+			.head .h_box .order ul{padding:3px 0 0 10px;}
+			.head .h_box .order ul li{cursor:pointer;}
+			.head .h_box .order ul li:hover{color:red;}
+			
+			.head .h_box .q_nevigation{width:140px;height:220px;border:1px solid #bcbcbc;background:#fff;position:absolute;top:32px;left:82.4%;display:none;}
+			.head .h_box .q_nevigation ul{width:140px;height:55px;}
+			.head .h_box .q_nevigation ul li{float:left;text-indent:13px;cursor:pointer;}
+			.head .h_box .q_nevigation ul li:hover{color:red;}
+			.head .h_box .q_nevigation img{display:block;margin-left:13px;}
+			.head .h_box .q_nevigation span{color:red;font-size:14px;margin:6px 0 0 36px;}
+			.head .h_box .app{width:140px;height:150px;border:1px solid #bcbcbc;background:#fff;position:absolute;top:32px;left:85.8%;display:none;}
+			.head .h_box .app img{display:block;margin:10px 0 0 15px;}
+			.head .h_box .app span{margin-left:52px;}
+			
+			.sercharea{width:100%;height:130px;background:#fff}
+			.sercharea .serch{height:130px;width:1000px;margin:0 auto;position:relative;background:#fff;z-index:3;}
+			.sercharea .serch .logo{width:180px;height:130px;background:url("images/lf.png") no-repeat -222px -188px;position: absolute;float:left;}
+			.sercharea .serch .s_text{width:450px;height:130px;position:absolute;top:0;left:270px;float:left;} 
+			.sercharea .serch .s_text .s_input{margin:35px 0 0 26px;width:400px;height:45px;background:url("images/lf.png") no-repeat 0 -438px;}
+			.sercharea .serch .s_text .s_input1{width:300px;height:40px;line-height:40px;font-size:14px;outline:none;padding-left:14px;overflow:hidden;position:absolute;top:39px;left:28px;}
+			.sercharea .serch .s_text a{position:absolute;top:47px;left:370px;color:#fff;font-size:16px;}
+			.sercharea .serch .s_text .hot_goods{height:35px;position:absolute;top:80px;left:30px;}
+			.sercharea .serch .s_text .hot_goods span{line-height:35px;float:left;}
+			
+			
+			.sercharea .serch .shopping{width:140px;height:42px;position:absolute;top:40px;left:856px;background:url("images/lf.png") no-repeat 4px -112px;}
+			.sercharea .serch .shopping span{margin:10px 0 0 112px;color:#fff;font-size:14px;}
+			.sercharea .serch .s_note{width:298px;height:95px;border:1px solid #dedede;border-top:none;background:#fff;position:absolute;top:81px;left:696px;display:none;}
+			.sercharea .serch .s_note span{text-align:center;}
+			.sercharea .serch .s_note .s_span{margin-top:30px;}
+			
+			.header{width:100%;height:45px;background:#f62648;position:absolute;z-index:2;}
+			.header .b_box{width:1000px;height:45px;margin:0 auto;position:relative;}
+			.header .b_box .h_span{width:220px;height:45px;position:absolute;font-size:14px;font-family:"宋体";background:#D62340;color:#fff;text-align:center;line-height:40px;font-weight:bold;}
+			.header .b_box .h_index{width:200px;height:45px;position:absolute;left:220px;top:0;font-size:14px;font-family:"宋体";line-height:40px;font-weight:bold;color:#fff;text-align:center;}
+			.header .b_box .h_index:hover{background:#D62340;}
+			.header .b_box .h_index1{width:200px;height:45px;position:absolute;left:420px;top:0;font-size:14px;font-family:"宋体";line-height:40px;font-weight:bold;color:#fff;text-align:center;}
+			.header .b_box .h_index1:hover{background:#D62340;}
+			.header .b_box .in_right{float:right;}
+			.header .b_box .in_right a{display: inline-block;width:23px;height:25px;margin:7px;background-image: url("images/lf.png");background-repeat: no-repeat;}
+			.header .b_box .in_right .in_icon1{background-position:-96px -13px!important;}
+			.header .b_box .in_right .in_icon2{background-position:-119px -13px!important;}
+			.header .b_box .in_right .in_icon3{background-position:-142px -13px!important;}
+			
+			.header .b_box .b_box1{width:220px;position:absolute;left:-2px;top:45px;}
+			.header .b_box .b_box1 .n_box{width:220px;height:110px;background:#fafafa;border:1px solid #d0d0d0;border-top:none;border-bottom:1px solid #f0f0f0;}
+			
+			.header .b_box .b_box1 .n_box1{top:46px;}
+			.header .b_box .b_box1 .n_box1 .n_top{height:35px;}
+			.header .b_box .b_box1 .n_box1 .n_top .n_icon{width:17px;height:24px;background:url("images/icon1.png") no-repeat;margin:10px 0 0 15px;float:left;}
+			.header .b_box .b_box1 .n_box1 .n_top span{font-size:14px;font-weight:bold;float:left;color:black;margin:11px 0 0 12px;}
+			.header .b_box .b_box1 .n_box1 .n_bottom{width:210px;height:70px;margin:0 auto;}
+			.header .b_box .b_box1 .n_box1 .n_bottom a:hover{color:red;}
+			.header .b_box .b_box1 .n_box1 .n_bottom .b_up{width:210px;height:32px;}
+			.header .b_box .b_box1 .n_box1 .n_bottom .b_up a{float:left;margin-right:10px;margin-top:7px}
+			.header .b_box .b_box1 .n_box1 .n_bottom .b_up .b_a{width:50px;margin-left:11px;}
+			.header .b_box .b_box1 .n_box1 .n_bottom .b_down{width:210px;height:32px;}
+			.header .b_box .b_box1 .n_box1 .n_bottom .b_down a{float:left;margin-right:10px;margin-top:7px}
+			.header .b_box .b_box1 .n_box1 .n_bottom .b_down .b_d{width:50px;margin-left:11px;}
+
+			.header .b_box .b_box1 .n_box2{top:156px;}
+			.header .b_box .b_box1 .n_box2 .n_top{height:35px;}
+			.header .b_box .b_box1 .n_box2 .n_top .n_icon{width:17px;height:24px;background:url("images/icon2.png") no-repeat;margin:10px 0 0 15px;float:left;}
+			.header .b_box .b_box1 .n_box2 .n_top span{font-size:14px;font-weight:bold;float:left;color:black;margin:11px 0 0 12px;}
+			.header .b_box .b_box1 .n_box2 .n_bottom{width:210px;height:70px;margin:0 auto;}
+			.header .b_box .b_box1 .n_box2 .n_bottom a:hover{color:red;}
+			.header .b_box .b_box1 .n_box2 .n_bottom .b_up{width:210px;height:32px;}
+			.header .b_box .b_box1 .n_box2 .n_bottom .b_up a{float:left;margin-right:34px;margin-top:7px}
+			.header .b_box .b_box1 .n_box2 .n_bottom .b_up .b_a{width:26px;margin-left:11px;}
+			.header .b_box .b_box1 .n_box2 .n_bottom .b_down{width:210px;height:32px;}
+			.header .b_box .b_box1 .n_box2 .n_bottom .b_down a{float:left;margin-right:34px;margin-top:7px}
+			.header .b_box .b_box1 .n_box2 .n_bottom .b_down .b_d{width:25px;margin-left:11px;}
+			
+			.header .b_box .b_box1 .n_box3{top:266px;border-bottom:1px solid #f2f2f2;}
+			.header .b_box .b_box1 .n_box3 .n_top{height:35px;}
+			.header .b_box .b_box1 .n_box3 .n_top .n_icon{width:17px;height:24px;background:url("images/icon3.png") no-repeat;margin:10px 0 0 15px;float:left;}
+			.header .b_box .b_box1 .n_box3 .n_top span{font-size:14px;font-weight:bold;float:left;color:black;margin:11px 0 0 12px;}
+			.header .b_box .b_box1 .n_box3 .n_bottom{width:210px;height:70px;margin:0 auto;}
+			.header .b_box .b_box1 .n_box3 .n_bottom a:hover{color:red;}
+			.header .b_box .b_box1 .n_box3 .n_bottom .b_up{width:210px;height:32px;}
+			.header .b_box .b_box1 .n_box3 .n_bottom .b_up a{float:left;margin-right:12px;margin-top:7px}
+			.header .b_box .b_box1 .n_box3 .n_bottom .b_up .b_a{width:50px;margin-left:11px;}
+			.header .b_box .b_box1 .n_box3 .n_bottom .b_down{width:210px;height:32px;}
+			.header .b_box .b_box1 .n_box3 .n_bottom .b_down a{float:left;margin-right:12px;margin-top:7px}
+			.header .b_box .b_box1 .n_box3 .n_bottom .b_down .b_d{width:50px;margin-left:11px;}
+
+			.header .b_box .b_box1 .n_box4{top:376px;display:none;}
+			.header .b_box .b_box1 .n_box4 .n_top{height:35px;}
+			.header .b_box .b_box1 .n_box4 .n_top .n_icon{width:17px;height:24px;background:url("images/icon4.png") no-repeat;margin:10px 0 0 15px;float:left;}
+			.header .b_box .b_box1 .n_box4 .n_top span{font-size:14px;font-weight:bold;float:left;color:black;margin:11px 0 0 12px;}
+			.header .b_box .b_box1 .n_box4 .n_bottom{width:210px;height:70px;margin:0 auto;}
+			.header .b_box .b_box1 .n_box4 .n_bottom a:hover{color:red;}
+			.header .b_box .b_box1 .n_box4 .n_bottom .b_up{width:210px;height:32px;}
+			.header .b_box .b_box1 .n_box4 .n_bottom .b_up a{float:left;margin-right:12px;margin-top:7px}
+			.header .b_box .b_box1 .n_box4 .n_bottom .b_up .b_a{width:50px;margin-left:11px;}
+			.header .b_box .b_box1 .n_box4 .n_bottom .b_down{width:210px;height:32px;}
+			.header .b_box .b_box1 .n_box4 .n_bottom .b_down a{float:left;margin-right:12px;margin-top:7px}
+			.header .b_box .b_box1 .n_box4 .n_bottom .b_down .b_d{width:50px;margin-left:11px;}
+
+			.header .b_box .b_box1 .n_box5{top:486px;display:none;}
+			.header .b_box .b_box1 .n_box5 .n_top{height:35px;}
+			.header .b_box .b_box1 .n_box5 .n_top .n_icon{width:17px;height:24px;background:url("images/icon4.png") no-repeat;margin:10px 0 0 15px;float:left;}
+			.header .b_box .b_box1 .n_box5 .n_top span{font-size:14px;font-weight:bold;float:left;color:black;margin:11px 0 0 12px;}
+			.header .b_box .b_box1 .n_box5 .n_bottom{width:210px;height:70px;margin:0 auto;}
+			.header .b_box .b_box1 .n_box5 .n_bottom a:hover{color:red;}
+			.header .b_box .b_box1 .n_box5 .n_bottom .b_up{width:210px;height:32px;}
+			.header .b_box .b_box1 .n_box5 .n_bottom .b_up a{float:left;margin-right:12px;margin-top:7px}
+			.header .b_box .b_box1 .n_box5 .n_bottom .b_up .b_a{width:50px;margin-left:11px;}
+			.header .b_box .b_box1 .n_box5 .n_bottom .b_down{width:210px;height:32px;}
+			.header .b_box .b_box1 .n_box5 .n_bottom .b_down a{float:left;margin-right:12px;margin-top:7px}
+			.header .b_box .b_box1 .n_box5 .n_bottom .b_down .b_d{width:50px;margin-left:11px;}
+
+			.header .b_box .menus{width:673px;height:160px;background:url("images/bl1.png") no-repeat;border:1px solid #bcbcbc;position:absolute;top:45px;left:219px;border-left:none;display:none;}
+			
+			.header .b_box .h_select{width:220px;height:31px;border:1px solid #d0d0d0;border-top:1px solid #f0f0f0;position:absolute;top:375px;left:-2px;background:#fafafa;}
+			.header .b_box .h_select .s_down{width:30px;height:20px;background:url("images/xl.png") no-repeat;margin:12px 0 0 95px;}
+			
+			/*start banner*/
+			.banner{width:100%;height:360px;position:relative;margin-top:45px;}
+			.banner ul li{display:none;}
+			.banner ul li a{width:100%;height:360px;position:absolute;top:0;left:0;z-index:1;}
+			.banner ul li .image1{background:url("images/b1.jpg")50% 50% no-repeat;}
+			.banner ul li .image2{background:url("images/b2.jpg")50% 50% no-repeat;}
+			.banner ul li .image3{background:url("images/b3.jpg")50% 50% no-repeat;}
+			.banner ul li .image4{background:url("images/b4.jpg")50% 50% no-repeat;}
+			.banner ul li .image5{background:url("images/b5.jpg")50% 50% no-repeat;}
+			
+			.banner .b_point{position:absolute;top:340px;left:1010px;z-index:1;}
+			.banner .b_point a{width:16px;height:16px;background:black;margin-left:10px;float:left;border-radius:8px;
+						display:block;float:left;z-index:2;}
+			.banner .b_point a.active{background:red;}
+			.mall_content{background:#f5f5f5}
+			
+			/*end banner*/
+
+			/*start left menu*/
+			 .mall_content .left_menu{width:144px;position:fixed;right:50%;top:30%;z-index:999;margin-right: 510px;}
+			 .mall_content .left_menu .left_header{width:144px;height:208px;position:relative;background:url("images/lf1.png") no-repeat -118px -24px;}
+			 .mall_content .left_menu .left_header a{width:67px;height:75px;display:inline-block;background: url("images/lf1.png") no-repeat;margin-left:67px;cursor:pointer;}
+			 .mall_content .left_menu .left_header .flm_1.active{background-position:0 -306px;}
+			 .mall_content .left_menu .left_header .flm_1{margin-top:225px;background-position:-67px -306px;}
+			 .mall_content .left_menu .left_header .flm_2{background-position:-67px -381px;}
+			/*end left menu*/
+			
+			.mall_content .right_btn{width:50px;height:60px;border:1px solid #d9d9d9;position:fixed;left:77%;top:65%;z-index:999;background:#fff;}
+			.mall_content .right_btn .r_b a{width:28px;height:51px;background:url("images/lf1.png") no-repeat -229px -236px;margin:0 auto;}
+			/*start pptm品牌特卖*/
+			.mall_content .pptm{width:1000px;height:80px;margin:0 auto;}
+			.mall_content .pptm .p_logo{width:120px;height:40px;background:url("images/lf1.png") no-repeat 0 -64px ;margin-top:26px;float:left;}
+			.mall_content .pptm .p_notice{margin:45px 0 0 20px;float:left;}
+			.mall_content .pptm .p_notice span{float:left;font-size:16px;}
+			.mall_content .pptm .p_notice .p_change{color:red;}
+			.mall_content .pptm .p_more{float:right;margin-top:50px;}
+			/*end pptm*/
+			.mall_content .p_line{width:1000px;height:3px;background:#f99c16;margin:0 auto;}
+			
+			.mall_content .goods_show{width:1000px;margin:0 auto;padding:10px 0;}
+			.mall_content .goods_show a img{display:block;float: left;width: 490px;height: 215px;background-position: 50%;background-size:cover;background-repeat: no-repeat;margin:0 5px 20px;border-radius:3px;
+            }
+			.mall_content .goods_show a img:hover{box-shadow: 1px 1px 8px #888888;}
+			/*爆款尝鲜*/
+			.mall_content .bkcx{width:1000px;height:80px;margin:0 auto;}
+			.mall_content .bkcx .p_logo{width:120px;height:40px;background:url("images/lf1.png") no-repeat 0 -263px ;margin-top:20px;float:left;}
+			.mall_content .p_line1{width:1000px;height:3px;background:#C254BC;margin:0 auto;}
+
+			.mall_content .bc_content{width:1000px;margin:0 auto;}
+			.mall_content .bc_content .goods1{background:#fff;width:235px;margin-top:15px;box-shadow: 1px 2px 5px #888888;margin-right:15px;float:left;}
+			.mall_content .bc_content .goods1 .bc_name{width:200px;height:38px;line-height:18px;font-size:16px;overflow: hidden;margin: 0 auto;}
+			.mall_content .bc_content .goods1 .bc_name span{color:#f52648;font-weight: 700;float:left;}
+			.mall_content .bc_content .goods1 .bc_name a{float:left;}
+			.mall_content .bc_content .goods1 .bc_price{width:200px;height:30px;margin: 0 auto;line-height:30px;margin-bottom: 8px;}
+			.mall_content .bc_content .goods1 .bc_price span{font-size:18px;float:left;}
+			.mall_content .bc_content .goods1 .bc_price b{float:left;margin-left:5px;text-decoration:line-through;color:#999;}
+			.mall_content .bc_content .goods1 .bc_price .shopping_car{width:95px;height:30px;background:red;color:#fff;font-size:14px;float:right;border-radius:5px;text-align:center;line-height:28px;}
+			.mall_content .bc_content .goods1 .bc_price .active{display:none;}
+
+			/*start bottom*/
+			.mall_content .bottom{width:100%;height:304px;margin-top:60px;background:#F62648;}
+			.mall_content .bottom .bo_image{width:1000px;height:304px;margin:0 auto;background:url("images/bottom.jpg") no-repeat;}
+			/*end bottom*/
+			.mall_content .bottom_text{width:100%;background:#fff;}
+			.mall_content .bottom_text .bo_icon{width:1000px;height:140px;margin:0 auto;border-bottom:1px dashed #C1C1C1;}
+			.mall_content .bottom_text .bo_icon .icon{width:170px;height:76px;background:url("images/lf.png") no-repeat;margin:33px 0 0 112px;float:left;}
+			.mall_content .bottom_text .bo_icon .index1{background-position:0 -198px;}
+			.mall_content .bottom_text .bo_icon .index2{width:210px;background-position:0 -278px;}
+			.mall_content .bottom_text .bo_icon .index3{background-position:0 -278px;}
+		</style>
+	</head>
+<body>
+	<a href="http://brand.lefeng.com/showGoodsList/2071819238.html" target = "_blank" class="top"></a>
+	<div class="head">
+		<div class="h_box">
+			<div class="h_left" id="h_left">
+				<span >送货到</span>
+				<a href="#" class="a1" id="a1">四川</a>
+			</div>
+			<div class="h_right">
+				<span>欢迎来到乐峰，请</span>
+				<a href="#" >登陆&nbsp|&nbsp</a>
+				
+				<a href="">免费注册</a>
+				<div class="r_four" id="r_four">
+					<span >我的订单</span>
+				</div>
+				<span class="r_five" id="r_five">快速导航</span>
+				<a href="#" class="r_six"" id="r_six">收藏乐峰</a>
+				<span class="r_seven" id="r_seven">手机乐峰</span>
+			</div>
+			<div class="address" id="address">
+				<ul id="ul1">
+					<li><a href="#">湖南</a></li>
+					<li><a href="#">湖北</a></li>
+					<li><a href="#">江西</a></li>
+					<li><a href="#">河北</a></li>
+					<li><a href="#">四川</a></li>
+					<li><a href="#">哈尔冰</a></li>
+					<li><a href="#">吉林</a></li>
+					<li><a href="#">辽宁</a></li>
+					<li><a href="#">陕西</a></li>
+					<li><a href="#">云南</a></li>
+					<li><a href="#">贵州</a></li>
+					<li><a href="#">西藏</a></li>
+					<li><a href="#">青海</a></li>
+					<li><a href="#">甘肃</a></li>
+					<li><a href="#">海南</a></li>
+					<li><a href="#">广州</a></li>
+					<li><a href="#">河南</a></li>
+					<li><a href="#">江西</a></li>
+					<li><a href="#">广西</a></li>
+					<li><a href="#">福建</a></li>
+					<li><a href="#">宁夏</a></li>
+					<li><a href="#">浙江</a></li>
+				</ul>
+			</div>
+			<div class="order" id="order">
+				<ul>
+					<li>我的钱包</li>
+					<li>我的礼卷</li>
+				</ul>
+			</div>
+			<div class="q_nevigation" id="nevi">
+				<ul>
+					<li>帮助中心</li>
+					<li>联系客服</li>
+					<li>商务合作</li>
+				</ul>
+				<img src="images/five.jpg" alt="乐峰网二维码" width="112" height="112" />
+				<span>惊喜码上来</span>
+			</div>
+			<div class="app" id="app">
+				<img src="images/seven.jpg" alt="乐峰手机app" width="112" height="112" />
+				<span>客户端</span>
+			</div>
+		</div>	
+	</div>
+	<div class="sercharea">
+		<div class="serch">
+			<div class="logo"></div>
+			<div class="s_text">
+				<div class="s_input" >
+				</div>
+				<div class="s_input1" contenteditable="true"></div>
+				<a href="#" class=>搜索</a>
+				<div class="hot_goods">
+					<span>热门：&nbsp;&nbsp;BB霜&nbsp;&nbsp;眼霜&nbsp;&nbsp;洁面&nbsp;&nbsp;欧莱雅&nbsp;&nbsp;防晒隔离</span>
+					
+				</div>
+			</div>
+			<div class="shopping" id="shopping">
+				<span id="s_num">0</span>
+			</div>
+			<div class="s_note" id="s_note">
+				<span class="s_span">你的购物车还没有商品</span>
+				<span>赶快去选购吧</span>
+			</div>
+		</div>
+	</div>
+	<div class="header">
+		<div class="b_box">
+				<div class="h_span">商品分类</div>
+				<a href="#" class="h_index">首页</a>
+				<a href="#" class="h_index1">峰购全球</a>
+				<div class="in_right">
+					<a href="http://www.lefeng.com/notice/205.html" target="_blank" class="in_icon1"></a>
+					<a href="http://www.lefeng.com/notice/205.html" target="_blank" class="in_icon2"></a>
+					<a href="http://www.lefeng.com/notice/205.html" target="_blank" class="in_icon3"></a>
+				</div>
+				<div class="b_box1" id="b_box1">	
+			
+						
+						<div class="n_box n_box1" id="n_box1">
+							<div class="n_top">
+								<div class="n_icon"></div>
+								<span>护肤用品</span>
+							</div>
+							<div class="n_bottom">
+								<div class="b_up">
+									<a href="#" class="b_a">面膜</a>
+									<a href="#">防晒隔离</a>
+									<a href="#">护肤套装</a>
+								</div>
+								<div class="b_down">
+									<a href="#" class="b_d">洁面</a>
+									<a href="#">面部护肤</a>
+									<a href="#">眼部护理</a>
+								</div>
+							</div>
+				 </div>
+
+					<div class="n_box n_box2" id="n_box2">
+						<div class="n_top">
+							<div class="n_icon"></div>
+							<span>彩妆用品</span>
+						</div>
+						<div class="n_bottom">
+							<div class="b_up">
+								<a href="#" class="b_a">底妆</a>
+								<a href="#">眼妆</a>
+								<a href="#">唇妆</a>
+							</div>
+							<div class="b_down">
+								<a href="#" class="b_d">卸妆</a>
+								<a href="#">美甲</a>
+								<a href="#">彩妆套装</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="n_box n_box3" id="n_box3">
+						<div class="n_top">
+							<div class="n_icon"></div>
+							<span>美容工具</span>
+						</div>
+						<div class="n_bottom">
+							<div class="b_up">
+								<a href="#" class="b_a">美容工具</a>
+								<a href="#">美妆工具</a>
+								<a href="#">美发工具</a>
+							</div>
+							<div class="b_down">
+								<a href="#" class="b_d">美甲工具</a>
+								<a href="#">洁面工具</a>
+								<a href="#">化妆工具</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="n_box n_box4" id="n_box4">
+						<div class="n_top">
+							<div class="n_icon"></div>
+							<span>香水香氛</span>
+						</div>
+						<div class="n_bottom">
+							<div class="b_up">
+								<a href="#" class="b_a">香水套转</a>
+								<a href="#">男士香水</a>
+								<a href="#">女士香水</a>
+							</div>
+							<div class="b_down">
+								<a href="#" class="b_d">淡香水</a>
+								<a href="#">香氛精油</a>
+								<a href="#">走珠香水</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="n_box n_box5" id="n_box5">
+						<div class="n_top">
+							<div class="n_icon"></div>
+							<span>个人护理</span>
+						</div>
+						<div class="n_bottom">
+							<div class="b_up">
+								<a href="#" class="b_a">头发护理</a>
+								<a href="#">身体护理</a>
+								<a href="#">口腔护理</a>
+							</div>
+							<div class="b_down">
+								<a href="#" class="b_d">手足护理</a>
+								<a href="#">美体护理</a>
+								<a href="#">胸部护理</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="menus" id="menus"></div>
+				<div class="h_select" id="h_select">
+					<div class="s_down" id="s_down"></div>
+				</div>
+		</div>
+	</div>
+	<div class="banner">
+				<ul>
+					<li ><a href="#" class="image1"></a></li>
+					<li ><a href="#" class="image2"></a></li>
+					<li ><a href="#" class="image3"></a></li>
+					<li style="display:block"><a href="#" class="image4"></a></li>
+					<li ><a href="#" class="image5"></a></li>
+					
+				</ul>
+				<div class="b_point">
+					<a href="javascript:;" class="active"></a>
+					<a href="javascript:;"></a>
+					<a href="javascript:;"></a>
+					<a href="javascript:;"></a>
+					<a href="javascript:;"></a>
+				</div>
+		</div>
+	<div class="mall_content">
+		
+		<div class="left_menu">
+			<div class="left_header">
+				<a class="flm_1 active" href="#pptm"></a>
+				<a class="flm_2" href="#bkcx"></a>
+			</div>
+		</div>
+		
+			<div class="pptm" name="pptm" id="pptm">
+				<div class="p_logo"></div>
+				<div class="p_notice">
+				<span>每天</span>
+				<span class="p_change">10点</span>
+				<span>上新</span>
+				</div>
+				<div class="p_more"><a href="#">更多品牌&gt</a></div>
+			</div>
+		<div class="right_btn" >
+			<div class="r_b">
+				<a class=" b_active" href="#"></a>
+			</div>
+		</div>
+		<div class="p_line">
+		</div>
+		<div class="goods_show">
+			<a href="#"><img src="images/js1.jpg" alt="" width="" height=""/></a>
+			<a href="#"><img src="images/js2.jpg" alt="" width="" height=""/></a>
+			<a href="#"><img src="images/js3.jpg" alt="" width="" height=""/></a>
+			<a href="#"><img src="images/js4.jpg" alt="" width="" height=""/></a>
+			<a href="#"><img src="images/js5.jpg" alt="" width="" height=""/></a>
+			<a href="#"><img src="images/js6.jpg" alt="" width="" height=""/></a>
+			<a href="#"><img src="images/js7.jpg" alt="" width="" height=""/></a>
+			<a href="#"><img src="images/js8.jpg" alt="" width="" height=""/></a>
+			<a href="#"><img src="images/js9.jpg" alt="" width="" height=""/></a>
+			<a href="#"><img src="images/js10.jpg" alt="" width="" height=""/></a>
+			<a href="#"><img src="images/js11.jpg" alt="" width="" height=""/></a>
+			<a href="#"><img src="images/js12.jpg" alt="" width="" height=""/></a>
+			<a href="#"><img src="images/js13.jpg" alt="" width="" height=""/></a>
+			<a href="#"><img src="images/js14.jpg" alt="" width="" height=""/></a>
+			<a href="#"><img src="images/js15.jpg" alt="" width="" height=""/></a>
+			<a href="#"><img src="images/js16.jpg" alt="" width="" height=""/></a>
+			<div style="font: 0px/0px sans-serif;clear: both;display: block"> </div>
+		</div>
+		<div class="bkcx" name="bkcx" id="bkcx">
+				<div class="p_logo"></div>
+		</div>
+		
+		<div class="p_line1">
+		</div>
+		<div class="bc_content">
+			<div class="goods1">
+				<a   href="#"><img src="images/bk1.jpg" alt="爆款商品" width="235" height="253" /></a>
+				<div class="bc_name">
+					<span>9.3/</span>
+					<a href="#">雪肌精水透感补水套装</a>
+				</div>
+				<div class="bc_price">
+					<span>￥148</span>
+					<b>￥669</b>
+					<a href="#" class="shopping_car active">加入购物车</a>
+				</div>
+			</div>
+			<div class="goods1">
+				<a   href="#"><img src="images/bk2.jpg" alt="爆款商品" width="235" height="253" /></a>
+				<div class="bc_name">
+					<span>6.7/</span>
+					<a href="#">雪肌精水透感补水套装</a>
+				</div>
+				<div class="bc_price">
+					<span>￥148</span>
+					<b>￥669</b>
+					<a href="#" class="shopping_car active">加入购物车</a>
+				</div>
+			</div>
+			<div class="goods1">
+				<a   href="#"><img src="images/bk3.jpg" alt="爆款商品" width="235" height="253" /></a>
+				<div class="bc_name">
+					<span>9.3/</span>
+					<a href="#">雪肌精水透感补水套装</a>
+				</div>
+				<div class="bc_price">
+					<span>￥148</span>
+					<b>￥669</b>
+					<a href="#" class="shopping_car active">加入购物车</a>
+				</div>
+			</div>
+			<div class="goods1">
+				<a   href="#"><img src="images/bk4.jpg" alt="爆款商品" width="235" height="253" /></a>
+				<div class="bc_name">
+					<span>9.3/</span>
+					<a href="#">雪肌精水透感补水套装</a>
+				</div>
+				<div class="bc_price">
+					<span>￥148</span>
+					<b>￥669</b>
+					<a href="#" class="shopping_car active">加入购物车</a>
+				</div>
+			</div>
+			<div class="goods1">
+				<a   href="#"><img src="images/bk5.jpg" alt="爆款商品" width="235" height="253" /></a>
+				<div class="bc_name">
+					<span>9.3/</span>
+					<a href="#">雪肌精水透感补水套装</a>
+				</div>
+				<div class="bc_price">
+					<span>￥148</span>
+					<b>￥669</b>
+					<a href="#" class="shopping_car active">加入购物车</a>
+				</div>
+			</div>
+			<div class="goods1">
+				<a   href="#"><img src="images/bk6.jpg" alt="爆款商品" width="235" height="253" /></a>
+				<div class="bc_name">
+					<span>9.3/</span>
+					<a href="#">雪肌精水透感补水套装</a>
+				</div>
+				<div class="bc_price">
+					<span>￥148</span>
+					<b>￥669</b>
+					<a href="#" class="shopping_car active">加入购物车</a>
+				</div>
+			</div>
+			<div class="goods1">
+				<a   href="#"><img src="images/bk7.jpg" alt="爆款商品" width="235" height="253" /></a>
+				<div class="bc_name">
+					<span>9.3/</span>
+					<a href="#">雪肌精水透感补水套装</a>
+				</div>
+				<div class="bc_price">
+					<span>￥148</span>
+					<b>￥669</b>
+					<a href="#" class="shopping_car active">加入购物车</a>
+				</div>
+			</div>
+			<div class="goods1">
+				<a   href="#"><img src="images/bk8.jpg" alt="爆款商品" width="235" height="253" /></a>
+				<div class="bc_name">
+					<span>9.3/</span>
+					<a href="#">雪肌精水透感补水套装</a>
+				</div>
+				<div class="bc_price">
+					<span>￥148</span>
+					<b>￥669</b>
+					<a href="#" class="shopping_car active">加入购物车</a>
+				</div>
+			</div>
+			<div class="goods1">
+				<a   href="#"><img src="images/bk9.jpg" alt="爆款商品" width="235" height="253" /></a>
+				<div class="bc_name">
+					<span>9.3/</span>
+					<a href="#">雪肌精水透感补水套装</a>
+				</div>
+				<div class="bc_price">
+					<span>￥148</span>
+					<b>￥669</b>
+					<a href="#" class="shopping_car active">加入购物车</a>
+				</div>
+			</div>
+			<div class="goods1">
+				<a   href="#"><img src="images/bk10.jpg" alt="爆款商品" width="235" height="253" /></a>
+				<div class="bc_name">
+					<span>9.3/</span>
+					<a href="#">雪肌精水透感补水套装</a>
+				</div>
+				<div class="bc_price">
+					<span>￥148</span>
+					<b>￥669</b>
+					<a href="#" class="shopping_car active">加入购物车</a>
+				</div>
+			</div>
+			<div class="goods1">
+				<a   href="#"><img src="images/bk11.jpg" alt="爆款商品" width="235" height="253" /></a>
+				<div class="bc_name">
+					<span>9.3/</span>
+					<a href="#">雪肌精水透感补水套装</a>
+				</div>
+				<div class="bc_price">
+					<span>￥148</span>
+					<b>￥669</b>
+					<a href="#" class="shopping_car active">加入购物车</a>
+				</div>
+			</div>
+			<div class="goods1">
+				<a   href="#"><img src="images/bk12.jpg" alt="爆款商品" width="235" height="253" /></a>
+				<div class="bc_name">
+					<span>9.3/</span>
+					<a href="#">雪肌精水透感补水套装</a>
+				</div>
+				<div class="bc_price">
+					<span>￥148</span>
+					<b>￥669</b>
+					<a href="#" class="shopping_car active">加入购物车</a>
+				</div>
+			</div>
+			<div class="goods1">
+				<a   href="#"><img src="images/bk13.jpg" alt="爆款商品" width="235" height="253" /></a>
+				<div class="bc_name">
+					<span>9.3/</span>
+					<a href="#">雪肌精水透感补水套装</a>
+				</div>
+				<div class="bc_price">
+					<span>￥148</span>
+					<b>￥669</b>
+					<a href="#" class="shopping_car active">加入购物车</a>
+				</div>
+			</div>
+			<div class="goods1">
+				<a   href="#"><img src="images/bk14.jpg" alt="爆款商品" width="235" height="253" /></a>
+				<div class="bc_name">
+					<span>9.3/</span>
+					<a href="#">雪肌精水透感补水套装</a>
+				</div>
+				<div class="bc_price">
+					<span>￥148</span>
+					<b>￥669</b>
+					<a href="#" class="shopping_car active">加入购物车</a>
+				</div>
+			</div>
+			<div class="goods1">
+				<a   href="#"><img src="images/bk15.jpg" alt="爆款商品" width="235" height="253" /></a>
+				<div class="bc_name">
+					<span>9.3/</span>
+					<a href="#">雪肌精水透感补水套装</a>
+				</div>
+				<div class="bc_price">
+					<span>￥148</span>
+					<b>￥669</b>
+					<a href="#" class="shopping_car active">加入购物车</a>
+				</div>
+			</div>
+			<div class="goods1">
+				<a   href="#"><img src="images/bk16.jpg" alt="爆款商品" width="235" height="253" /></a>
+				<div class="bc_name">
+					<span>9.3/</span>
+					<a href="#">雪肌精水透感补水套装</a>
+				</div>
+				<div class="bc_price">
+					<span>￥148</span>
+					<b>￥669</b>
+					<a href="#" class="shopping_car active">加入购物车</a>
+				</div>
+			</div>
+			<div style="font: 0px/0px sans-serif;clear: both;display: block"> </div>
+		</div>
+		<div class="bottom">
+			<div class="bo_image"></div>
+		</div>
+		<div class="bottom_text">
+			<div class="bo_icon">
+				<a href="#" class="icon index1"></a>
+				<a href="#" class="icon index2"></a>
+				<a href="#" class="icon index3"></a>
+			</div>
+			<div class="bo_service">
+			</div>
+		</div>
+	</div>
+
+	<script src="js/jquery-1.12.1.min.js"></script>
+	<!--js-->
+	<script type="text/javascript">
+		var last = document.getElementById("a1");
+		var address = document.getElementById("address");
+		var h_left = document.getElementById("h_left");
+		var index = document.getElementById("ul1").getElementsByTagName("li");
+		var r_four = document.getElementById("r_four");
+		var order = document.getElementById("order");
+		var r_five = document.getElementById("r_five");
+		var nevi = document.getElementById("nevi");
+		var r_six = document.getElementById("r_six");
+		var app = document.getElementById("app");
+		var r_seven = document.getElementById("r_seven");
+		var shopping= document.getElementById("shopping");
+		var s_note = document.getElementById("s_note");
+        var s_num = document.getElementById("s_num");
+		
+		var b_box1 = document.getElementById("b_box1");
+		var n_box1 = document.getElementById("n_box1");
+		var n_box2 = document.getElementById("n_box2");
+		var n_box3 = document.getElementById("n_box3");
+		var n_box4 = document.getElementById("n_box4");
+		var n_box5 = document.getElementById("n_box5");
+
+		var menus = document.getElementById("menus");
+		var h_select = document.getElementById("h_select");
+		function show(){
+			address.style.display = "block";
+			h_left.style.cssText = "width:115px;background:#fff;border:1px solid #bcbcbc;border-bottom:1px solid #fff;position:relative;z-index:2;";	
+		}
+		function hiddle(){
+			address.style.display = "none";
+			h_left.style.cssText = "width:115px;text-indent:15px;float:left;position:relative;";
+		}
+		function show4(){
+			order.style.display = "block";
+			r_four.style.cssText = "width:80px;background:#fff;border:1px solid #bcbcbc;border-bottom:1px solid #fff;float:left;margin-right:10px;position:relative;z-index:10;"
+		}
+		function hiddle4(){
+			order.style.display = "none";
+			r_four.style.cssText = "width:80px;float:left;margin-right:10px;position:relative;z-index:10;"
+		}
+		function show5(){
+			nevi.style.display = "block";
+			r_five.style.cssText = "background:#fff;border:1px solid #bcbcbc;border-bottom:1px solid #fff;position:relative;z-index:10;"
+		}
+		function hiddle5(){
+			nevi.style.display = "none";
+			r_five.style.cssText = "";
+		}
+		function show6(){
+			app.style.display = "block";
+			r_seven.style.cssText = "background:#fff;border:1px solid #bcbcbc;border-bottom:1px solid #fff;position:relative;z-index:10;";
+		}
+		function hiddle6(){
+			app.style.display = "none";
+			r_seven.style.cssText = "";
+		}
+		function show7(){
+			s_note.style.display = "block";
+			shopping.style.cssText = "background:url('images/lf.png') no-repeat 0px -154px;height:48px;width:311px;position:absolute;top:39px;left:696px;";
+			s_num.style.cssText = "margin:11px 0 0 273px;color:#fff;font-size:14px;"
+		}
+		function hiddle7(){
+			s_note.style.display = "none";
+			shopping.style.cssText = "width:140px;height:42px;position:absolute;top:40px;left:856px;background:url('images/lf.png') no-repeat 4px -112px;";
+			s_num.style.cssText = "margin:10px 0 0 112px;color:#fff;font-size:14px;"
+		}
+
+		function show8(){
+			n_box4.style.display = "block";
+			n_box5.style.display = "block";
+			h_select.style.display = "none";
+			//menus.style.display = "block";
+			
+		}
+		function hiddle8(){
+			n_box4.style.display = "none";
+			n_box5.style.display = "none";
+			h_select.style.display = "block";
+			//menus.style.display = "none";
+		}
+		//送货地址
+		a1.onmouseover=function(){
+			show();
+			address.onmouseover=function(){
+				show();
+			}
+			h_left.onmouseout=function(){
+				hiddle();
+			}
+		}
+		address.onmouseout=function(){
+		
+			hiddle();
+		}
+		for(var i=0;i<index.length;i++){
+			index[i].onclick=function(){
+					var num = this.getElementsByTagName("a");
+					last.innerHTML=num[0].innerHTML;
+					hiddle();
+					//localStorage.setItem("yj_msg",last.innerHTML);
+			}	
+		}
+		//我的订单
+		r_four.onmouseover=function(){
+			show4()
+			order.onmouseover=function(){
+				show4();
+			}
+			r_four.onmouseout=function(){
+				hiddle4();
+			}
+		}
+		order.onmouseout=function(){
+		
+			hiddle4();
+		}
+        //快速导航
+		r_five.onmouseover=function(){
+			show5()
+			nevi.onmouseover=function(){
+				show5();
+			}
+			r_five.onmouseout=function(){
+				hiddle5();
+			}
+		}
+		nevi.onmouseout=function(){
+		
+			hiddle5();
+		}
+		//收藏乐峰
+		r_six.onclick=function(){
+		
+			alert("请使用Ctrl+D加入收藏");
+		}
+		//手机乐峰
+		r_seven.onmouseover=function(){
+			show6()
+			app.onmouseover=function(){
+				show6();
+			}
+			r_seven.onmouseout=function(){
+				hiddle6();
+			}
+		}
+		app.onmouseout=function(){
+		
+			hiddle6();
+		}
+		//购物车
+		shopping.onmouseover=function(){
+			show7()
+			s_note.onmouseover=function(){
+				show7();
+			}
+			shopping.onmouseout=function(){
+				hiddle7();
+			}
+		}
+		s_note.onmouseout=function(){
+		
+			hiddle7();
+		}
+		
+		//商品导航
+		b_box1.onmouseover=function(){
+			show8();
+			
+			menus.onmouseover=function(){
+				show8();
+			}
+			menus.onmouseout=function(){
+				hiddle8();
+			}
+			b_box1.onmouseout=function(){
+				hiddle8();
+			}
+		}
+		h_select.onmouseover=function(){
+			show8();
+			menus.onmouseover=function(){
+				show8();
+			}
+			menus.onmouseout=function(){
+				hiddle8();
+			}
+			b_box1.onmouseout=function(){
+				hiddle8();
+			}
+		}
+		n_box1.onmouseover=function(){
+			n_box1.style.background="#fff";		
+			menus.style.top="45px";
+			menus.style.backgroundImage="url(images/bl1.png)"
+			menus.style.display="block";
+			n_box1.onmouseout=function(){
+				n_box1.style.background="#fafafa";		
+				menus.onmouseover=function(){
+					show8();
+					menus.style.display="block";
+					menus.onmouseout=function(){
+						menus.style.display="none";
+						hiddle8();
+					}
+				}
+				menus.style.display="none";	
+			}
+
+		}
+		
+		n_box2.onmouseover=function(){
+			n_box2.style.background="#fff";		
+			menus.style.top="155px";
+			menus.style.backgroundImage="url(images/bl2.png)"
+			menus.style.display="block";
+			n_box2.onmouseout=function(){
+				n_box2.style.background="#fafafa";		
+				menus.onmouseover=function(){
+					show8();
+					menus.style.display="block";
+					menus.onmouseout=function(){
+						menus.style.display="none";
+						hiddle8();
+					}
+				}
+				menus.style.display="none";	
+			}
+
+		}
+
+		n_box3.onmouseover=function(){
+			n_box3.style.background="#fff";		
+			menus.style.top="266px";
+			menus.style.backgroundImage="url(images/bl3.png)"
+			menus.style.display="block";
+			n_box3.onmouseout=function(){
+				n_box3.style.background="#fafafa";		
+				menus.onmouseover=function(){
+					show8();
+					menus.style.display="block";
+					menus.onmouseout=function(){
+						menus.style.display="none";
+						hiddle8();
+					}
+				}
+				menus.style.display="none";	
+			}
+
+		}
+
+		n_box4.onmouseover=function(){
+			n_box4.style.background="#fff";		
+			menus.style.top="378px";
+			menus.style.backgroundImage="url(images/bl4.png)"
+			menus.style.display="block";
+			n_box4.onmouseout=function(){
+				n_box4.style.background="#fafafa";		
+				menus.onmouseover=function(){
+					show8();
+					menus.style.display="block";
+					menus.onmouseout=function(){
+						menus.style.display="none";
+						hiddle8();
+					}
+				}
+				menus.style.display="none";	
+			}
+
+		}
+
+		n_box5.onmouseover=function(){
+			n_box5.style.background="#fff";		
+			menus.style.top="488px";
+			menus.style.backgroundImage="url(images/bl5.png)"
+			menus.style.display="block";
+			n_box5.onmouseout=function(){
+				n_box5.style.background="#fafafa";		
+				menus.onmouseover=function(){
+					show8();
+					menus.style.display="block";
+					menus.onmouseout=function(){
+						menus.style.display="none";
+						hiddle8();
+
+					}
+				}
+				menus.style.display="none";	
+			}
+
+		}
+
+	</script>
+	<!--jquery-->
+	
+	<script>
+		//banner实现
+		$(function(){
+			var i = 0;
+			var timer = null;
+			autoPlay();
+			function autoPlay(){
+					timer = setInterval(function(){
+						i++;
+						i%=5;
+						$(".banner ul li").eq(i).fadeIn().siblings().fadeOut();
+						$(".banner .b_point a").eq(i).addClass("active").siblings().removeClass("active");
+					
+					},3000);
+			
+			}
+			$(".banner .b_point a").mouseover(function(){
+				clearInterval(timer);
+				i = $(this).index();
+				$(".banner ul li").eq(i).fadeIn().siblings().fadeOut();
+				$(".banner .b_point a").eq(i).addClass("active").siblings().removeClass("active");
+			})
+			$(".banner").hover(
+				function(){
+					clearInterval(timer);
+				},function(){
+					autoPlay();
+				}	
+			)
+			$(".flm_2").click(function(){
+			
+				$(".flm_2").css({"background-position":"0px -381px"});
+				$(".flm_1").removeClass("active");
+			})
+			$(".flm_1").click(function(){
+			
+				$(".flm_2").css({"background-position":"-67px -381px"});
+				$(".flm_1").addClass("active");
+			})
+			
+			$(".goods1").mouseover(function(){
+				$(this).find(".shopping_car").removeClass("active");
+					
+			})
+			$(".goods1").mouseout(function(){
+				$(this).find(".shopping_car").addClass("active");
+					
+			})
+		})
+			
+	</script>
+	<script>
+		//到达400高度显示按钮
+		$(window).scroll(function(){$(this).scrollTop()>400?$(".right_btn").css("display","block"):$(".right_btn").hide()})
+		$(window).scroll(function(){$(this).scrollTop()>400?$(".left_menu").css("display","block"):$(".left_menu").hide()})
+		$(".left_menu").click(function(){
+		
+			$(window).scroll.scrollTop=400;
+		})
+	</script>
+</body>
+
+</html>

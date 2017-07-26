@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面的编码集：charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!--当前页面的三要素-->
+		<title>潭州音乐播放器 - Arry老师</title>
+		<meta name="Keywords" content="关键词,关键词">
+		<meta name="description" content="">
+
+		<!--css,js-->
+		<style type="text/css">
+			*{margin:0;padding:0;}
+			body{font-size:12px;font-family:"微软雅黑";color:#666;}
+			.music{width:360px;height:470px;background:#ccc;}
+			.music h2{line-height:60px;text-align:center;font-size:22px;font-weight:500;}
+			.music .m_con{width:360px;height:380px;background:url("images/music.gif") no-repeat top center;overflow:auto;padding-top:20px;}
+			.tz_time{line-height:26px;font-size:14px;padding-left:10px;}
+			#lrc{display:none;}
+
+			::-webkit-scrollbar{width:10px;height:6px;background:#ccc;}
+			::-webkit-scrollbar-button{background-color:#e5e5e5;}
+			::-webkit-scrollbar-track{background:#999;}
+			::-webkit-scrollbar-track-piece{background:#ccc}
+			::-webkit-scrollbar-thumb{background:#666;}
+			::-webkit-scrollbar-corner{background:#82AFFF;}
+			::-webkit-scrollbar-resizer{background:#FF0BEE;}
+			scrollbar{-moz-appearance:none !important;background:rgb(0,255,0) !important;}
+			scrollbarbutton{-moz-appearance:none !important;background-color:rgb(0,0,255) !important;}
+			scrollbarbutton:hover{-moz-appearance:none !important;background-color:rgb(255,0,0) !important;}
+
+			.sel{color:red;font-size:20px;}
+
+		</style>
+
+	</head>
+<body>
+
+
+<div class="music">
+	<h2>咱们结婚吧</h2>
+	<div class="m_con">
+		
+	</div>
+</div>
+
+<textarea cols="50" rows="8" id="lrc">
+[ti:0]
+[ar:0]
+[al:0]
+[offset:0]
+
+[00:00.00]咱们结婚吧
+[00:03.59]演唱：齐晨
+[00:04.71]
+[00:19.45]洁白的婚纱手捧着鲜花
+[00:23.94]美丽得像童话
+[00:28.11]想起那年初夏我为你牵挂
+[00:32.44]在一起就犯傻
+[00:34.91]丘比特轻轻飞过月光下
+[00:39.25]潘多拉她听到了回答
+[00:43.61]礼堂钟声在敲打幸福的密码
+[00:52.43]哦My Love咱们结婚吧
+[00:56.95]好想和你拥有一个家
+[01:00.87]这一生最美的梦啊
+[01:05.53]有你陪伴我同闯天涯
+[01:09.50]哦My Love咱们结婚吧
+[01:14.10]我会用一生去爱你的
+[01:18.50]我愿把一切都放下
+[01:22.99]给你幸福的家
+[01:27.40]
+[01:47.31]洁白的婚纱手捧着鲜花
+[01:51.78]美丽得像童话
+[01:56.03]想起那年初夏我为你牵挂
+[02:00.41]在一起就犯傻
+[02:02.60]丘比特轻轻飞过月光下
+[02:07.27]潘多拉她听到了回答
+[02:11.46]礼堂钟声在敲打幸福的密码
+[02:20.19]哦My Love咱们结婚吧
+[02:24.85]好想和你拥有一个家
+[02:28.77]这一生最美的梦啊
+[02:33.39]有你陪伴我同闯天涯
+[02:37.35]哦My Love咱们结婚吧
+[02:41.97]我会用一生去爱你的
+[02:46.31]我愿把一切都放下
+[02:50.80]给你幸福的家
+[02:54.88]
+[02:56.46]哦My Love咱们结婚吧
+[03:01.30]好想和你拥有一个家
+[03:05.21]这一生最美的梦啊
+[03:09.92]有你陪伴我同闯天涯
+[03:13.77]哦My Love咱们结婚吧
+[03:18.38]我会用一生去爱你的
+[03:22.66]我愿把一切都放下
+[03:27.35]给你幸福的家
+[03:31.01]
+
+</textarea>
+
+<!--引入jQuery官方类库-->
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+	
+	$(function(){
+		
+		// 创建一个mp3的播放器
+		var audioDom = document.createElement("audio");
+		// 设置播放器地址
+		audioDom.src = "mp3/1.mp3";
+		// 控制自动播放
+		audioDom.autoplay = "autoplay";
+		
+		// 获取textarea的歌词
+		var lrc = $("#lrc").val();
+
+		// 把歌词时间和歌词分离开
+		var lrcArr = lrc.split("[");
+
+		var html = "";
+
+		for(var i = 0; i < lrcArr.length; i++){
+			// 第二次分割
+			var arr = lrcArr[i].split("]");
+			// console.log("====="+arr);
+			// 取到时间
+			var timer = arr[0].split(".");
+			// 取到歌词
+			var message = arr[1];
+			// 取到分钟和秒
+			var stime = timer[0].split(":");
+			// 转换成秒数
+			var s = stime[0]*60 + stime[1]*1;
+			if(message){
+				html += "<div class='tz_time' id='"+s+"'>"+message+"</div>";
+			}
+		}
+
+		// 把解析好的歌词放入div中
+		$(".m_con").html(html);
+
+		// 当音乐播放的时候，调用timeupdate,时间发生变化会一直调用
+		audioDom.addEventListener("timeupdate",function(){
+			// 获取当前播放时间
+			var timer = this.currentTime;
+			// 通过时间来驱动歌词
+			var s = parseInt(timer);
+			for(var i = 0 ; i < s; i++){
+				$("#" + i).addClass("sel").siblings().removeClass("sel");
+			}
+		});
+
+	});
+
+
+</script>
+
+</body>
+</html>
